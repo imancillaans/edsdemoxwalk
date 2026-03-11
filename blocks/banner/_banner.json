@@ -16,33 +16,6 @@
       }
     }
   ],
-  "models": [
-    {
-      "id": "banner",
-      "fields": [
-        {
-          "component": "reference",
-          "valueType": "string",
-          "name": "image",
-          "label": "Background Image",
-          "multi": false
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "title",
-          "label": "Title",
-          "value": ""
-        },
-        {
-          "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Content",
-          "valueType": "string"
-        }
-      ]
-    }
-  ],
+  "models": [],
   "filters": []
 }

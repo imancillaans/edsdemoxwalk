@@ -12,10 +12,12 @@
       "image",
       "button",
       "title",
+      "banner",
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "services"
     ]
   },
   {

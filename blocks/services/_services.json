@@ -32,34 +32,7 @@
       }
     }
   ],
-  "models": [
-    {
-      "id": "service-item",
-      "fields": [
-        {
-          "component": "reference",
-          "valueType": "string",
-          "name": "icon",
-          "label": "Service Icon",
-          "multi": false
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "title",
-          "label": "Service Title",
-          "value": ""
-        },
-        {
-          "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Service Description",
-          "valueType": "string"
-        }
-      ]
-    }
-  ],
+  "models": [],
   "filters": [
     {
       "id": "services",
