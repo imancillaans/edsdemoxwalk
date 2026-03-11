@@ -19,5 +19,17 @@
   },
   {
     "...": "../blocks/*/_*.json#/models"
+  },
+  {
+    "...": "./_banner.json"
+  },
+  {
+    "...": "./_card.json"
+  },
+  {
+    "...": "./_services.json"
+  },
+  {
+    "...": "./_service-item.json"
   }
 ]
