@@ -13,30 +13,17 @@ export default function decorate(block) {
   // Destructure rows based on model field order
   const [
     sectionTitleRow,
-    teamTitleRow,
-    teamImage1Row,
-    teamName1Row,
-    teamRole1Row,
-    teamImage2Row,
-    teamName2Row,
-    teamRole2Row,
-    teamImage3Row,
-    teamName3Row,
-    teamRole3Row,
-    teamImage4Row,
-    teamName4Row,
-    teamRole4Row,
-    teamImage5Row,
-    teamName5Row,
-    teamRole5Row,
-    teamImage6Row,
-    teamName6Row,
-    teamRole6Row,
-    aboutTitleRow,
-    aboutDescriptionRow,
+    titleRow,
+    imageRow,
+    descriptionRow,
     cta1LinkRow,
     cta1LinkTextRow,
     cta1VariantRow,
+    cta2LinkRow,
+    cta2LinkTextRow,
+    cta2VariantRow,
+    backgroundImageRow,
+    backgroundOverlayRow,
   ] = rows;
 
   // Create main container
@@ -58,166 +45,83 @@ export default function decorate(block) {
     sectionTitleRow.remove();
   }
 
-  // Create team section
-  const teamSection = document.createElement('div');
-  teamSection.className = 'meet-the-team-section';
+  // Process person image
+  if (imageRow) {
+    const imageCell = imageRow.querySelector(':scope > div');
+    const picture = imageCell?.querySelector('picture');
 
-  // Process team title
-  if (teamTitleRow) {
-    const titleCell = teamTitleRow.querySelector(':scope > div');
-    const titleText = titleCell?.textContent.trim();
+    if (picture) {
+      const img = picture.querySelector('img');
+      if (img) {
+        const imageWrapper = document.createElement('div');
+        imageWrapper.className = 'meet-the-team-image';
 
-    if (titleText) {
-      const teamTitle = document.createElement('h2');
-      teamTitle.className = 'meet-the-team-title';
-      moveInstrumentation(titleCell, teamTitle);
-      teamTitle.textContent = titleText;
-      teamSection.append(teamTitle);
-    }
-    teamTitleRow.remove();
-  }
-
-  // Create team members grid
-  const membersGrid = document.createElement('div');
-  membersGrid.className = 'team-members-grid';
-
-  // Process team members (6 members)
-  const members = [
-    { imageRow: teamImage1Row, nameRow: teamName1Row, roleRow: teamRole1Row },
-    { imageRow: teamImage2Row, nameRow: teamName2Row, roleRow: teamRole2Row },
-    { imageRow: teamImage3Row, nameRow: teamName3Row, roleRow: teamRole3Row },
-    { imageRow: teamImage4Row, nameRow: teamName4Row, roleRow: teamRole4Row },
-    { imageRow: teamImage5Row, nameRow: teamName5Row, roleRow: teamRole5Row },
-    { imageRow: teamImage6Row, nameRow: teamName6Row, roleRow: teamRole6Row },
-  ];
-
-  members.forEach((member) => {
-    const { imageRow, nameRow, roleRow } = member;
-
-    // Check if member has at least an image
-    if (imageRow) {
-      const imageCell = imageRow.querySelector(':scope > div');
-      const picture = imageCell?.querySelector('picture');
-
-      if (picture) {
-        const img = picture.querySelector('img');
-        if (img) {
-          // Create member card
-          const memberCard = document.createElement('div');
-          memberCard.className = 'team-member';
-
-          // Create image wrapper
-          const memberImageWrapper = document.createElement('div');
-          memberImageWrapper.className = 'team-member-image';
-
-          const optimizedPic = createOptimizedPicture(
-            img.src,
-            img.alt || 'Team member',
-            false,
-            [{ width: '200' }],
-          );
-          moveInstrumentation(img, optimizedPic.querySelector('img'));
-          memberImageWrapper.append(optimizedPic);
-          memberCard.append(memberImageWrapper);
-
-          // Process name
-          if (nameRow) {
-            const nameCell = nameRow.querySelector(':scope > div');
-            const nameText = nameCell?.textContent.trim();
-
-            if (nameText) {
-              const memberName = document.createElement('div');
-              memberName.className = 'team-member-name';
-              moveInstrumentation(nameCell, memberName);
-              memberName.textContent = nameText;
-              memberCard.append(memberName);
-            }
-            nameRow.remove();
-          }
-
-          // Process role
-          if (roleRow) {
-            const roleCell = roleRow.querySelector(':scope > div');
-            const roleText = roleCell?.textContent.trim();
-
-            if (roleText) {
-              const memberRole = document.createElement('div');
-              memberRole.className = 'team-member-role';
-              moveInstrumentation(roleCell, memberRole);
-              memberRole.textContent = roleText;
-              memberCard.append(memberRole);
-            }
-            roleRow.remove();
-          }
-
-          membersGrid.append(memberCard);
-        }
+        const optimizedPic = createOptimizedPicture(
+          img.src,
+          img.alt || 'Team member',
+          false,
+          [{ width: '300' }],
+        );
+        moveInstrumentation(img, optimizedPic.querySelector('img'));
+        imageWrapper.append(optimizedPic);
+        container.append(imageWrapper);
       }
-      imageRow.remove();
     }
-  });
-
-  if (membersGrid.children.length > 0) {
-    teamSection.append(membersGrid);
+    imageRow.remove();
   }
 
-  if (teamSection.children.length > 0) {
-    container.append(teamSection);
-  }
-
-  // Create about section
-  const aboutSection = document.createElement('div');
-  aboutSection.className = 'meet-the-team-about';
-
-  // Process about title
-  if (aboutTitleRow) {
-    const titleCell = aboutTitleRow.querySelector(':scope > div');
+  // Process main title
+  if (titleRow) {
+    const titleCell = titleRow.querySelector(':scope > div');
     const titleText = titleCell?.textContent.trim();
 
     if (titleText) {
-      const aboutTitle = document.createElement('h3');
-      aboutTitle.className = 'about-title';
-      moveInstrumentation(titleCell, aboutTitle);
-      aboutTitle.textContent = titleText;
-      aboutSection.append(aboutTitle);
+      const title = document.createElement('h2');
+      title.className = 'meet-the-team-title';
+      moveInstrumentation(titleCell, title);
+      title.textContent = titleText;
+      container.append(title);
     }
-    aboutTitleRow.remove();
+    titleRow.remove();
   }
 
-  // Process about description
-  if (aboutDescriptionRow) {
-    const descCell = aboutDescriptionRow.querySelector(':scope > div');
+  // Process description
+  if (descriptionRow) {
+    const descCell = descriptionRow.querySelector(':scope > div');
 
     if (descCell && descCell.textContent.trim()) {
-      const aboutDescription = document.createElement('div');
-      aboutDescription.className = 'about-description';
-      moveInstrumentation(descCell, aboutDescription);
+      const description = document.createElement('div');
+      description.className = 'meet-the-team-description';
+      moveInstrumentation(descCell, description);
 
       while (descCell.firstChild) {
-        aboutDescription.append(descCell.firstChild);
+        description.append(descCell.firstChild);
       }
 
-      aboutSection.append(aboutDescription);
+      container.append(description);
     }
-    aboutDescriptionRow.remove();
+    descriptionRow.remove();
   }
 
-  // Process CTA button
+  // Process buttons
+  const buttonsWrapper = document.createElement('div');
+  buttonsWrapper.className = 'meet-the-team-buttons';
   const variants = getButtonVariants();
 
+  // Process CTA 1 (Primary Button)
   if (cta1LinkRow) {
     const linkCell = cta1LinkRow.querySelector(':scope > div');
     const link = linkCell?.querySelector('a');
 
     if (link) {
-      const btn = document.createElement('a');
-      btn.href = link.getAttribute('href') || '';
-      btn.className = 'button';
-      btn.textContent = link.textContent.trim();
-      moveInstrumentation(link, btn);
+      const btn1 = document.createElement('a');
+      btn1.href = link.getAttribute('href') || '';
+      btn1.className = 'button';
+      btn1.textContent = link.textContent.trim();
+      moveInstrumentation(link, btn1);
 
-      // Parse variant
-      let variantName = 'purple';
+      // Apply variant styling
+      let variantName = 'purple'; // default
       if (cta1VariantRow) {
         const variantCell = cta1VariantRow.querySelector(':scope > div');
         const variantText = variantCell?.textContent.trim();
@@ -228,19 +132,84 @@ export default function decorate(block) {
         cta1VariantRow.remove();
       }
 
-      // Apply variant wrapper
+      // Apply variant and get wrapper (or button if no variant)
       const buttonElement = variants[variantName]
-        ? applyButtonVariant(btn, variants[variantName])
-        : btn;
+        ? applyButtonVariant(btn1, variants[variantName])
+        : btn1;
 
-      aboutSection.append(buttonElement);
+      buttonsWrapper.append(buttonElement);
     }
     cta1LinkRow.remove();
     if (cta1LinkTextRow) cta1LinkTextRow.remove();
   }
 
-  if (aboutSection.children.length > 0) {
-    container.append(aboutSection);
+  // Process CTA 2 (Secondary Button)
+  if (cta2LinkRow) {
+    const linkCell = cta2LinkRow.querySelector(':scope > div');
+    const link = linkCell?.querySelector('a');
+
+    if (link) {
+      const btn2 = document.createElement('a');
+      btn2.href = link.getAttribute('href') || '';
+      btn2.className = 'button';
+      btn2.textContent = link.textContent.trim();
+      moveInstrumentation(link, btn2);
+
+      // Apply variant styling
+      let variantName = 'outline'; // default for secondary button
+      if (cta2VariantRow) {
+        const variantCell = cta2VariantRow.querySelector(':scope > div');
+        const variantText = variantCell?.textContent.trim();
+        const match = variantText?.match(/\[variant-([^\]]+)\]/);
+        if (match) {
+          [, variantName] = match;
+        }
+        cta2VariantRow.remove();
+      }
+
+      // Apply variant and get wrapper (or button if no variant)
+      const buttonElement = variants[variantName]
+        ? applyButtonVariant(btn2, variants[variantName])
+        : btn2;
+
+      buttonsWrapper.append(buttonElement);
+    }
+    cta2LinkRow.remove();
+    if (cta2LinkTextRow) cta2LinkTextRow.remove();
+  }
+
+  if (buttonsWrapper.children.length > 0) {
+    container.append(buttonsWrapper);
+  }
+
+  // Process background image (optional)
+  if (backgroundImageRow) {
+    const bgImageCell = backgroundImageRow.querySelector(':scope > div');
+    const picture = bgImageCell?.querySelector('picture');
+
+    if (picture) {
+      const img = picture.querySelector('img');
+      if (img && img.src) {
+        // Apply background image to the block
+        block.style.backgroundImage = `url('${img.src}')`;
+        block.style.backgroundSize = 'cover';
+        block.style.backgroundPosition = 'center';
+        block.style.backgroundRepeat = 'no-repeat';
+        block.classList.add('has-background-image');
+      }
+    }
+    backgroundImageRow.remove();
+  }
+
+  // Process background overlay intensity
+  if (backgroundOverlayRow) {
+    const overlayCell = backgroundOverlayRow.querySelector(':scope > div');
+    const overlayValue = overlayCell?.textContent.trim();
+
+    if (overlayValue && overlayValue !== 'none') {
+      block.classList.add(`overlay-${overlayValue}`);
+    }
+    backgroundOverlayRow.remove();
   }
 
   // Append container to block

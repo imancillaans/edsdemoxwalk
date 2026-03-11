@@ -2,195 +2,226 @@
 
 .meet-the-team {
   background-color: var(--background-color);
+  padding: 4rem clamp(1rem, 5vw, 4rem);
+  min-height: 400px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* Background Image Support */
+.meet-the-team.has-background-image {
+  position: relative;
+  background-color: transparent;
+}
+
+.meet-the-team.has-background-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 50%);
+  z-index: 0;
+}
+
+/* Overlay Intensity Variants */
+.meet-the-team.overlay-none::before {
+  background: transparent;
+}
+
+.meet-the-team.overlay-light::before {
+  background: rgb(0 0 0 / 20%);
+}
+
+.meet-the-team.overlay-medium::before {
+  background: rgb(0 0 0 / 50%);
+}
+
+.meet-the-team.overlay-dark::before {
+  background: rgb(0 0 0 / 70%);
+}
+
+.meet-the-team.overlay-very-dark::before {
+  background: rgb(0 0 0 / 85%);
+}
+
+/* Ensure content is above the overlay */
+.meet-the-team.has-background-image > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Container */
 .meet-the-team-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  padding: 2rem 1rem;
-  max-width: 1200px;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-/* Section Title (e.g., "OUR STORY") */
+/* Section Title (e.g., "ABOUT US") */
 .meet-the-team-section-title {
-  text-align: center;
-  font-size: var(--heading-font-size-s);
+  font-size: 0.875rem;
   font-family: var(--heading-font-family);
   font-weight: 600;
-  color: var(--dark-color);
+  color: #e74c3c;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 0;
-}
-
-/* Team Section */
-.meet-the-team-section {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-}
-
-.meet-the-team-title {
-  text-align: center;
-  font-size: var(--heading-font-size-l);
-  font-family: var(--heading-font-family);
-  font-weight: 700;
-  color: var(--text-color);
+  letter-spacing: 3px;
   margin: 0;
-  max-width: 800px;
 }
 
-/* Team Members Grid */
-.team-members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-  width: 100%;
-  max-width: 800px;
-  margin: 1rem 0;
-  justify-items: center;
-}
-
-@media (width >= 600px) {
-  .team-members-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 200px));
-    justify-content: center;
-  }
-}
-
-/* Individual Team Member Card */
-.team-member {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.team-member:hover {
-  transform: translateY(-5px);
-}
-
-/* Team Member Image */
-.team-member-image {
-  width: 150px;
-  height: 150px;
+/* Person Image */
+.meet-the-team-image {
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid var(--light-color);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 6px solid white;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 15%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.team-member:hover .team-member-image {
-  box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
-  border-color: var(--link-color);
+.meet-the-team-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgb(0 0 0 / 20%);
 }
 
 @media (width >= 600px) {
-  .team-member-image {
-    width: 180px;
-    height: 180px;
+  .meet-the-team-image {
+    width: 250px;
+    height: 250px;
   }
 }
 
-.team-member-image picture {
+.meet-the-team-image picture {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.team-member-image img {
+.meet-the-team-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Team Member Name */
-.team-member-name {
-  font-size: var(--body-font-size-m);
-  font-weight: 600;
-  color: var(--text-color);
-  margin: 0;
-}
-
-/* Team Member Role */
-.team-member-role {
-  font-size: var(--body-font-size-s);
-  color: var(--dark-color);
-  font-style: italic;
-  margin: 0;
-}
-
-/* About Section */
-.meet-the-team-about {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: center;
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  background-color: var(--light-color);
-  border-radius: 8px;
-}
-
-.meet-the-team-about .about-title {
-  font-size: var(--heading-font-size-m);
+/* Main Title */
+.meet-the-team-title {
+  font-size: 2rem;
   font-family: var(--heading-font-family);
   font-weight: 700;
   color: var(--text-color);
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  margin: 0.5rem 0 0;
+  line-height: 1.2;
 }
 
-.meet-the-team-about .about-description {
-  font-size: var(--body-font-size-m);
+@media (width >= 600px) {
+  .meet-the-team-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (width >= 900px) {
+  .meet-the-team-title {
+    font-size: 3rem;
+  }
+}
+
+/* Description */
+.meet-the-team-description {
+  font-size: 1rem;
   color: var(--text-color);
   line-height: 1.8;
   max-width: 800px;
+  margin: 0.5rem 0;
 }
 
-.meet-the-team-about .about-description p {
-  margin: 1rem 0;
+@media (width >= 600px) {
+  .meet-the-team-description {
+    font-size: 1.125rem;
+  }
 }
 
-/* CTA Button Styling (layout only, not variant colors) */
-.meet-the-team-about .button {
+.meet-the-team-description p {
+  margin: 0.75rem 0;
+}
+
+.meet-the-team-description p:first-child {
+  margin-top: 0;
+}
+
+.meet-the-team-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Buttons */
+.meet-the-team-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.meet-the-team-buttons .button {
   display: inline-block;
   text-decoration: none;
   transition: all 0.3s ease;
   cursor: pointer;
-  margin-top: 0.5rem;
 }
 
-.meet-the-team-about .button:hover {
+.meet-the-team-buttons .button:hover {
   opacity: 0.9;
   transform: translateY(-2px);
 }
 
 /* Responsive adjustments */
 @media (width >= 900px) {
+  .meet-the-team {
+    padding: 5rem clamp(2rem, 5vw, 4rem);
+  }
+
   .meet-the-team-container {
-    gap: 4rem;
-    padding: 3rem 2rem;
+    gap: 2.5rem;
   }
 
   .meet-the-team-section-title {
-    font-size: var(--heading-font-size-m);
+    font-size: 1rem;
+    letter-spacing: 4px;
   }
+}
 
-  .meet-the-team-title {
-    font-size: var(--heading-font-size-xl);
-  }
+/* Background Color Variants */
+.meet-the-team.light {
+  background: #f8fafc;
+}
 
-  .meet-the-team-about {
-    padding: 3rem 2rem;
-  }
+.meet-the-team.dark {
+  background: #0f172a;
+}
+
+.meet-the-team.dark .meet-the-team-container {
+  color: white;
+}
+
+.meet-the-team.dark .meet-the-team-section-title,
+.meet-the-team.dark .meet-the-team-title,
+.meet-the-team.dark .meet-the-team-description {
+  color: white;
+}
+
+.meet-the-team.purple {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.meet-the-team.purple .meet-the-team-container {
+  color: white;
+}
+
+.meet-the-team.purple .meet-the-team-section-title,
+.meet-the-team.purple .meet-the-team-title,
+.meet-the-team.purple .meet-the-team-description {
+  color: white;
 }
