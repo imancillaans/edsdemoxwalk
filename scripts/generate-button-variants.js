@@ -26,9 +26,11 @@ const THEME_CSS_PATH = path.join(__dirname, '../styles/theme.css');
 const BANNER_VARIANTS_PATH = path.join(__dirname, '../blocks/banner/button-variants.js');
 const CTA_VARIANTS_PATH = path.join(__dirname, '../blocks/cta/button-variants.js');
 const MEET_THE_TEAM_VARIANTS_PATH = path.join(__dirname, '../blocks/meet-the-team/button-variants.js');
+const SERVICES_VARIANTS_PATH = path.join(__dirname, '../blocks/services/button-variants.js');
 const BANNER_MODEL_PATH = path.join(__dirname, '../models/_banner.json');
 const CTA_MODEL_PATH = path.join(__dirname, '../models/_cta.json');
 const MEET_THE_TEAM_MODEL_PATH = path.join(__dirname, '../models/_meet-the-team.json');
+const SERVICES_MODEL_PATH = path.join(__dirname, '../models/_services.json');
 
 /**
  * Parse button classes from theme.css
@@ -173,6 +175,7 @@ function main() {
   fs.writeFileSync(BANNER_VARIANTS_PATH, jsContent);
   fs.writeFileSync(CTA_VARIANTS_PATH, jsContent);
   fs.writeFileSync(MEET_THE_TEAM_VARIANTS_PATH, jsContent);
+  fs.writeFileSync(SERVICES_VARIANTS_PATH, jsContent);
   // eslint-disable-next-line no-console
   console.log('✅ Written button-variants.js files');
 
@@ -193,8 +196,9 @@ function main() {
   updateModelFile(BANNER_MODEL_PATH, options);
   updateModelFile(CTA_MODEL_PATH, options);
   updateModelFile(MEET_THE_TEAM_MODEL_PATH, options);
+  updateModelFile(SERVICES_MODEL_PATH, options);
   // eslint-disable-next-line no-console
-  console.log('✅ Updated models/_banner.json, models/_cta.json, and models/_meet-the-team.json');
+  console.log('✅ Updated models/_banner.json, models/_cta.json, models/_meet-the-team.json, and models/_services.json');
 
   // Run build:json to regenerate component-models.json
   // eslint-disable-next-line no-console

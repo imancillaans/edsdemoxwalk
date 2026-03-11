@@ -2,35 +2,344 @@
   "id": "services",
   "fields": [
     {
+      "component": "text",
+      "name": "sectionTitle",
+      "label": "Section Title (e.g., 'OUR SERVICES')",
+      "valueType": "string"
+    },
+    {
+      "component": "text",
+      "name": "title",
+      "label": "Main Title",
+      "valueType": "string"
+    },
+    {
+      "component": "richtext",
+      "name": "subtitle",
+      "label": "Subtitle / Description",
+      "valueType": "string"
+    },
+    {
+      "component": "text",
+      "name": "service1Name",
+      "label": "Service 1 - Name",
+      "valueType": "string"
+    },
+    {
       "component": "select",
-      "name": "classes",
-      "label": "Services Options",
+      "name": "service1Icon",
+      "label": "Service 1 - Icon",
       "valueType": "string",
-      "multi": true,
       "options": [
         {
-          "name": "2 Columns",
-          "value": "two-columns"
+          "name": "Rocket (Innovation)",
+          "value": "rocket"
         },
         {
-          "name": "3 Columns",
-          "value": "three-columns"
+          "name": "Light Bulb (Ideas)",
+          "value": "lightbulb"
         },
         {
-          "name": "4 Columns",
-          "value": "four-columns"
+          "name": "Gear (Settings/Tools)",
+          "value": "gear"
         },
         {
-          "name": "Horizontal Layout",
-          "value": "horizontal"
+          "name": "Chart (Analytics)",
+          "value": "chart"
         },
         {
-          "name": "Bordered",
-          "value": "bordered"
+          "name": "Shield (Security)",
+          "value": "shield"
         },
         {
-          "name": "Compact",
-          "value": "compact"
+          "name": "Clock (Time/Speed)",
+          "value": "clock"
+        },
+        {
+          "name": "Star (Quality)",
+          "value": "star"
+        },
+        {
+          "name": "Users (Team/People)",
+          "value": "users"
+        }
+      ]
+    },
+    {
+      "component": "richtext",
+      "name": "service1Description",
+      "label": "Service 1 - Description",
+      "valueType": "string"
+    },
+    {
+      "component": "text",
+      "name": "service2Name",
+      "label": "Service 2 - Name",
+      "valueType": "string"
+    },
+    {
+      "component": "select",
+      "name": "service2Icon",
+      "label": "Service 2 - Icon",
+      "valueType": "string",
+      "options": [
+        {
+          "name": "Rocket (Innovation)",
+          "value": "rocket"
+        },
+        {
+          "name": "Light Bulb (Ideas)",
+          "value": "lightbulb"
+        },
+        {
+          "name": "Gear (Settings/Tools)",
+          "value": "gear"
+        },
+        {
+          "name": "Chart (Analytics)",
+          "value": "chart"
+        },
+        {
+          "name": "Shield (Security)",
+          "value": "shield"
+        },
+        {
+          "name": "Clock (Time/Speed)",
+          "value": "clock"
+        },
+        {
+          "name": "Star (Quality)",
+          "value": "star"
+        },
+        {
+          "name": "Users (Team/People)",
+          "value": "users"
+        }
+      ]
+    },
+    {
+      "component": "richtext",
+      "name": "service2Description",
+      "label": "Service 2 - Description",
+      "valueType": "string"
+    },
+    {
+      "component": "text",
+      "name": "service3Name",
+      "label": "Service 3 - Name",
+      "valueType": "string"
+    },
+    {
+      "component": "select",
+      "name": "service3Icon",
+      "label": "Service 3 - Icon",
+      "valueType": "string",
+      "options": [
+        {
+          "name": "Rocket (Innovation)",
+          "value": "rocket"
+        },
+        {
+          "name": "Light Bulb (Ideas)",
+          "value": "lightbulb"
+        },
+        {
+          "name": "Gear (Settings/Tools)",
+          "value": "gear"
+        },
+        {
+          "name": "Chart (Analytics)",
+          "value": "chart"
+        },
+        {
+          "name": "Shield (Security)",
+          "value": "shield"
+        },
+        {
+          "name": "Clock (Time/Speed)",
+          "value": "clock"
+        },
+        {
+          "name": "Star (Quality)",
+          "value": "star"
+        },
+        {
+          "name": "Users (Team/People)",
+          "value": "users"
+        }
+      ]
+    },
+    {
+      "component": "richtext",
+      "name": "service3Description",
+      "label": "Service 3 - Description",
+      "valueType": "string"
+    },
+    {
+      "component": "aem-content",
+      "name": "cta1Link",
+      "label": "Primary Button Link"
+    },
+    {
+      "component": "text",
+      "name": "cta1LinkText",
+      "label": "Primary Button Text",
+      "valueType": "string"
+    },
+    {
+      "component": "select",
+      "name": "cta1Variant",
+      "label": "Primary Button Style",
+      "valueType": "string",
+      "options": [
+        {
+          "name": "Purple",
+          "value": "[variant-purple]"
+        },
+        {
+          "name": "Black",
+          "value": "[variant-black]"
+        },
+        {
+          "name": "White Outline",
+          "value": "[variant-white-outline]"
+        },
+        {
+          "name": "White",
+          "value": "[variant-white]"
+        },
+        {
+          "name": "Outline",
+          "value": "[variant-outline]"
+        },
+        {
+          "name": "White Outline Medium",
+          "value": "[variant-white-outline-medium]"
+        },
+        {
+          "name": "Orange Underline",
+          "value": "[variant-orange-underline]"
+        },
+        {
+          "name": "Nuevo",
+          "value": "[variant-nuevo]"
+        },
+        {
+          "name": "Gray",
+          "value": "[variant-gray]"
+        }
+      ]
+    },
+    {
+      "component": "aem-content",
+      "name": "cta2Link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "component": "text",
+      "name": "cta2LinkText",
+      "label": "Secondary Button Text",
+      "valueType": "string"
+    },
+    {
+      "component": "select",
+      "name": "cta2Variant",
+      "label": "Secondary Button Style",
+      "valueType": "string",
+      "options": [
+        {
+          "name": "White Outline",
+          "value": "[variant-white-outline]"
+        },
+        {
+          "name": "Purple",
+          "value": "[variant-purple]"
+        },
+        {
+          "name": "Black",
+          "value": "[variant-black]"
+        },
+        {
+          "name": "White",
+          "value": "[variant-white]"
+        },
+        {
+          "name": "Outline",
+          "value": "[variant-outline]"
+        },
+        {
+          "name": "White Outline Medium",
+          "value": "[variant-white-outline-medium]"
+        },
+        {
+          "name": "Orange Underline",
+          "value": "[variant-orange-underline]"
+        },
+        {
+          "name": "Nuevo",
+          "value": "[variant-nuevo]"
+        },
+        {
+          "name": "Gray",
+          "value": "[variant-gray]"
+        }
+      ]
+    },
+    {
+      "component": "reference",
+      "name": "backgroundImage",
+      "label": "Background Image (optional - overrides background color)",
+      "multi": false
+    },
+    {
+      "component": "select",
+      "name": "backgroundOverlay",
+      "label": "Background Image Overlay",
+      "valueType": "string",
+      "options": [
+        {
+          "name": "None",
+          "value": "none"
+        },
+        {
+          "name": "Light (20%)",
+          "value": "light"
+        },
+        {
+          "name": "Medium (50%)",
+          "value": "medium"
+        },
+        {
+          "name": "Dark (70%)",
+          "value": "dark"
+        },
+        {
+          "name": "Very Dark (85%)",
+          "value": "very-dark"
+        }
+      ]
+    },
+    {
+      "component": "select",
+      "name": "classes",
+      "label": "Background Color",
+      "valueType": "string",
+      "options": [
+        {
+          "name": "White (Default)",
+          "value": ""
+        },
+        {
+          "name": "Light",
+          "value": "light"
+        },
+        {
+          "name": "Dark",
+          "value": "dark"
+        },
+        {
+          "name": "Purple",
+          "value": "purple"
         }
       ]
     }

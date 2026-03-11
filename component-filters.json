@@ -42,11 +42,5 @@
       "button",
       "title"
     ]
-  },
-  {
-    "id": "services",
-    "components": [
-      "service-item"
-    ]
   }
 ]
