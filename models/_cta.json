@@ -30,22 +30,20 @@
       "label": "Primary Button Style",
       "valueType": "string",
       "options": [
-        {"name": "Primary Green (Default)", "value": "[variant-primary-green]"},
         {"name": "Primary Orange", "value": "[variant-primary-orange]"},
+        {"name": "Secondary Orange (Outline)", "value": "[variant-secondary-orange]"},
         {"name": "Primary Purple", "value": "[variant-primary-purple]"},
-        {"name": "Secondary White", "value": "[variant-secondary-white]"},
-        {"name": "Secondary Dark", "value": "[variant-secondary-dark]"},
-        {"name": "Secondary Orange", "value": "[variant-secondary-orange]"},
-        {"name": "Gray", "value": "[variant-gray]"},
-        {"name": "Gray Light", "value": "[variant-gray-light]"},
-        {"name": "Header Style (Purple)", "value": "[variant-header-style]"},
+        {"name": "Secondary Purple (Outline)", "value": "[variant-secondary-purple]"},
+        {"name": "Dark", "value": "[variant-dark]"},
+        {"name": "Dark Outline", "value": "[variant-dark-outline]"},
         {"name": "Black", "value": "[variant-black]"},
-        {"name": "White Solid", "value": "[variant-white-solid]"},
-        {"name": "Transparent Purple", "value": "[variant-transparent-purple]"},
+        {"name": "White Solid", "value": "[variant-white]"},
+        {"name": "White Outline", "value": "[variant-white-outline]"},
+        {"name": "Header Style", "value": "[variant-header]"},
         {"name": "Text Orange", "value": "[variant-text-orange]"},
         {"name": "Text White", "value": "[variant-text-white]"},
-        {"name": "Large Primary", "value": "[variant-large-primary]"},
-        {"name": "Small Primary", "value": "[variant-small-primary]"}
+        {"name": "Large Primary", "value": "[variant-large]"},
+        {"name": "Small", "value": "[variant-small]"}
       ]
     },
     {
@@ -65,22 +63,20 @@
       "label": "Secondary Button Style",
       "valueType": "string",
       "options": [
-        {"name": "Secondary White (Default)", "value": "[variant-secondary-white]"},
-        {"name": "Primary Green", "value": "[variant-primary-green]"},
+        {"name": "Secondary Orange (Outline)", "value": "[variant-secondary-orange]"},
         {"name": "Primary Orange", "value": "[variant-primary-orange]"},
         {"name": "Primary Purple", "value": "[variant-primary-purple]"},
-        {"name": "Secondary Dark", "value": "[variant-secondary-dark]"},
-        {"name": "Secondary Orange", "value": "[variant-secondary-orange]"},
-        {"name": "Gray", "value": "[variant-gray]"},
-        {"name": "Gray Light", "value": "[variant-gray-light]"},
-        {"name": "Header Style (Purple)", "value": "[variant-header-style]"},
+        {"name": "Secondary Purple (Outline)", "value": "[variant-secondary-purple]"},
+        {"name": "Dark", "value": "[variant-dark]"},
+        {"name": "Dark Outline", "value": "[variant-dark-outline]"},
         {"name": "Black", "value": "[variant-black]"},
-        {"name": "White Solid", "value": "[variant-white-solid]"},
-        {"name": "Transparent Purple", "value": "[variant-transparent-purple]"},
+        {"name": "White Solid", "value": "[variant-white]"},
+        {"name": "White Outline", "value": "[variant-white-outline]"},
+        {"name": "Header Style", "value": "[variant-header]"},
         {"name": "Text Orange", "value": "[variant-text-orange]"},
         {"name": "Text White", "value": "[variant-text-white]"},
-        {"name": "Large Primary", "value": "[variant-large-primary]"},
-        {"name": "Small Primary", "value": "[variant-small-primary]"}
+        {"name": "Large Primary", "value": "[variant-large]"},
+        {"name": "Small", "value": "[variant-small]"}
       ]
     },
     {
