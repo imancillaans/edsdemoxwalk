@@ -8,25 +8,12 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 export default function decorate(block) {
   const rows = [...block.children];
 
-  // Debug: Log the structure
-  console.log('CTA - Total rows:', rows.length);
-  rows.forEach((row, index) => {
-    const cells = row.querySelectorAll(':scope > div');
-    console.log(`Row ${index}:`, cells.length, 'cells');
-    cells.forEach((cell, cellIndex) => {
-      console.log(`  Cell ${cellIndex}:`, cell.textContent.substring(0, 50));
-    });
-  });
-
   const [
     titleRow,
     subtitleRow,
-    cta1LinkRow,
-    cta1TextRow,
-    cta2LinkRow,
-    cta2TextRow,
+    cta1Row,
+    cta2Row,
     imageRow,
-    classesRow,
   ] = rows;
 
   // Create CTA content wrapper (left side)
@@ -70,58 +57,36 @@ export default function decorate(block) {
   const buttonsWrapper = document.createElement('div');
   buttonsWrapper.className = 'cta-buttons';
 
-  // Process CTA 1 (Primary Button)
-  let cta1Link = '';
-  let cta1Text = '';
+  // Process CTA 1 (Primary Button) - collapsed field
+  if (cta1Row) {
+    const cta1Cell = cta1Row.querySelector(':scope > div');
+    const link = cta1Cell?.querySelector('a');
 
-  if (cta1LinkRow) {
-    const cta1LinkCell = cta1LinkRow.querySelector(':scope > div');
-    const link = cta1LinkCell?.querySelector('a');
     if (link) {
-      cta1Link = link.getAttribute('href') || '';
+      const btn1 = document.createElement('a');
+      btn1.href = link.getAttribute('href') || '';
+      btn1.className = 'button primary';
+      btn1.textContent = link.textContent.trim();
+      moveInstrumentation(link, btn1);
+      buttonsWrapper.append(btn1);
     }
-    cta1LinkRow.remove();
+    cta1Row.remove();
   }
 
-  if (cta1TextRow) {
-    const cta1LinkTextCell = cta1TextRow.querySelector(':scope > div');
-    cta1Text = cta1LinkTextCell?.textContent.trim() || '';
-    cta1TextRow.remove();
-  }
+  // Process CTA 2 (Secondary Button) - collapsed field
+  if (cta2Row) {
+    const cta2Cell = cta2Row.querySelector(':scope > div');
+    const link = cta2Cell?.querySelector('a');
 
-  if (cta1Link && cta1Text) {
-    const btn1 = document.createElement('a');
-    btn1.href = cta1Link;
-    btn1.className = 'button primary';
-    btn1.textContent = cta1Text;
-    buttonsWrapper.append(btn1);
-  }
-
-  // Process CTA 2 (Secondary Button)
-  let cta2Link = '';
-  let cta2Text = '';
-
-  if (cta2LinkRow) {
-    const cta2LinkCell = cta2LinkRow.querySelector(':scope > div');
-    const link = cta2LinkCell?.querySelector('a');
     if (link) {
-      cta2Link = link.getAttribute('href') || '';
+      const btn2 = document.createElement('a');
+      btn2.href = link.getAttribute('href') || '';
+      btn2.className = 'button secondary';
+      btn2.textContent = link.textContent.trim();
+      moveInstrumentation(link, btn2);
+      buttonsWrapper.append(btn2);
     }
-    cta2LinkRow.remove();
-  }
-
-  if (cta2TextRow) {
-    const cta2LinkTextCell = cta2TextRow.querySelector(':scope > div');
-    cta2Text = cta2LinkTextCell?.textContent.trim() || '';
-    cta2TextRow.remove();
-  }
-
-  if (cta2Link && cta2Text) {
-    const btn2 = document.createElement('a');
-    btn2.href = cta2Link;
-    btn2.className = 'button secondary';
-    btn2.textContent = cta2Text;
-    buttonsWrapper.append(btn2);
+    cta2Row.remove();
   }
 
   if (buttonsWrapper.children.length > 0) {
@@ -151,11 +116,6 @@ export default function decorate(block) {
       }
     }
     imageRow.remove();
-  }
-
-  // Remove classes row (it's automatically applied by AEM)
-  if (classesRow) {
-    classesRow.remove();
   }
 
   // Append both sections to block
