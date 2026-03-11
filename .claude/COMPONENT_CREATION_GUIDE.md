@@ -593,6 +593,102 @@ export default function decorate(block) {
 - Button variants (theme.css handles this)
 - Anything with `.acc-button--link` class
 
+#### IMPORTANT: Full-Width Components (Remove Section Padding)
+
+**Issue:** By default, sections in AEM Edge Delivery Services have padding and max-width constraints that prevent blocks from spanning the full width of the viewport.
+
+**Symptoms:**
+- Component has unwanted padding/margins on the sides
+- Background colors/images don't extend to screen edges
+- Component looks "boxed in" instead of full-width
+
+**When to apply this fix:**
+- Hero/banner components
+- Full-width backgrounds
+- Components with background images
+- Any component that should span the entire viewport width
+
+**Solution:** Add section constraint removal rules to your component CSS
+
+**Add these rules to your component CSS file:**
+
+```css
+/* Remove default section constraints for {component-name} */
+main .section:has(.{component-name}) {
+  padding: 0;
+}
+
+main .section:has(.{component-name}) > div {
+  max-width: none;
+  margin: 0;
+  padding: 0 !important;
+}
+```
+
+**Real-world examples:**
+- `blocks/banner/banner.css` - lines 54-63
+- `blocks/meet-the-team/meet-the-team.css` - lines 11-20
+
+**Complete example with full-width support:**
+
+```css
+/* Component Block Styles */
+
+.{component-name} {
+  background-color: var(--background-color);
+  padding: 4rem clamp(1rem, 5vw, 4rem);
+  min-height: 400px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Remove default section constraints for {component-name} */
+main .section:has(.{component-name}) {
+  padding: 0;
+}
+
+main .section:has(.{component-name}) > div {
+  max-width: none;
+  margin: 0;
+  padding: 0 !important;
+}
+
+/* Container - centered with max-width but with padding */
+.{component-name}-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;  /* Important! Add padding when section padding is removed */
+}
+
+@media (width >= 600px) {
+  .{component-name}-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (width >= 900px) {
+  .{component-name}-container {
+    padding: 0 3rem;
+  }
+}
+
+/* Rest of your component styles... */
+```
+
+**How it works:**
+- `:has(.{component-name})` targets the parent section containing your component
+- Removes section padding and max-width constraints
+- Your component can now control its own width and padding
+- Background colors/images extend to viewport edges
+- **CRITICAL:** Inner container needs its own padding since section padding is removed
+- Content stays centered with `max-width` + `margin: 0 auto`
+- Responsive padding prevents content from touching edges on mobile
+
+**When NOT to use:**
+- Small content components (text, images, cards)
+- Components that should respect content width limits
+- Components that don't need full-width backgrounds
+
 ---
 
 ### STEP 8: Test Component
@@ -951,6 +1047,120 @@ sed -n '{line_number}p' component-models.json
 - Numbers should come AFTER the descriptive word: `teamImage1` not `member1Image`
 - Button fields need numbers: `cta1Link` not `ctaLink` (unless rule is disabled)
 - Be consistent with existing components (banner uses `cta1Link`, `cta2Link`)
+
+---
+
+### Issue: Component has unwanted padding on the sides / doesn't span full width
+
+**Symptoms:**
+- Component has visible padding/margins on left and right sides
+- Background colors or images don't extend to screen edges
+- Component looks "boxed in" instead of spanning full viewport width
+- There's white space between component and browser edges
+
+**Visual Example:**
+```
+┌─────────────────────────────────────┐
+│ [padding] Component Content [padding] │  ← Unwanted padding
+└─────────────────────────────────────┘
+```
+
+**Root Cause:**
+AEM Edge Delivery Services applies default padding and max-width constraints to sections. This is intentional for regular content components (text, images, cards) but problematic for full-width hero/banner components.
+
+**Diagnosis:**
+```bash
+# Check if your component should be full-width
+# Look for these characteristics:
+# - Background images or colors
+# - Hero/banner/CTA layout
+# - Should span entire viewport
+```
+
+**Fix:**
+Add section constraint removal rules to your component CSS file:
+
+```css
+/* Remove default section constraints for {component-name} */
+main .section:has(.{component-name}) {
+  padding: 0;
+}
+
+main .section:has(.{component-name}) > div {
+  max-width: none;
+  margin: 0;
+  padding: 0 !important;
+}
+```
+
+**Where to add:**
+Place these rules near the top of your CSS file, right after the main component class definition.
+
+**Real-world examples:**
+- `blocks/banner/banner.css` - Full-width hero with background
+- `blocks/meet-the-team/meet-the-team.css` - Single person with optional background
+
+**Complete example:**
+```css
+/* Component Block Styles */
+
+.my-hero {
+  background-color: var(--background-color);
+  padding: 4rem clamp(1rem, 5vw, 4rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Remove default section constraints for my-hero */
+main .section:has(.my-hero) {
+  padding: 0;
+}
+
+main .section:has(.my-hero) > div {
+  max-width: none;
+  margin: 0;
+  padding: 0 !important;
+}
+
+/* CRITICAL: Add padding to inner container */
+.my-hero-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;  /* Prevents content from touching edges */
+}
+
+@media (width >= 600px) {
+  .my-hero-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (width >= 900px) {
+  .my-hero-container {
+    padding: 0 3rem;
+  }
+}
+
+/* Rest of component styles... */
+```
+
+**IMPORTANT PATTERN:**
+When you remove section padding, you MUST add padding to the inner container:
+- ❌ **Without container padding:** Content touches screen edges on mobile
+- ✅ **With container padding:** Content is centered with comfortable margins
+
+**When NOT to apply this fix:**
+- Text-only components
+- Card/grid layouts that should respect max-width
+- Components that should be centered with content constraints
+- Small UI elements (buttons, images, etc.)
+
+**Verification:**
+After adding the rules:
+1. Check in browser DevTools
+2. Inspect the `.section` element
+3. Should have `padding: 0` and no max-width
+4. Background should extend to viewport edges
 
 ---
 
