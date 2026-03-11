@@ -616,6 +616,7 @@ export default function decorate(block) {
 /* Remove default section constraints for {component-name} */
 main .section:has(.{component-name}) {
   padding: 0;
+  margin: 0;
 }
 
 main .section:has(.{component-name}) > div {
@@ -677,10 +678,11 @@ main .section:has(.{component-name}) > div {
 
 **How it works:**
 - `:has(.{component-name})` targets the parent section containing your component
-- Removes section padding and max-width constraints
+- Removes section padding, margin, and max-width constraints
 - Your component can now control its own width and padding
 - Background colors/images extend to viewport edges
 - **CRITICAL:** Inner container needs its own padding since section padding is removed
+- **CRITICAL:** Section margin must be removed to avoid spacing between sections
 - Content stays centered with `max-width` + `margin: 0 auto`
 - Responsive padding prevents content from touching edges on mobile
 
@@ -1050,13 +1052,15 @@ sed -n '{line_number}p' component-models.json
 
 ---
 
-### Issue: Component has unwanted padding on the sides / doesn't span full width
+### Issue: Component has unwanted padding/spacing on the sides or top/bottom
 
 **Symptoms:**
 - Component has visible padding/margins on left and right sides
+- Component has unwanted vertical spacing (40px) above and below
 - Background colors or images don't extend to screen edges
 - Component looks "boxed in" instead of spanning full viewport width
 - There's white space between component and browser edges
+- Spacing appears between consecutive full-width components
 
 **Visual Example:**
 ```
@@ -1066,7 +1070,12 @@ sed -n '{line_number}p' component-models.json
 ```
 
 **Root Cause:**
-AEM Edge Delivery Services applies default padding and max-width constraints to sections. This is intentional for regular content components (text, images, cards) but problematic for full-width hero/banner components.
+AEM Edge Delivery Services applies default styling to sections:
+- `padding`: Adds horizontal padding
+- `margin: 40px 0`: Adds 40px vertical spacing between sections
+- `max-width`: Constrains content width
+
+This is intentional for regular content components (text, images, cards) but problematic for full-width hero/banner components.
 
 **Diagnosis:**
 ```bash
@@ -1084,6 +1093,7 @@ Add section constraint removal rules to your component CSS file:
 /* Remove default section constraints for {component-name} */
 main .section:has(.{component-name}) {
   padding: 0;
+  margin: 0;
 }
 
 main .section:has(.{component-name}) > div {
@@ -1114,6 +1124,7 @@ Place these rules near the top of your CSS file, right after the main component 
 /* Remove default section constraints for my-hero */
 main .section:has(.my-hero) {
   padding: 0;
+  margin: 0;
 }
 
 main .section:has(.my-hero) > div {

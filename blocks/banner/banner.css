@@ -54,6 +54,7 @@
 /* Remove default section constraints for banner */
 main .section:has(.banner) {
   padding: 0;
+  margin: 0;
 }
 
 main .section:has(.banner) > div {
