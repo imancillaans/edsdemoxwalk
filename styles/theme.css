@@ -797,5 +797,30 @@ a:not([class]) {
 .gray .acc-button--link .icon img {
   width: 10px;
 }
+.gyto_main .acc-button--link {
+  box-sizing: border-box;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--prm-primary_500);
+  color: var(--header-foreground);
+  border-style: solid;
+  border-color: transparent;
+  border: none;
+}
+.gyto_main .acc-button--link .icon img {
+  height: auto;
+  display: flex;
+}
+.gyto_main .acc-button--link .icon img {
+  width: 10px;
+}
+.gyto_main .acc-button--link:hover {
+  color: var(--snd-secondary_700);
+  background-color: var(--prm-primary_100);
+}
 
 /* stylelint-enable */
