@@ -6,8 +6,14 @@
   align-items: center;
   padding: 4rem 2rem;
   min-height: 450px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+}
+
+/* Remove default section padding for CTA */
+main .section:has(.cta) {
+  padding: 0;
 }
 
 .cta-content {
