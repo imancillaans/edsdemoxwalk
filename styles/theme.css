@@ -773,6 +773,9 @@ a:not([class]) {
 .nuevo .acc-button--link .icon img {
   width: 10px;
 }
+.nuevo .acc-button--link:hover {
+  background-color: var(--prm-primary_100);
+}
 .gray .acc-button--link {
   box-sizing: border-box;
   width: fit-content;
