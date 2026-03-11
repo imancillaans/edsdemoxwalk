@@ -1,5 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
+import getButtonVariants from './button-variants.js';
+import { applyButtonVariant } from '../../scripts/theme-utils.js';
 
 /**
  * Decorates the banner block
@@ -12,7 +14,9 @@ export default function decorate(block) {
     titleRow,
     subtitleRow,
     cta1Row,
+    cta1VariantRow,
     cta2Row,
+    cta2VariantRow,
     imageRow,
     backgroundImageRow,
     backgroundOverlayRow,
@@ -58,6 +62,7 @@ export default function decorate(block) {
   // Process buttons
   const buttonsWrapper = document.createElement('div');
   buttonsWrapper.className = 'banner-buttons';
+  const variants = getButtonVariants();
 
   // Process CTA 1 (Primary Button) - collapsed field
   if (cta1Row) {
@@ -67,9 +72,26 @@ export default function decorate(block) {
     if (link) {
       const btn1 = document.createElement('a');
       btn1.href = link.getAttribute('href') || '';
-      btn1.className = 'button primary';
+      btn1.className = 'button';
       btn1.textContent = link.textContent.trim();
       moveInstrumentation(link, btn1);
+
+      // Apply variant styling
+      let variantName = 'primary-green'; // default
+      if (cta1VariantRow) {
+        const variantCell = cta1VariantRow.querySelector(':scope > div');
+        const variantText = variantCell?.textContent.trim();
+        const match = variantText?.match(/\[variant-([^\]]+)\]/);
+        if (match) {
+          [, variantName] = match;
+        }
+        cta1VariantRow.remove();
+      }
+
+      if (variants[variantName]) {
+        applyButtonVariant(btn1, variants[variantName]);
+      }
+
       buttonsWrapper.append(btn1);
     }
     cta1Row.remove();
@@ -83,9 +105,26 @@ export default function decorate(block) {
     if (link) {
       const btn2 = document.createElement('a');
       btn2.href = link.getAttribute('href') || '';
-      btn2.className = 'button secondary';
+      btn2.className = 'button';
       btn2.textContent = link.textContent.trim();
       moveInstrumentation(link, btn2);
+
+      // Apply variant styling
+      let variantName = 'secondary-white'; // default
+      if (cta2VariantRow) {
+        const variantCell = cta2VariantRow.querySelector(':scope > div');
+        const variantText = variantCell?.textContent.trim();
+        const match = variantText?.match(/\[variant-([^\]]+)\]/);
+        if (match) {
+          [, variantName] = match;
+        }
+        cta2VariantRow.remove();
+      }
+
+      if (variants[variantName]) {
+        applyButtonVariant(btn2, variants[variantName]);
+      }
+
       buttonsWrapper.append(btn2);
     }
     cta2Row.remove();

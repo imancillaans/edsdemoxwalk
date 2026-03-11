@@ -25,6 +25,24 @@
       "valueType": "string"
     },
     {
+      "component": "select",
+      "name": "cta1Variant",
+      "label": "Primary Button Style",
+      "valueType": "string",
+      "options": [
+        {"name": "Primary Green (Default)", "value": "[variant-primary-green]"},
+        {"name": "Primary Orange", "value": "[variant-primary-orange]"},
+        {"name": "Primary Purple", "value": "[variant-primary-purple]"},
+        {"name": "Secondary White", "value": "[variant-secondary-white]"},
+        {"name": "Secondary Dark", "value": "[variant-secondary-dark]"},
+        {"name": "Secondary Orange", "value": "[variant-secondary-orange]"},
+        {"name": "Text Orange", "value": "[variant-text-orange]"},
+        {"name": "Text White", "value": "[variant-text-white]"},
+        {"name": "Large Primary", "value": "[variant-large-primary]"},
+        {"name": "Small Primary", "value": "[variant-small-primary]"}
+      ]
+    },
+    {
       "component": "aem-content",
       "name": "cta2Link",
       "label": "Secondary Button Link"
@@ -34,6 +52,24 @@
       "name": "cta2LinkText",
       "label": "Secondary Button Text",
       "valueType": "string"
+    },
+    {
+      "component": "select",
+      "name": "cta2Variant",
+      "label": "Secondary Button Style",
+      "valueType": "string",
+      "options": [
+        {"name": "Secondary White (Default)", "value": "[variant-secondary-white]"},
+        {"name": "Primary Green", "value": "[variant-primary-green]"},
+        {"name": "Primary Orange", "value": "[variant-primary-orange]"},
+        {"name": "Primary Purple", "value": "[variant-primary-purple]"},
+        {"name": "Secondary Dark", "value": "[variant-secondary-dark]"},
+        {"name": "Secondary Orange", "value": "[variant-secondary-orange]"},
+        {"name": "Text Orange", "value": "[variant-text-orange]"},
+        {"name": "Text White", "value": "[variant-text-white]"},
+        {"name": "Large Primary", "value": "[variant-large-primary]"},
+        {"name": "Small Primary", "value": "[variant-small-primary]"}
+      ]
     },
     {
       "component": "reference",
