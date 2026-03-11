@@ -25,8 +25,10 @@ const __dirname = path.dirname(__filename);
 const THEME_CSS_PATH = path.join(__dirname, '../styles/theme.css');
 const BANNER_VARIANTS_PATH = path.join(__dirname, '../blocks/banner/button-variants.js');
 const CTA_VARIANTS_PATH = path.join(__dirname, '../blocks/cta/button-variants.js');
+const MEET_THE_TEAM_VARIANTS_PATH = path.join(__dirname, '../blocks/meet-the-team/button-variants.js');
 const BANNER_MODEL_PATH = path.join(__dirname, '../models/_banner.json');
 const CTA_MODEL_PATH = path.join(__dirname, '../models/_cta.json');
+const MEET_THE_TEAM_MODEL_PATH = path.join(__dirname, '../models/_meet-the-team.json');
 
 /**
  * Parse button classes from theme.css
@@ -120,10 +122,10 @@ function updateModelFile(modelPath, options) {
   const modelContent = fs.readFileSync(modelPath, 'utf-8');
   const model = JSON.parse(modelContent);
 
-  // Find cta1Variant and cta2Variant fields and update their options
+  // Find variant fields and update their options
   model.fields.forEach((field) => {
-    if (field.name === 'cta1Variant') {
-      // Keep first option as default, then add all others
+    if (field.name === 'cta1Variant' || field.name === 'ctaVariant') {
+      // Primary button or single button - use default order
       field.options = options;
     }
     if (field.name === 'cta2Variant') {
@@ -170,6 +172,7 @@ function main() {
   const jsContent = generateVariantsJS(variants);
   fs.writeFileSync(BANNER_VARIANTS_PATH, jsContent);
   fs.writeFileSync(CTA_VARIANTS_PATH, jsContent);
+  fs.writeFileSync(MEET_THE_TEAM_VARIANTS_PATH, jsContent);
   // eslint-disable-next-line no-console
   console.log('✅ Written button-variants.js files');
 
@@ -189,8 +192,9 @@ function main() {
   console.log('\n📝 Updating model files...');
   updateModelFile(BANNER_MODEL_PATH, options);
   updateModelFile(CTA_MODEL_PATH, options);
+  updateModelFile(MEET_THE_TEAM_MODEL_PATH, options);
   // eslint-disable-next-line no-console
-  console.log('✅ Updated models/_banner.json and models/_cta.json');
+  console.log('✅ Updated models/_banner.json, models/_cta.json, and models/_meet-the-team.json');
 
   // Run build:json to regenerate component-models.json
   // eslint-disable-next-line no-console
@@ -213,9 +217,13 @@ function main() {
   // eslint-disable-next-line no-console
   console.log('   - blocks/cta/button-variants.js');
   // eslint-disable-next-line no-console
+  console.log('   - blocks/meet-the-team/button-variants.js');
+  // eslint-disable-next-line no-console
   console.log('   - models/_banner.json');
   // eslint-disable-next-line no-console
   console.log('   - models/_cta.json');
+  // eslint-disable-next-line no-console
+  console.log('   - models/_meet-the-team.json');
   // eslint-disable-next-line no-console
   console.log('   - component-models.json');
 }
