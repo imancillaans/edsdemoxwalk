@@ -100,6 +100,40 @@
   background: rgb(255 255 255 / 10%);
 }
 
+/* Background Color Variants */
+.banner.light {
+  background: #f8fafc;
+}
+
+.banner.light .banner-content {
+  color: #1e293b;
+}
+
+.banner.light .banner-title {
+  color: #0f172a;
+}
+
+.banner.light .banner-subtitle {
+  color: #475569;
+}
+
+.banner.light .banner-buttons .button.secondary {
+  color: #0a1f44;
+  border-color: #0a1f44;
+}
+
+.banner.light .banner-buttons .button.secondary:hover {
+  background: rgb(10 31 68 / 10%);
+}
+
+.banner.dark {
+  background: #0f172a;
+}
+
+.banner.purple {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
 @media (width <= 900px) {
   .banner {
     grid-template-columns: 1fr;

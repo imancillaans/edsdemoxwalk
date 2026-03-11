@@ -7,7 +7,9 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
  */
 export default function decorate(block) {
   const rows = [...block.children];
-  const [titleRow, subtitleRow, buttonsRow, imageRow] = rows;
+  const [
+    titleRow, subtitleRow, cta1LinkRow, cta1TextRow, cta2LinkRow, cta2TextRow, imageRow,
+  ] = rows;
 
   // Create banner content wrapper (left side)
   const bannerContent = document.createElement('div');
@@ -47,22 +49,65 @@ export default function decorate(block) {
   }
 
   // Process buttons
-  if (buttonsRow) {
-    const buttonsCell = buttonsRow.querySelector(':scope > div');
+  const buttonsWrapper = document.createElement('div');
+  buttonsWrapper.className = 'banner-buttons';
 
-    if (buttonsCell && buttonsCell.textContent.trim()) {
-      const buttons = document.createElement('div');
-      buttons.className = 'banner-buttons';
-      moveInstrumentation(buttonsCell, buttons);
+  // Process CTA 1 (Primary Button)
+  let cta1Link = '';
+  let cta1Text = '';
 
-      // Move all button content
-      while (buttonsCell.firstChild) {
-        buttons.append(buttonsCell.firstChild);
-      }
-
-      bannerContent.append(buttons);
+  if (cta1LinkRow) {
+    const cta1LinkCell = cta1LinkRow.querySelector(':scope > div');
+    const link = cta1LinkCell?.querySelector('a');
+    if (link) {
+      cta1Link = link.getAttribute('href') || '';
     }
-    buttonsRow.remove();
+    cta1LinkRow.remove();
+  }
+
+  if (cta1TextRow) {
+    const cta1LinkTextCell = cta1TextRow.querySelector(':scope > div');
+    cta1Text = cta1LinkTextCell?.textContent.trim() || '';
+    cta1TextRow.remove();
+  }
+
+  if (cta1Link && cta1Text) {
+    const btn1 = document.createElement('a');
+    btn1.href = cta1Link;
+    btn1.className = 'button primary';
+    btn1.textContent = cta1Text;
+    buttonsWrapper.append(btn1);
+  }
+
+  // Process CTA 2 (Secondary Button)
+  let cta2Link = '';
+  let cta2Text = '';
+
+  if (cta2LinkRow) {
+    const cta2LinkCell = cta2LinkRow.querySelector(':scope > div');
+    const link = cta2LinkCell?.querySelector('a');
+    if (link) {
+      cta2Link = link.getAttribute('href') || '';
+    }
+    cta2LinkRow.remove();
+  }
+
+  if (cta2TextRow) {
+    const cta2LinkTextCell = cta2TextRow.querySelector(':scope > div');
+    cta2Text = cta2LinkTextCell?.textContent.trim() || '';
+    cta2TextRow.remove();
+  }
+
+  if (cta2Link && cta2Text) {
+    const btn2 = document.createElement('a');
+    btn2.href = cta2Link;
+    btn2.className = 'button secondary';
+    btn2.textContent = cta2Text;
+    buttonsWrapper.append(btn2);
+  }
+
+  if (buttonsWrapper.children.length > 0) {
+    bannerContent.append(buttonsWrapper);
   }
 
   // Create banner image wrapper (right side)

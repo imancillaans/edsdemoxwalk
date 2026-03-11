@@ -238,9 +238,25 @@
         "valueType": "string"
       },
       {
-        "component": "richtext",
-        "name": "buttons",
-        "label": "Call to Actions",
+        "component": "aem-content",
+        "name": "cta1Link",
+        "label": "Primary Button Link"
+      },
+      {
+        "component": "text",
+        "name": "cta1LinkText",
+        "label": "Primary Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "cta2Link",
+        "label": "Secondary Button Link"
+      },
+      {
+        "component": "text",
+        "name": "cta2LinkText",
+        "label": "Secondary Button Text",
         "valueType": "string"
       },
       {
@@ -248,6 +264,30 @@
         "name": "image",
         "label": "Hero Image",
         "multi": false
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Dark Blue (Default)",
+            "value": ""
+          },
+          {
+            "name": "Light",
+            "value": "light"
+          },
+          {
+            "name": "Dark",
+            "value": "dark"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          }
+        ]
       }
     ]
   },
@@ -345,9 +385,25 @@
         "valueType": "string"
       },
       {
-        "component": "richtext",
-        "name": "buttons",
-        "label": "Call to Actions",
+        "component": "aem-content",
+        "name": "cta1Link",
+        "label": "Primary Button Link"
+      },
+      {
+        "component": "text",
+        "name": "cta1LinkText",
+        "label": "Primary Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "cta2Link",
+        "label": "Secondary Button Link"
+      },
+      {
+        "component": "text",
+        "name": "cta2LinkText",
+        "label": "Secondary Button Text",
         "valueType": "string"
       },
       {
@@ -355,6 +411,30 @@
         "name": "image",
         "label": "Hero Image",
         "multi": false
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Dark Blue (Default)",
+            "value": ""
+          },
+          {
+            "name": "Light",
+            "value": "light"
+          },
+          {
+            "name": "Dark",
+            "value": "dark"
+          },
+          {
+            "name": "Purple",
+            "value": "purple"
+          }
+        ]
       }
     ]
   }
