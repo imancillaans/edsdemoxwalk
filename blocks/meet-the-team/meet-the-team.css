@@ -8,6 +8,17 @@
   box-sizing: border-box;
 }
 
+/* Remove default section constraints for meet-the-team */
+main .section:has(.meet-the-team) {
+  padding: 0;
+}
+
+main .section:has(.meet-the-team) > div {
+  max-width: none;
+  margin: 0;
+  padding: 0 !important;
+}
+
 /* Background Image Support */
 .meet-the-team.has-background-image {
   position: relative;
