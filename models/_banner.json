@@ -8,35 +8,22 @@
       "multi": false
     },
     {
-      "component": "richtext",
-      "name": "content_text",
-      "label": "Content",
+      "component": "text",
+      "name": "title",
+      "label": "Title",
       "valueType": "string"
     },
     {
-      "component": "select",
-      "name": "classes",
-      "label": "Banner Options",
-      "valueType": "string",
-      "multi": true,
-      "options": [
-        {
-          "name": "Dark",
-          "value": "dark"
-        },
-        {
-          "name": "Full Height",
-          "value": "full-height"
-        },
-        {
-          "name": "Align Left",
-          "value": "align-left"
-        },
-        {
-          "name": "Align Right",
-          "value": "align-right"
-        }
-      ]
+      "component": "richtext",
+      "name": "subtitle",
+      "label": "Subtitle",
+      "valueType": "string"
+    },
+    {
+      "component": "richtext",
+      "name": "buttons",
+      "label": "Call to Actions",
+      "valueType": "string"
     }
   ]
 }
