@@ -83,7 +83,7 @@
       "id": "blocks",
       "components": [
         {
-          "title": "Banner",
+          "title": "BannerSS",
           "id": "banner",
           "plugins": {
             "xwalk": {
