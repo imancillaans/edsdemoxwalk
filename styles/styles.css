@@ -166,8 +166,11 @@ a:hover {
 }
 
 /* buttons */
-a.button:any-link,
-button {
+
+/* Exclude .acc-button--link to allow theme.css variants to take precedence */
+/* stylelint-disable selector-class-pattern */
+a.button:any-link:not(.acc-button--link),
+button:not(.acc-button--link) {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
@@ -189,26 +192,28 @@ button {
   white-space: nowrap;
 }
 
-a.button:hover,
-a.button:focus,
-button:hover,
-button:focus {
+a.button:hover:not(.acc-button--link),
+a.button:focus:not(.acc-button--link),
+button:hover:not(.acc-button--link),
+button:focus:not(.acc-button--link) {
   background-color: var(--link-hover-color);
   cursor: pointer;
 }
 
-button:disabled,
-button:disabled:hover {
+button:disabled:not(.acc-button--link),
+button:disabled:hover:not(.acc-button--link) {
   background-color: var(--light-color);
   cursor: unset;
 }
 
-a.button.secondary,
-button.secondary {
+a.button.secondary:not(.acc-button--link),
+button.secondary:not(.acc-button--link) {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color);
 }
+
+/* stylelint-enable selector-class-pattern */
 
 main img {
   max-width: 100%;
