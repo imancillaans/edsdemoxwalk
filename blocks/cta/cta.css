@@ -10,8 +10,14 @@
   box-sizing: border-box;
 }
 
-/* Remove default section padding for CTA */
+/* Remove default section constraints for CTA */
 main .section:has(.cta) {
+  padding: 0;
+}
+
+main .section:has(.cta) > div {
+  max-width: none;
+  margin: 0;
   padding: 0;
 }
 

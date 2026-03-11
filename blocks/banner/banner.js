@@ -121,4 +121,20 @@ export default function decorate(block) {
   // Append both sections to block
   block.append(bannerContent);
   block.append(bannerImage);
+
+  // Debug: Log sizing info
+  setTimeout(() => {
+    const section = block.closest('.section');
+    const wrapper = block.parentElement;
+    console.log('=== BANNER SIZING DEBUG ===');
+    console.log('Section:', section?.className);
+    console.log('  width:', section?.offsetWidth, 'scrollWidth:', section?.scrollWidth);
+    console.log('Wrapper:', wrapper?.className);
+    console.log('  width:', wrapper?.offsetWidth, 'scrollWidth:', wrapper?.scrollWidth);
+    console.log('Banner:', block.className);
+    console.log('  width:', block.offsetWidth, 'scrollWidth:', block.scrollWidth);
+    console.log('  computed width:', getComputedStyle(block).width);
+    console.log('  computed box-sizing:', getComputedStyle(block).boxSizing);
+    console.log('  computed padding:', getComputedStyle(block).padding);
+  }, 100);
 }

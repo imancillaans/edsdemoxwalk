@@ -10,8 +10,14 @@
   box-sizing: border-box;
 }
 
-/* Remove default section padding for banner */
+/* Remove default section constraints for banner */
 main .section:has(.banner) {
+  padding: 0;
+}
+
+main .section:has(.banner) > div {
+  max-width: none;
+  margin: 0;
   padding: 0;
 }
 
