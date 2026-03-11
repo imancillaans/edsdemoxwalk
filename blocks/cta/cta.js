@@ -8,7 +8,14 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 export default function decorate(block) {
   const rows = [...block.children];
   const [
-    titleRow, subtitleRow, cta1LinkRow, cta1TextRow, cta2LinkRow, cta2TextRow, imageRow,
+    titleRow,
+    subtitleRow,
+    cta1LinkRow,
+    cta1TextRow,
+    cta2LinkRow,
+    cta2TextRow,
+    imageRow,
+    classesRow,
   ] = rows;
 
   // Create CTA content wrapper (left side)
@@ -133,6 +140,11 @@ export default function decorate(block) {
       }
     }
     imageRow.remove();
+  }
+
+  // Remove classes row (it's automatically applied by AEM)
+  if (classesRow) {
+    classesRow.remove();
   }
 
   // Append both sections to block
