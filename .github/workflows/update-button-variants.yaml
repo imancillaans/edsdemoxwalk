@@ -1,0 +1,51 @@
+name: Update Button Variants
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'styles/theme.css'
+  workflow_dispatch:
+
+jobs:
+  update-variants:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate button variants
+        run: npm run build:variants
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "helix@adobe.com"
+          git config --local user.name "AEM Bot"
+          git add blocks/*/button-variants.js models/_*.json component-models.json
+          git commit -m "chore: auto-update button variants from theme.css
+
+          🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+          git push

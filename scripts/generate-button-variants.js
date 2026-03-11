@@ -15,6 +15,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 /* eslint-disable no-underscore-dangle */
 const __filename = fileURLToPath(import.meta.url);
@@ -24,6 +25,8 @@ const __dirname = path.dirname(__filename);
 const THEME_CSS_PATH = path.join(__dirname, '../styles/theme.css');
 const BANNER_VARIANTS_PATH = path.join(__dirname, '../blocks/banner/button-variants.js');
 const CTA_VARIANTS_PATH = path.join(__dirname, '../blocks/cta/button-variants.js');
+const BANNER_MODEL_PATH = path.join(__dirname, '../models/_banner.json');
+const CTA_MODEL_PATH = path.join(__dirname, '../models/_cta.json');
 
 /**
  * Parse button classes from theme.css
@@ -110,6 +113,36 @@ function generateModelOptions(variants) {
 }
 
 /**
+ * Update model JSON file with new variant options
+ */
+function updateModelFile(modelPath, options) {
+  // Read existing model
+  const modelContent = fs.readFileSync(modelPath, 'utf-8');
+  const model = JSON.parse(modelContent);
+
+  // Find cta1Variant and cta2Variant fields and update their options
+  model.fields.forEach((field) => {
+    if (field.name === 'cta1Variant') {
+      // Keep first option as default, then add all others
+      field.options = options;
+    }
+    if (field.name === 'cta2Variant') {
+      // For secondary button, rotate the list to make outline the default
+      const outlineOption = options.find((opt) => opt.name.toLowerCase().includes('outline'));
+      if (outlineOption) {
+        const reordered = [outlineOption, ...options.filter((opt) => opt !== outlineOption)];
+        field.options = reordered;
+      } else {
+        field.options = options;
+      }
+    }
+  });
+
+  // Write back to file with pretty formatting
+  fs.writeFileSync(modelPath, JSON.stringify(model, null, 2));
+}
+
+/**
  * Main execution
  */
 function main() {
@@ -151,18 +184,40 @@ function main() {
     console.log(`   - ${opt.name}`);
   });
 
+  // Update model files
   // eslint-disable-next-line no-console
-  console.log('\n✅ Done! Button variants generated successfully.');
+  console.log('\n📝 Updating model files...');
+  updateModelFile(BANNER_MODEL_PATH, options);
+  updateModelFile(CTA_MODEL_PATH, options);
   // eslint-disable-next-line no-console
-  console.log('\n⚠️  Remember to update models/_banner.json and models/_cta.json');
-  // eslint-disable-next-line no-console
-  console.log('   with the new options if needed.');
+  console.log('✅ Updated models/_banner.json and models/_cta.json');
 
-  // Output JSON for easy copy-paste into models
+  // Run build:json to regenerate component-models.json
   // eslint-disable-next-line no-console
-  console.log('\n📝 Copy this to your model files:');
+  console.log('\n🔨 Running npm run build:json...');
+  try {
+    execSync('npm run build:json', { stdio: 'inherit', cwd: path.join(__dirname, '..') });
+    // eslint-disable-next-line no-console
+    console.log('✅ Built component-models.json');
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('❌ Failed to build JSON files:', error.message);
+  }
+
   // eslint-disable-next-line no-console
-  console.log(JSON.stringify(options, null, 2));
+  console.log('\n✅ Done! Button variants generated and models updated successfully.');
+  // eslint-disable-next-line no-console
+  console.log('\n📦 Files updated:');
+  // eslint-disable-next-line no-console
+  console.log('   - blocks/banner/button-variants.js');
+  // eslint-disable-next-line no-console
+  console.log('   - blocks/cta/button-variants.js');
+  // eslint-disable-next-line no-console
+  console.log('   - models/_banner.json');
+  // eslint-disable-next-line no-console
+  console.log('   - models/_cta.json');
+  // eslint-disable-next-line no-console
+  console.log('   - component-models.json');
 }
 
 main();
