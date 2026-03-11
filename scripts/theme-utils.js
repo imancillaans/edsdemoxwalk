@@ -44,14 +44,11 @@ export function applyButtonVariant(button, variantProperties) {
   const wrapper = document.createElement('div');
   wrapper.className = variantProperties.className;
 
-  // Replace button with wrapper in DOM
-  if (button.parentNode) {
-    button.parentNode.insertBefore(wrapper, button);
-    wrapper.appendChild(button);
-  }
-
   // Add acc-button--link class to the button
   button.classList.add('acc-button--link');
+
+  // Add button to wrapper
+  wrapper.appendChild(button);
 
   return wrapper;
 }
