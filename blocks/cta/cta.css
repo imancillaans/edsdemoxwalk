@@ -18,7 +18,7 @@ main .section:has(.cta) {
 main .section:has(.cta) > div {
   max-width: none;
   margin: 0;
-  padding: 0;
+  padding: 0 !important;
 }
 
 .cta-content {
