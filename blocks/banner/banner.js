@@ -64,12 +64,25 @@ export default function decorate(block) {
   buttonsWrapper.className = 'banner-buttons';
   const variants = getButtonVariants();
 
+  /* eslint-disable no-console */
+  console.log('=== BANNER BUTTON VARIANTS DEBUG ===');
+  console.log('Available variants:', variants);
+  console.log('Variant keys:', Object.keys(variants));
+  /* eslint-enable no-console */
+
   // Process CTA 1 (Primary Button) - collapsed field
   if (cta1Row) {
     const cta1Cell = cta1Row.querySelector(':scope > div');
     const link = cta1Cell?.querySelector('a');
 
     if (link) {
+      /* eslint-disable no-console */
+      console.log('\n--- CTA 1 Button Processing ---');
+      console.log('Link found:', link);
+      console.log('Link href:', link.getAttribute('href'));
+      console.log('Link text:', link.textContent.trim());
+      /* eslint-enable no-console */
+
       const btn1 = document.createElement('a');
       btn1.href = link.getAttribute('href') || '';
       btn1.className = 'button';
@@ -81,17 +94,40 @@ export default function decorate(block) {
       if (cta1VariantRow) {
         const variantCell = cta1VariantRow.querySelector(':scope > div');
         const variantText = variantCell?.textContent.trim();
+        /* eslint-disable no-console */
+        console.log('CTA1 variant row text:', variantText);
+        /* eslint-enable no-console */
         const match = variantText?.match(/\[variant-([^\]]+)\]/);
         if (match) {
           [, variantName] = match;
+          /* eslint-disable no-console */
+          console.log('Matched variant name:', variantName);
+          /* eslint-enable no-console */
         }
         cta1VariantRow.remove();
       }
+
+      /* eslint-disable no-console */
+      console.log('Selected variant name:', variantName);
+      console.log('Variant exists?', !!variants[variantName]);
+      console.log('Variant config:', variants[variantName]);
+      /* eslint-enable no-console */
 
       // Apply variant and get wrapper (or button if no variant)
       const buttonElement = variants[variantName]
         ? applyButtonVariant(btn1, variants[variantName])
         : btn1;
+
+      /* eslint-disable no-console */
+      console.log('Button element created:', buttonElement);
+      console.log('Button element HTML:', buttonElement.outerHTML);
+      console.log('Button element classes:', buttonElement.className);
+      console.log('Button children count:', buttonElement.children.length);
+      if (buttonElement.children.length > 0) {
+        console.log('First child:', buttonElement.children[0]);
+        console.log('First child classes:', buttonElement.children[0].className);
+      }
+      /* eslint-enable no-console */
 
       buttonsWrapper.append(buttonElement);
     }
@@ -104,6 +140,13 @@ export default function decorate(block) {
     const link = cta2Cell?.querySelector('a');
 
     if (link) {
+      /* eslint-disable no-console */
+      console.log('\n--- CTA 2 Button Processing ---');
+      console.log('Link found:', link);
+      console.log('Link href:', link.getAttribute('href'));
+      console.log('Link text:', link.textContent.trim());
+      /* eslint-enable no-console */
+
       const btn2 = document.createElement('a');
       btn2.href = link.getAttribute('href') || '';
       btn2.className = 'button';
@@ -115,17 +158,41 @@ export default function decorate(block) {
       if (cta2VariantRow) {
         const variantCell = cta2VariantRow.querySelector(':scope > div');
         const variantText = variantCell?.textContent.trim();
+        /* eslint-disable no-console */
+        console.log('CTA2 variant row text:', variantText);
+        /* eslint-enable no-console */
         const match = variantText?.match(/\[variant-([^\]]+)\]/);
         if (match) {
           [, variantName] = match;
+          /* eslint-disable no-console */
+          console.log('Matched variant name:', variantName);
+          /* eslint-enable no-console */
         }
         cta2VariantRow.remove();
       }
+
+      /* eslint-disable no-console */
+      console.log('Selected variant name:', variantName);
+      console.log('Variant exists?', !!variants[variantName]);
+      console.log('Variant config:', variants[variantName]);
+      /* eslint-enable no-console */
 
       // Apply variant and get wrapper (or button if no variant)
       const buttonElement = variants[variantName]
         ? applyButtonVariant(btn2, variants[variantName])
         : btn2;
+
+      /* eslint-disable no-console */
+      console.log('Button element created:', buttonElement);
+      console.log('Button element HTML:', buttonElement.outerHTML);
+      console.log('Button element classes:', buttonElement.className);
+      console.log('Button children count:', buttonElement.children.length);
+      if (buttonElement.children.length > 0) {
+        console.log('First child:', buttonElement.children[0]);
+        console.log('First child classes:', buttonElement.children[0].className);
+      }
+      console.log('=== END BANNER BUTTON DEBUG ===\n');
+      /* eslint-enable no-console */
 
       buttonsWrapper.append(buttonElement);
     }

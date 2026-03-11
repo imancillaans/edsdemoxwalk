@@ -36,7 +36,18 @@ export function findVariant(divContainers) {
  * @returns {HTMLElement} - The wrapper div
  */
 export function applyButtonVariant(button, variantProperties) {
+  /* eslint-disable no-console */
+  console.log('>>> applyButtonVariant called');
+  console.log('  Button:', button);
+  console.log('  Button tag:', button.tagName);
+  console.log('  Button current classes:', button.className);
+  console.log('  Variant properties:', variantProperties);
+  /* eslint-enable no-console */
+
   if (!button || !variantProperties || !variantProperties.className) {
+    /* eslint-disable no-console */
+    console.log('  Returning button without wrapper (missing data)');
+    /* eslint-enable no-console */
     return button;
   }
 
@@ -44,11 +55,26 @@ export function applyButtonVariant(button, variantProperties) {
   const wrapper = document.createElement('div');
   wrapper.className = variantProperties.className;
 
+  /* eslint-disable no-console */
+  console.log('  Created wrapper div with class:', wrapper.className);
+  /* eslint-enable no-console */
+
   // Add acc-button--link class to the button
   button.classList.add('acc-button--link');
 
+  /* eslint-disable no-console */
+  console.log('  Added acc-button--link to button, new classes:', button.className);
+  /* eslint-enable no-console */
+
   // Add button to wrapper
   wrapper.appendChild(button);
+
+  /* eslint-disable no-console */
+  console.log('  Appended button to wrapper');
+  console.log('  Wrapper HTML:', wrapper.outerHTML);
+  console.log('  Wrapper children:', wrapper.children.length);
+  console.log('<<< applyButtonVariant returning wrapper\n');
+  /* eslint-enable no-console */
 
   return wrapper;
 }
