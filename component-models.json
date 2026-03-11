@@ -266,6 +266,40 @@
         "multi": false
       },
       {
+        "component": "reference",
+        "name": "backgroundImage",
+        "label": "Background Image (optional - overrides background color)",
+        "multi": false
+      },
+      {
+        "component": "select",
+        "name": "backgroundOverlay",
+        "label": "Background Image Overlay",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": "none"
+          },
+          {
+            "name": "Light (20%)",
+            "value": "light"
+          },
+          {
+            "name": "Medium (50%)",
+            "value": "medium"
+          },
+          {
+            "name": "Dark (70%)",
+            "value": "dark"
+          },
+          {
+            "name": "Very Dark (85%)",
+            "value": "very-dark"
+          }
+        ]
+      },
+      {
         "component": "select",
         "name": "classes",
         "label": "Background Color",
@@ -411,6 +445,40 @@
         "name": "image",
         "label": "Hero Image",
         "multi": false
+      },
+      {
+        "component": "reference",
+        "name": "backgroundImage",
+        "label": "Background Image (optional - overrides background color)",
+        "multi": false
+      },
+      {
+        "component": "select",
+        "name": "backgroundOverlay",
+        "label": "Background Image Overlay",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": "none"
+          },
+          {
+            "name": "Light (20%)",
+            "value": "light"
+          },
+          {
+            "name": "Medium (50%)",
+            "value": "medium"
+          },
+          {
+            "name": "Dark (70%)",
+            "value": "dark"
+          },
+          {
+            "name": "Very Dark (85%)",
+            "value": "very-dark"
+          }
+        ]
       },
       {
         "component": "select",

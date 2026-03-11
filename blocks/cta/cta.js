@@ -14,6 +14,8 @@ export default function decorate(block) {
     cta1Row,
     cta2Row,
     imageRow,
+    backgroundImageRow,
+    backgroundOverlayRow,
   ] = rows;
 
   // Create CTA content wrapper (left side)
@@ -116,6 +118,36 @@ export default function decorate(block) {
       }
     }
     imageRow.remove();
+  }
+
+  // Process background image (optional)
+  if (backgroundImageRow) {
+    const bgImageCell = backgroundImageRow.querySelector(':scope > div');
+    const picture = bgImageCell?.querySelector('picture');
+
+    if (picture) {
+      const img = picture.querySelector('img');
+      if (img && img.src) {
+        // Apply background image to the block
+        block.style.backgroundImage = `url('${img.src}')`;
+        block.style.backgroundSize = 'cover';
+        block.style.backgroundPosition = 'center';
+        block.style.backgroundRepeat = 'no-repeat';
+        block.classList.add('has-background-image');
+      }
+    }
+    backgroundImageRow.remove();
+  }
+
+  // Process background overlay intensity
+  if (backgroundOverlayRow) {
+    const overlayCell = backgroundOverlayRow.querySelector(':scope > div');
+    const overlayValue = overlayCell?.textContent.trim();
+
+    if (overlayValue && overlayValue !== 'none') {
+      block.classList.add(`overlay-${overlayValue}`);
+    }
+    backgroundOverlayRow.remove();
   }
 
   // Append both sections to block

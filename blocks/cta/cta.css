@@ -10,6 +10,47 @@
   box-sizing: border-box;
 }
 
+/* Background Image Support */
+.cta.has-background-image {
+  position: relative;
+  background-color: transparent;
+}
+
+.cta.has-background-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 50%);
+  z-index: 0;
+}
+
+/* Overlay Intensity Variants */
+.cta.overlay-none::before {
+  background: transparent;
+}
+
+.cta.overlay-light::before {
+  background: rgb(0 0 0 / 20%);
+}
+
+.cta.overlay-medium::before {
+  background: rgb(0 0 0 / 50%);
+}
+
+.cta.overlay-dark::before {
+  background: rgb(0 0 0 / 70%);
+}
+
+.cta.overlay-very-dark::before {
+  background: rgb(0 0 0 / 85%);
+}
+
+/* Ensure content is above the overlay */
+.cta.has-background-image > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Remove default section constraints for CTA */
 main .section:has(.cta) {
   padding: 0;
