@@ -2,21 +2,12 @@
   "id": "services",
   "fields": [
     {
-      "component": "text",
-      "name": "title",
-      "label": "Services Section Title",
-      "valueType": "string"
-    },
-    {
       "component": "select",
-      "name": "columns",
-      "label": "Number of Columns",
+      "name": "classes",
+      "label": "Services Options",
       "valueType": "string",
+      "multi": true,
       "options": [
-        {
-          "name": "Auto (Responsive)",
-          "value": ""
-        },
         {
           "name": "2 Columns",
           "value": "two-columns"
@@ -28,34 +19,10 @@
         {
           "name": "4 Columns",
           "value": "four-columns"
-        }
-      ]
-    },
-    {
-      "component": "select",
-      "name": "layout",
-      "label": "Layout Style",
-      "valueType": "string",
-      "options": [
-        {
-          "name": "Vertical (Default)",
-          "value": ""
         },
         {
-          "name": "Horizontal",
+          "name": "Horizontal Layout",
           "value": "horizontal"
-        }
-      ]
-    },
-    {
-      "component": "select",
-      "name": "style",
-      "label": "Visual Style",
-      "valueType": "string",
-      "options": [
-        {
-          "name": "Default",
-          "value": ""
         },
         {
           "name": "Bordered",

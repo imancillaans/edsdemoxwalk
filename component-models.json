@@ -232,44 +232,18 @@
         "multi": false
       },
       {
-        "component": "text",
-        "name": "imageAlt",
-        "label": "Image Alt Text",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "title",
-        "label": "Title",
-        "valueType": "string"
-      },
-      {
         "component": "richtext",
-        "name": "description",
-        "label": "Description",
-        "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Call to Action Link"
-      },
-      {
-        "component": "text",
-        "name": "linkText",
-        "label": "Call to Action Text",
+        "name": "content_text",
+        "label": "Content",
         "valueType": "string"
       },
       {
         "component": "select",
-        "name": "style",
-        "label": "Banner Style",
+        "name": "classes",
+        "label": "Banner Options",
         "valueType": "string",
+        "multi": true,
         "options": [
-          {
-            "name": "Default",
-            "value": ""
-          },
           {
             "name": "Dark",
             "value": "dark"
@@ -277,25 +251,13 @@
           {
             "name": "Full Height",
             "value": "full-height"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "alignment",
-        "label": "Content Alignment",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Center",
-            "value": ""
           },
           {
-            "name": "Left",
+            "name": "Align Left",
             "value": "align-left"
           },
           {
-            "name": "Right",
+            "name": "Align Right",
             "value": "align-right"
           }
         ]
@@ -312,76 +274,10 @@
         "multi": false
       },
       {
-        "component": "text",
-        "name": "imageAlt",
-        "label": "Image Alt Text",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "title",
-        "label": "Card Title",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "name": "titleType",
-        "label": "Title Type",
-        "options": [
-          {
-            "name": "h3",
-            "value": "h3"
-          },
-          {
-            "name": "h4",
-            "value": "h4"
-          },
-          {
-            "name": "h5",
-            "value": "h5"
-          }
-        ]
-      },
-      {
         "component": "richtext",
-        "name": "description",
-        "label": "Card Description",
+        "name": "text",
+        "label": "Card Content",
         "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Card Link"
-      },
-      {
-        "component": "text",
-        "name": "linkText",
-        "label": "Link Text",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "name": "style",
-        "label": "Card Style",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": ""
-          },
-          {
-            "name": "Horizontal",
-            "value": "horizontal"
-          },
-          {
-            "name": "Featured",
-            "value": "featured"
-          },
-          {
-            "name": "Compact",
-            "value": "compact"
-          }
-        ]
       }
     ]
   },
@@ -389,21 +285,12 @@
     "id": "services",
     "fields": [
       {
-        "component": "text",
-        "name": "title",
-        "label": "Services Section Title",
-        "valueType": "string"
-      },
-      {
         "component": "select",
-        "name": "columns",
-        "label": "Number of Columns",
+        "name": "classes",
+        "label": "Services Options",
         "valueType": "string",
+        "multi": true,
         "options": [
-          {
-            "name": "Auto (Responsive)",
-            "value": ""
-          },
           {
             "name": "2 Columns",
             "value": "two-columns"
@@ -415,34 +302,10 @@
           {
             "name": "4 Columns",
             "value": "four-columns"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "layout",
-        "label": "Layout Style",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Vertical (Default)",
-            "value": ""
           },
           {
-            "name": "Horizontal",
+            "name": "Horizontal Layout",
             "value": "horizontal"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "style",
-        "label": "Visual Style",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": ""
           },
           {
             "name": "Bordered",
@@ -467,50 +330,14 @@
       },
       {
         "component": "text",
-        "name": "iconAlt",
-        "label": "Icon Alt Text",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
         "name": "title",
         "label": "Service Title",
         "valueType": "string"
       },
       {
-        "component": "select",
-        "name": "titleType",
-        "label": "Title Type",
-        "options": [
-          {
-            "name": "h3",
-            "value": "h3"
-          },
-          {
-            "name": "h4",
-            "value": "h4"
-          },
-          {
-            "name": "h5",
-            "value": "h5"
-          }
-        ]
-      },
-      {
         "component": "richtext",
-        "name": "description",
+        "name": "text",
         "label": "Service Description",
-        "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Learn More Link"
-      },
-      {
-        "component": "text",
-        "name": "linkText",
-        "label": "Link Text",
         "valueType": "string"
       }
     ]

@@ -8,44 +8,18 @@
       "multi": false
     },
     {
-      "component": "text",
-      "name": "imageAlt",
-      "label": "Image Alt Text",
-      "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "title",
-      "label": "Title",
-      "valueType": "string"
-    },
-    {
       "component": "richtext",
-      "name": "description",
-      "label": "Description",
-      "valueType": "string"
-    },
-    {
-      "component": "aem-content",
-      "name": "link",
-      "label": "Call to Action Link"
-    },
-    {
-      "component": "text",
-      "name": "linkText",
-      "label": "Call to Action Text",
+      "name": "content_text",
+      "label": "Content",
       "valueType": "string"
     },
     {
       "component": "select",
-      "name": "style",
-      "label": "Banner Style",
+      "name": "classes",
+      "label": "Banner Options",
       "valueType": "string",
+      "multi": true,
       "options": [
-        {
-          "name": "Default",
-          "value": ""
-        },
         {
           "name": "Dark",
           "value": "dark"
@@ -53,25 +27,13 @@
         {
           "name": "Full Height",
           "value": "full-height"
-        }
-      ]
-    },
-    {
-      "component": "select",
-      "name": "alignment",
-      "label": "Content Alignment",
-      "valueType": "string",
-      "options": [
-        {
-          "name": "Center",
-          "value": ""
         },
         {
-          "name": "Left",
+          "name": "Align Left",
           "value": "align-left"
         },
         {
-          "name": "Right",
+          "name": "Align Right",
           "value": "align-right"
         }
       ]

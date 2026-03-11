@@ -15,48 +15,61 @@ export default function decorate(block) {
     li.className = 'service-item';
     moveInstrumentation(row, li);
 
-    // Process each cell in the row
-    [...row.children].forEach((cell) => {
-      // Check for icon/image
-      const picture = cell.querySelector('picture');
-      const icon = cell.querySelector('.icon');
+    const cells = [...row.children];
+    const [iconCell, titleCell, textCell] = cells;
 
-      if (picture) {
+    // Process icon (first cell)
+    if (iconCell) {
+      const picture = iconCell.querySelector('picture');
+      const icon = iconCell.querySelector('.icon');
+
+      if (picture || icon) {
         const serviceIcon = document.createElement('div');
         serviceIcon.className = 'service-icon';
 
-        const img = picture.querySelector('img');
-        if (img) {
-          const optimizedPic = createOptimizedPicture(
-            img.src,
-            img.alt,
-            false,
-            [{ width: '200' }],
-          );
-          moveInstrumentation(img, optimizedPic.querySelector('img'));
-          serviceIcon.append(optimizedPic);
+        if (picture) {
+          const img = picture.querySelector('img');
+          if (img) {
+            const optimizedPic = createOptimizedPicture(
+              img.src,
+              img.alt,
+              false,
+              [{ width: '200' }],
+            );
+            moveInstrumentation(img, optimizedPic.querySelector('img'));
+            serviceIcon.append(optimizedPic);
+          }
+        } else if (icon) {
+          moveInstrumentation(icon, serviceIcon);
+          serviceIcon.append(icon);
         }
 
         li.append(serviceIcon);
-      } else if (icon) {
-        const serviceIcon = document.createElement('div');
-        serviceIcon.className = 'service-icon';
-        moveInstrumentation(icon, serviceIcon);
-        serviceIcon.append(icon);
-        li.append(serviceIcon);
-      } else {
-        // Service content (title, description, link)
-        const serviceContent = document.createElement('div');
-        serviceContent.className = 'service-content';
-        moveInstrumentation(cell, serviceContent);
-
-        while (cell.firstChild) {
-          serviceContent.append(cell.firstChild);
-        }
-
-        li.append(serviceContent);
       }
-    });
+    }
+
+    // Process content (title + text combined)
+    const serviceContent = document.createElement('div');
+    serviceContent.className = 'service-content';
+
+    // Add title
+    if (titleCell && titleCell.textContent.trim()) {
+      moveInstrumentation(titleCell, serviceContent);
+      while (titleCell.firstChild) {
+        serviceContent.append(titleCell.firstChild);
+      }
+    }
+
+    // Add description
+    if (textCell && textCell.textContent.trim()) {
+      while (textCell.firstChild) {
+        serviceContent.append(textCell.firstChild);
+      }
+    }
+
+    if (serviceContent.childNodes.length > 0) {
+      li.append(serviceContent);
+    }
 
     ul.append(li);
   });

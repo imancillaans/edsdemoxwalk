@@ -9,50 +9,14 @@
     },
     {
       "component": "text",
-      "name": "iconAlt",
-      "label": "Icon Alt Text",
-      "valueType": "string"
-    },
-    {
-      "component": "text",
       "name": "title",
       "label": "Service Title",
       "valueType": "string"
     },
     {
-      "component": "select",
-      "name": "titleType",
-      "label": "Title Type",
-      "options": [
-        {
-          "name": "h3",
-          "value": "h3"
-        },
-        {
-          "name": "h4",
-          "value": "h4"
-        },
-        {
-          "name": "h5",
-          "value": "h5"
-        }
-      ]
-    },
-    {
       "component": "richtext",
-      "name": "description",
+      "name": "text",
       "label": "Service Description",
-      "valueType": "string"
-    },
-    {
-      "component": "aem-content",
-      "name": "link",
-      "label": "Learn More Link"
-    },
-    {
-      "component": "text",
-      "name": "linkText",
-      "label": "Link Text",
       "valueType": "string"
     }
   ]
