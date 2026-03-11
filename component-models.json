@@ -226,12 +226,6 @@
     "id": "banner",
     "fields": [
       {
-        "component": "reference",
-        "name": "image",
-        "label": "Background Image",
-        "multi": false
-      },
-      {
         "component": "text",
         "name": "title",
         "label": "Title",
@@ -248,6 +242,12 @@
         "name": "buttons",
         "label": "Call to Actions",
         "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Hero Image",
+        "multi": false
       }
     ]
   },
@@ -326,6 +326,35 @@
         "name": "text",
         "label": "Service Description",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cta",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "subtitle",
+        "label": "Subtitle",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "buttons",
+        "label": "Call to Actions",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Hero Image",
+        "multi": false
       }
     ]
   }

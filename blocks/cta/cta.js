@@ -2,16 +2,16 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
- * Decorates the banner block
- * @param {Element} block The banner block element
+ * Decorates the CTA block
+ * @param {Element} block The CTA block element
  */
 export default function decorate(block) {
   const rows = [...block.children];
   const [titleRow, subtitleRow, buttonsRow, imageRow] = rows;
 
-  // Create banner content wrapper (left side)
-  const bannerContent = document.createElement('div');
-  bannerContent.className = 'banner-content';
+  // Create CTA content wrapper (left side)
+  const ctaContent = document.createElement('div');
+  ctaContent.className = 'cta-content';
 
   // Process title
   if (titleRow) {
@@ -19,11 +19,11 @@ export default function decorate(block) {
     const titleText = titleCell?.textContent.trim();
 
     if (titleText) {
-      const title = document.createElement('h1');
-      title.className = 'banner-title';
+      const title = document.createElement('h2');
+      title.className = 'cta-title';
       moveInstrumentation(titleCell, title);
       title.textContent = titleText;
-      bannerContent.append(title);
+      ctaContent.append(title);
     }
     titleRow.remove();
   }
@@ -34,14 +34,14 @@ export default function decorate(block) {
 
     if (subtitleCell && subtitleCell.textContent.trim()) {
       const subtitle = document.createElement('div');
-      subtitle.className = 'banner-subtitle';
+      subtitle.className = 'cta-subtitle';
       moveInstrumentation(subtitleCell, subtitle);
 
       while (subtitleCell.firstChild) {
         subtitle.append(subtitleCell.firstChild);
       }
 
-      bannerContent.append(subtitle);
+      ctaContent.append(subtitle);
     }
     subtitleRow.remove();
   }
@@ -52,7 +52,7 @@ export default function decorate(block) {
 
     if (buttonsCell && buttonsCell.textContent.trim()) {
       const buttons = document.createElement('div');
-      buttons.className = 'banner-buttons';
+      buttons.className = 'cta-buttons';
       moveInstrumentation(buttonsCell, buttons);
 
       // Move all button content
@@ -60,14 +60,14 @@ export default function decorate(block) {
         buttons.append(buttonsCell.firstChild);
       }
 
-      bannerContent.append(buttons);
+      ctaContent.append(buttons);
     }
     buttonsRow.remove();
   }
 
-  // Create banner image wrapper (right side)
-  const bannerImage = document.createElement('div');
-  bannerImage.className = 'banner-image';
+  // Create CTA image wrapper (right side)
+  const ctaImage = document.createElement('div');
+  ctaImage.className = 'cta-image';
 
   // Process hero image
   if (imageRow) {
@@ -84,13 +84,13 @@ export default function decorate(block) {
           [{ media: '(min-width: 900px)', width: '800' }, { width: '600' }],
         );
         moveInstrumentation(img, optimizedPic.querySelector('img'));
-        bannerImage.append(optimizedPic);
+        ctaImage.append(optimizedPic);
       }
     }
     imageRow.remove();
   }
 
   // Append both sections to block
-  block.append(bannerContent);
-  block.append(bannerImage);
+  block.append(ctaContent);
+  block.append(ctaImage);
 }

@@ -1,70 +1,70 @@
-.banner {
+.cta {
   background: #0a1f44;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
   padding: 4rem 2rem;
-  min-height: 500px;
+  min-height: 450px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.banner-content {
+.cta-content {
   color: white;
   max-width: 550px;
 }
 
-.banner-image {
+.cta-image {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.banner-image picture {
+.cta-image picture {
   display: block;
   width: 100%;
 }
 
-.banner-image img {
+.cta-image img {
   width: 100%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 20px 40px rgb(0 0 0 / 30%);
 }
 
-.banner-title {
+.cta-title {
   margin: 0 0 1.5rem;
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.1;
   color: white;
 }
 
-.banner-subtitle {
+.cta-subtitle {
   margin: 0 0 2rem;
   font-size: 1rem;
   line-height: 1.6;
   color: rgb(255 255 255 / 80%);
 }
 
-.banner-subtitle p {
+.cta-subtitle p {
   margin: 0;
 }
 
-.banner-buttons {
+.cta-buttons {
   display: flex;
   gap: 1rem;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.banner-buttons p {
+.cta-buttons p {
   margin: 0;
 }
 
-.banner-buttons .button,
-.banner-buttons a {
+.cta-buttons .button,
+.cta-buttons a {
   display: inline-block;
   padding: 0.875rem 2rem;
   font-weight: 600;
@@ -75,57 +75,57 @@
   border: 2px solid transparent;
 }
 
-.banner-buttons .button.primary,
-.banner-buttons a.button.primary {
+.cta-buttons .button.primary,
+.cta-buttons a.button.primary {
   background: #10b981;
   color: white;
   border-color: #10b981;
 }
 
-.banner-buttons .button.primary:hover,
-.banner-buttons a.button.primary:hover {
+.cta-buttons .button.primary:hover,
+.cta-buttons a.button.primary:hover {
   background: #059669;
   border-color: #059669;
 }
 
-.banner-buttons .button.secondary,
-.banner-buttons a.button.secondary {
+.cta-buttons .button.secondary,
+.cta-buttons a.button.secondary {
   background: transparent;
   color: white;
   border-color: white;
 }
 
-.banner-buttons .button.secondary:hover,
-.banner-buttons a.button.secondary:hover {
+.cta-buttons .button.secondary:hover,
+.cta-buttons a.button.secondary:hover {
   background: rgb(255 255 255 / 10%);
 }
 
 @media (width <= 900px) {
-  .banner {
+  .cta {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 3rem 1.5rem;
     min-height: auto;
   }
 
-  .banner-content {
+  .cta-content {
     max-width: 100%;
     text-align: center;
   }
 
-  .banner-title {
-    font-size: 2.25rem;
+  .cta-title {
+    font-size: 2rem;
   }
 
-  .banner-subtitle {
+  .cta-subtitle {
     font-size: 0.9375rem;
   }
 
-  .banner-buttons {
+  .cta-buttons {
     justify-content: center;
   }
 
-  .banner-image {
+  .cta-image {
     order: -1;
   }
 }
