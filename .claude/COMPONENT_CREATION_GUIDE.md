@@ -627,7 +627,148 @@ grep "acc-button--link" styles/theme.css
 
 ---
 
+### STEP 9: Add Component to Section Filters (CRITICAL!)
+
+**Action:** Register component in section filters so it appears in Universal Editor
+
+**IMPORTANT:** This step is **CRITICAL** and often forgotten! Without this, your component will compile correctly but **won't appear** in the Universal Editor component panel when adding blocks to sections.
+
+**Why this is needed:**
+Universal Editor uses filters to control which components can be added to which containers. Sections are the primary container for blocks, so you must explicitly allow your component to be added to sections.
+
+**File to modify:** `models/_section.json`
+
+**Steps:**
+
+1. **Open the section model:**
+```bash
+# View current allowed components
+cat models/_section.json | jq '.filters[0].components'
+```
+
+2. **Add your component ID to the filters array:**
+
+**File:** `models/_section.json`
+
+Find the `filters` section and add your component ID:
+
+```json
+{
+  "filters": [
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "image",
+        "button",
+        "title",
+        "banner",
+        "hero",
+        "cards",
+        "columns",
+        "fragment",
+        "services",
+        "cta",
+        "{component-name}"    // ← Add your component ID here
+      ]
+    }
+  ]
+}
+```
+
+**Example for meet-the-team:**
+```json
+{
+  "filters": [
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "image",
+        "button",
+        "title",
+        "banner",
+        "hero",
+        "cards",
+        "columns",
+        "fragment",
+        "services",
+        "cta",
+        "meet-the-team"    // ← Added here
+      ]
+    }
+  ]
+}
+```
+
+3. **Rebuild component filters:**
+```bash
+npm run build:json
+```
+
+4. **Verify the component is in compiled filters:**
+```bash
+cat component-filters.json | jq '.[] | select(.id=="section") | .components'
+```
+
+You should see your component ID in the array:
+```json
+[
+  "text",
+  "image",
+  // ...
+  "meet-the-team"    // ← Your component should appear here
+]
+```
+
+5. **Commit the changes:**
+- `models/_section.json` (source)
+- `component-filters.json` (compiled)
+
+**What happens if you skip this step:**
+- ❌ Component won't appear in Universal Editor "Add Component" panel
+- ❌ You won't be able to add the component to sections
+- ✅ Component definition and model will compile correctly (misleading!)
+- ✅ If you manually add the block to a page's HTML, it will render
+
+**Symptoms of missing this step:**
+- "I don't see my component in Universal Editor"
+- "The component is in component-definition.json but not showing up"
+- "Banner works but my component doesn't appear"
+
+**Other container types:**
+If your component should also be available in other containers (columns, fragments, etc.), add it to those filter arrays as well:
+
+```bash
+# Check all filter types
+cat models/_*.json | grep -A 10 '"filters"'
+```
+
+---
+
 ## COMMON ISSUES AND FIXES
+
+### Issue: Component doesn't appear in Universal Editor panel
+
+**Symptoms:**
+- Component is defined in `component-definition.json`
+- Model exists in `component-models.json`
+- All files compiled without errors
+- But component doesn't show up in the "+" panel in Universal Editor
+
+**Root Cause:**
+Component is not added to section filters in `models/_section.json`
+
+**Fix:**
+1. Edit `models/_section.json`
+2. Add component ID to `filters[0].components` array
+3. Run `npm run build:json`
+4. Verify in `component-filters.json`
+5. Commit and push changes
+
+See **STEP 9** above for detailed instructions.
+
+---
 
 ### Issue: Button has no styling
 
@@ -869,9 +1010,13 @@ When Claude creates a new component, verify:
 
 - [ ] Created directory: `blocks/{component-name}/`
 - [ ] Created 3 files: `.js`, `.css`, `button-variants.js`
+- [ ] Created `blocks/{component-name}/_{ component-name}.json` definition file
 - [ ] Created model: `models/_{component-name}.json`
-- [ ] Updated `generate-button-variants.js` with new paths
-- [ ] Ran `npm run build:variants` successfully
+- [ ] Updated `generate-button-variants.js` with new paths (if component has buttons)
+- [ ] Ran `npm run build:variants` successfully (if component has buttons)
+- [ ] **CRITICAL:** Added component ID to `models/_section.json` filters array
+- [ ] Ran `npm run build:json` to compile all models and filters
+- [ ] Verified component appears in `component-filters.json`
 - [ ] JavaScript imports all required utilities
 - [ ] Button creation follows pattern (class='button' only)
 - [ ] moveInstrumentation called before applyButtonVariant
@@ -880,6 +1025,7 @@ When Claude creates a new component, verify:
 - [ ] CSS doesn't style .acc-button--link
 - [ ] Ran `npm run lint` with no errors
 - [ ] Tested in browser DevTools
+- [ ] **CRITICAL:** Verified component appears in Universal Editor "+" panel
 
 ---
 
@@ -921,18 +1067,28 @@ When user says: "Create a new component called {name} with {description}"
    STEP 1: Create directory and files
    STEP 2: Write placeholder button-variants.js
    STEP 3: Create model JSON with field structure
-   STEP 4: Update generate-button-variants.js
-   STEP 5: Run npm run build:variants
+   STEP 4: Update generate-button-variants.js (if component has buttons)
+   STEP 5: Run npm run build:variants (if component has buttons)
    STEP 6: Implement component JavaScript
    STEP 7: Create component CSS
    STEP 8: Run tests and lint
+   STEP 9: Add component to section filters (CRITICAL!)
    ```
 
-3. **Verify completion:**
+3. **CRITICAL STEP 9 details:**
+   - Ask user: "Should this component be available in sections? (Usually YES)"
+   - Edit `models/_section.json` and add component ID to filters array
+   - Run `npm run build:json` to compile filters
+   - Verify component appears in `component-filters.json`
+   - Without this step, component won't appear in Universal Editor!
+
+4. **Verify completion:**
    - Run lint
    - Check generated files exist
-   - Verify model has options
+   - Verify model has options (if component has buttons)
+   - **CRITICAL:** Verify component in `component-filters.json`
    - Test in browser (if possible)
+   - **CRITICAL:** Check component appears in Universal Editor panel
 
 4. **Report to user:**
    - List created files
