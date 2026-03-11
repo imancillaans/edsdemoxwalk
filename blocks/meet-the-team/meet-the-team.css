@@ -68,7 +68,7 @@ main .section:has(.meet-the-team) > div {
   gap: 2rem;
   align-items: center;
   text-align: center;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
