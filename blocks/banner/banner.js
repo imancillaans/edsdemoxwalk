@@ -7,6 +7,17 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
  */
 export default function decorate(block) {
   const rows = [...block.children];
+
+  // Debug: Log the structure
+  console.log('Banner - Total rows:', rows.length);
+  rows.forEach((row, index) => {
+    const cells = row.querySelectorAll(':scope > div');
+    console.log(`Row ${index}:`, cells.length, 'cells');
+    cells.forEach((cell, cellIndex) => {
+      console.log(`  Cell ${cellIndex}:`, cell.textContent.substring(0, 50));
+    });
+  });
+
   const [
     titleRow,
     subtitleRow,

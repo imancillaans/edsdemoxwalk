@@ -4,10 +4,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
-  padding: 4rem 2rem;
+  padding: 4rem clamp(1rem, 5vw, 4rem);
   min-height: 450px;
-  max-width: 1400px;
-  margin: 0 auto;
   width: 100%;
 }
 
