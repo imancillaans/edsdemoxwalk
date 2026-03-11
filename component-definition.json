@@ -203,6 +203,21 @@
           }
         },
         {
+          "title": "Meet the Team",
+          "id": "meet-the-team",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Meet the Team",
+                  "model": "meet-the-team"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Services",
           "id": "services",
           "plugins": {

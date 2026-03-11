@@ -681,5 +681,191 @@
         ]
       }
     ]
+  },
+  {
+    "id": "meet-the-team",
+    "fields": [
+      {
+        "component": "text",
+        "name": "sectionTitle",
+        "label": "Section Title",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "teamTitle",
+        "label": "Team Title",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "member1Image",
+        "label": "Team Member 1 - Image"
+      },
+      {
+        "component": "text",
+        "name": "member1Name",
+        "label": "Team Member 1 - Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "member1Role",
+        "label": "Team Member 1 - Role",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "member2Image",
+        "label": "Team Member 2 - Image"
+      },
+      {
+        "component": "text",
+        "name": "member2Name",
+        "label": "Team Member 2 - Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "member2Role",
+        "label": "Team Member 2 - Role",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "member3Image",
+        "label": "Team Member 3 - Image"
+      },
+      {
+        "component": "text",
+        "name": "member3Name",
+        "label": "Team Member 3 - Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "member3Role",
+        "label": "Team Member 3 - Role",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "member4Image",
+        "label": "Team Member 4 - Image"
+      },
+      {
+        "component": "text",
+        "name": "member4Name",
+        "label": "Team Member 4 - Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "member4Role",
+        "label": "Team Member 4 - Role",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "member5Image",
+        "label": "Team Member 5 - Image"
+      },
+      {
+        "component": "text",
+        "name": "member5Name",
+        "label": "Team Member 5 - Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "member5Role",
+        "label": "Team Member 5 - Role",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "member6Image",
+        "label": "Team Member 6 - Image"
+      },
+      {
+        "component": "text",
+        "name": "member6Name",
+        "label": "Team Member 6 - Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "member6Role",
+        "label": "Team Member 6 - Role",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "aboutTitle",
+        "label": "About Section Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "aboutDescription",
+        "label": "About Description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "ctaLink",
+        "label": "CTA Button Link"
+      },
+      {
+        "component": "text",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "ctaVariant",
+        "label": "CTA Button Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Purple",
+            "value": "[variant-purple]"
+          },
+          {
+            "name": "Black",
+            "value": "[variant-black]"
+          },
+          {
+            "name": "White Outline",
+            "value": "[variant-white-outline]"
+          },
+          {
+            "name": "White",
+            "value": "[variant-white]"
+          },
+          {
+            "name": "Outline",
+            "value": "[variant-outline]"
+          },
+          {
+            "name": "White Outline Medium",
+            "value": "[variant-white-outline-medium]"
+          },
+          {
+            "name": "Orange Underline",
+            "value": "[variant-orange-underline]"
+          },
+          {
+            "name": "Nuevo",
+            "value": "[variant-nuevo]"
+          },
+          {
+            "name": "Gray",
+            "value": "[variant-gray]"
+          }
+        ]
+      }
+    ]
   }
 ]
