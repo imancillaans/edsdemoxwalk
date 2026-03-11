@@ -771,5 +771,26 @@ a:not([class]) {
 .nuevo .acc-button--link .icon img {
   width: 10px;
 }
+.gray .acc-button--link {
+  box-sizing: border-box;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--header-background);
+  color: var(--header-foreground);
+  border-style: solid;
+  border-color: transparent;
+  border: none;
+}
+.gray .acc-button--link .icon img {
+  height: auto;
+  display: flex;
+}
+.gray .acc-button--link .icon img {
+  width: 10px;
+}
 
 /* stylelint-enable */
