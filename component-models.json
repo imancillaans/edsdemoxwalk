@@ -279,6 +279,30 @@
             "value": "[variant-secondary-orange]"
           },
           {
+            "name": "Gray",
+            "value": "[variant-gray]"
+          },
+          {
+            "name": "Gray Light",
+            "value": "[variant-gray-light]"
+          },
+          {
+            "name": "Header Style (Purple)",
+            "value": "[variant-header-style]"
+          },
+          {
+            "name": "Black",
+            "value": "[variant-black]"
+          },
+          {
+            "name": "White Solid",
+            "value": "[variant-white-solid]"
+          },
+          {
+            "name": "Transparent Purple",
+            "value": "[variant-transparent-purple]"
+          },
+          {
             "name": "Text Orange",
             "value": "[variant-text-orange]"
           },
@@ -336,6 +360,30 @@
           {
             "name": "Secondary Orange",
             "value": "[variant-secondary-orange]"
+          },
+          {
+            "name": "Gray",
+            "value": "[variant-gray]"
+          },
+          {
+            "name": "Gray Light",
+            "value": "[variant-gray-light]"
+          },
+          {
+            "name": "Header Style (Purple)",
+            "value": "[variant-header-style]"
+          },
+          {
+            "name": "Black",
+            "value": "[variant-black]"
+          },
+          {
+            "name": "White Solid",
+            "value": "[variant-white-solid]"
+          },
+          {
+            "name": "Transparent Purple",
+            "value": "[variant-transparent-purple]"
           },
           {
             "name": "Text Orange",
@@ -556,6 +604,30 @@
             "value": "[variant-secondary-orange]"
           },
           {
+            "name": "Gray",
+            "value": "[variant-gray]"
+          },
+          {
+            "name": "Gray Light",
+            "value": "[variant-gray-light]"
+          },
+          {
+            "name": "Header Style (Purple)",
+            "value": "[variant-header-style]"
+          },
+          {
+            "name": "Black",
+            "value": "[variant-black]"
+          },
+          {
+            "name": "White Solid",
+            "value": "[variant-white-solid]"
+          },
+          {
+            "name": "Transparent Purple",
+            "value": "[variant-transparent-purple]"
+          },
+          {
             "name": "Text Orange",
             "value": "[variant-text-orange]"
           },
@@ -613,6 +685,30 @@
           {
             "name": "Secondary Orange",
             "value": "[variant-secondary-orange]"
+          },
+          {
+            "name": "Gray",
+            "value": "[variant-gray]"
+          },
+          {
+            "name": "Gray Light",
+            "value": "[variant-gray-light]"
+          },
+          {
+            "name": "Header Style (Purple)",
+            "value": "[variant-header-style]"
+          },
+          {
+            "name": "Black",
+            "value": "[variant-black]"
+          },
+          {
+            "name": "White Solid",
+            "value": "[variant-white-solid]"
+          },
+          {
+            "name": "Transparent Purple",
+            "value": "[variant-transparent-purple]"
           },
           {
             "name": "Text Orange",
