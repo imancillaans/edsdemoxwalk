@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * Auto-generates button variants from theme.css design tokens
+ * Auto-generates button variants from theme.css acc-button classes
  *
  * Usage: node scripts/generate-button-variants.js
  *
  * This script:
- * 1. Reads theme.css and extracts CSS custom properties
- * 2. Generates button variants based on color tokens
+ * 1. Reads theme.css and extracts .{class} .acc-button--link classes
+ * 2. Generates button variants based on those classes
  * 3. Creates button-variants.js files
  * 4. Updates component models with variant options
  */
@@ -26,298 +26,51 @@ const BANNER_VARIANTS_PATH = path.join(__dirname, '../blocks/banner/button-varia
 const CTA_VARIANTS_PATH = path.join(__dirname, '../blocks/cta/button-variants.js');
 
 /**
- * Parse CSS custom properties from theme.css
+ * Parse button classes from theme.css
+ * Looks for patterns like: .purple .acc-button--link {
  */
-function parseCSSTokens(cssContent) {
-  const tokens = {};
-  const customPropRegex = /--([a-zA-Z0-9_-]+):\s*([^;]+);/g;
+function parseButtonClasses(cssContent) {
+  const classes = [];
+  const classRegex = /^\.([a-z-]+) \.acc-button--link \{/gm;
 
   let match;
   // eslint-disable-next-line no-cond-assign
-  while ((match = customPropRegex.exec(cssContent)) !== null) {
-    const [, name, value] = match;
-    tokens[`--${name}`] = value.trim();
+  while ((match = classRegex.exec(cssContent)) !== null) {
+    const [, className] = match;
+    classes.push(className);
   }
 
-  return tokens;
+  return classes;
 }
 
 /**
- * Group tokens by category
+ * Convert class name to human-readable title
+ * Examples:
+ *   purple -> Purple
+ *   white-outline -> White Outline
+ *   orange-underline -> Orange Underline
  */
-function groupTokens(tokens) {
-  const groups = {
-    primary: {},
-    secondary: {},
-    grey: {},
-    header: {},
-  };
-
-  Object.entries(tokens).forEach(([name, value]) => {
-    if (name.startsWith('--prm-primary_')) {
-      groups.primary[name] = value;
-    } else if (name.startsWith('--snd-secondary_')) {
-      groups.secondary[name] = value;
-    } else if (name.startsWith('--grey-')) {
-      groups.grey[name] = value;
-    } else if (name.startsWith('--header-')) {
-      groups.header[name] = value;
-    }
-  });
-
-  return groups;
+function classToTitle(className) {
+  return className
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 }
 
 /**
  * Generate button variant configurations
  */
-function generateButtonVariants(tokenGroups) {
+function generateButtonVariants(classes) {
   const variants = {};
 
-  // Primary variants (Orange)
-  if (tokenGroups.primary['--prm-primary_600']) {
-    variants['primary-orange'] = {
-      componentVariantTitle: 'Primary Orange',
-      componentVariantDefault: 'true',
-      backgroundColor: '--prm-primary_600',
-      backgroundColorHover: '--prm-primary_700',
-      textColor: '--grey-white',
-      textColorHover: '--grey-white',
-      borderColor: '--prm-primary_600',
-      borderColorHover: '--prm-primary_700',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
+  classes.forEach((className, index) => {
+    variants[className] = {
+      componentVariantTitle: classToTitle(className),
+      // First variant is the default
+      ...(index === 0 ? { componentVariantDefault: 'true' } : {}),
+      className,
     };
-
-    variants['secondary-orange'] = {
-      componentVariantTitle: 'Secondary Orange (Outline)',
-      backgroundColor: 'transparent',
-      backgroundColorHover: 'rgba(242, 109, 0, 0.1)',
-      textColor: '--prm-primary_600',
-      textColorHover: '--prm-primary_700',
-      borderColor: '--prm-primary_600',
-      borderColorHover: '--prm-primary_700',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
-    };
-  }
-
-  // Secondary variants (Purple)
-  if (tokenGroups.secondary['--snd-secondary_600']) {
-    variants['primary-purple'] = {
-      componentVariantTitle: 'Primary Purple',
-      backgroundColor: '--snd-secondary_600',
-      backgroundColorHover: '--snd-secondary_700',
-      textColor: '--grey-white',
-      textColorHover: '--grey-white',
-      borderColor: '--snd-secondary_600',
-      borderColorHover: '--snd-secondary_700',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
-    };
-
-    variants['secondary-purple'] = {
-      componentVariantTitle: 'Secondary Purple (Outline)',
-      backgroundColor: 'transparent',
-      backgroundColorHover: 'rgba(102, 28, 105, 0.1)',
-      textColor: '--snd-secondary_600',
-      textColorHover: '--snd-secondary_700',
-      borderColor: '--snd-secondary_600',
-      borderColorHover: '--snd-secondary_700',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
-    };
-  }
-
-  // Grey variants
-  if (tokenGroups.grey['--grey-grey_700']) {
-    variants.dark = {
-      componentVariantTitle: 'Dark',
-      backgroundColor: '--grey-grey_700',
-      backgroundColorHover: '--grey-grey_800',
-      textColor: '--grey-white',
-      textColorHover: '--grey-white',
-      borderColor: '--grey-grey_700',
-      borderColorHover: '--grey-grey_800',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
-    };
-
-    variants['dark-outline'] = {
-      componentVariantTitle: 'Dark Outline',
-      backgroundColor: 'transparent',
-      backgroundColorHover: 'rgba(0, 0, 0, 0.05)',
-      textColor: '--grey-grey_700',
-      textColorHover: '--grey-grey_800',
-      borderColor: '--grey-grey_700',
-      borderColorHover: '--grey-grey_800',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
-    };
-  }
-
-  if (tokenGroups.grey['--grey-black']) {
-    variants.black = {
-      componentVariantTitle: 'Black',
-      backgroundColor: '--grey-black',
-      backgroundColorHover: '--grey-grey_800',
-      textColor: '--grey-white',
-      textColorHover: '--grey-white',
-      borderColor: '--grey-black',
-      borderColorHover: '--grey-grey_800',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
-    };
-  }
-
-  if (tokenGroups.grey['--grey-white']) {
-    variants.white = {
-      componentVariantTitle: 'White Solid',
-      backgroundColor: '--grey-white',
-      backgroundColorHover: '--grey-grey_100',
-      textColor: '--grey-grey_700',
-      textColorHover: '--grey-grey_800',
-      borderColor: '--grey-white',
-      borderColorHover: '--grey-grey_100',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
-    };
-
-    variants['white-outline'] = {
-      componentVariantTitle: 'White Outline',
-      backgroundColor: 'transparent',
-      backgroundColorHover: 'rgba(255, 255, 255, 0.1)',
-      textColor: '--grey-white',
-      textColorHover: '--grey-white',
-      borderColor: '--grey-white',
-      borderColorHover: '--grey-white',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
-    };
-  }
-
-  // Header style (if exists)
-  if (tokenGroups.header['--header-background']) {
-    variants.header = {
-      componentVariantTitle: 'Header Style',
-      backgroundColor: '--header-background',
-      backgroundColorHover: '--snd-secondary_700',
-      textColor: '--header-foreground',
-      textColorHover: '--header-foreground',
-      borderColor: '--header-background',
-      borderColorHover: '--snd-secondary_700',
-      borderRadius: '50',
-      paddingLeftRight: '32',
-      paddingBottomTop: '14',
-      borderWidth: '2',
-      typography: 'text-button-md',
-      fontWeight: '600',
-    };
-  }
-
-  // Text-only variants
-  variants['text-orange'] = {
-    componentVariantTitle: 'Text Orange',
-    backgroundColor: 'transparent',
-    backgroundColorHover: 'transparent',
-    textColor: '--prm-primary_600',
-    textColorHover: '--prm-primary_700',
-    borderColor: 'transparent',
-    borderColorHover: 'transparent',
-    borderRadius: '50',
-    paddingLeftRight: '32',
-    paddingBottomTop: '14',
-    borderWidth: '0',
-    typography: 'text-button-md',
-    fontWeight: '600',
-    textDecoration: 'underline',
-  };
-
-  variants['text-white'] = {
-    componentVariantTitle: 'Text White',
-    backgroundColor: 'transparent',
-    backgroundColorHover: 'transparent',
-    textColor: '--grey-white',
-    textColorHover: 'rgba(255, 255, 255, 0.8)',
-    borderColor: 'transparent',
-    borderColorHover: 'transparent',
-    borderRadius: '50',
-    paddingLeftRight: '32',
-    paddingBottomTop: '14',
-    borderWidth: '0',
-    typography: 'text-button-md',
-    fontWeight: '600',
-    textDecoration: 'underline',
-  };
-
-  // Size variants
-  variants.large = {
-    componentVariantTitle: 'Large Primary',
-    backgroundColor: '--prm-primary_600',
-    backgroundColorHover: '--prm-primary_700',
-    textColor: '--grey-white',
-    textColorHover: '--grey-white',
-    borderColor: '--prm-primary_600',
-    borderColorHover: '--prm-primary_700',
-    borderRadius: '50',
-    paddingLeftRight: '48',
-    paddingBottomTop: '20',
-    borderWidth: '2',
-    typography: 'text-button-lg',
-    fontWeight: '700',
-  };
-
-  variants.small = {
-    componentVariantTitle: 'Small',
-    backgroundColor: '--prm-primary_600',
-    backgroundColorHover: '--prm-primary_700',
-    textColor: '--grey-white',
-    textColorHover: '--grey-white',
-    borderColor: '--prm-primary_600',
-    borderColorHover: '--prm-primary_700',
-    borderRadius: '50',
-    paddingLeftRight: '24',
-    paddingBottomTop: '10',
-    borderWidth: '2',
-    typography: 'text-button-sm',
-    fontWeight: '600',
-  };
+  });
 
   return variants;
 }
@@ -336,6 +89,9 @@ function generateVariantsJS(variants) {
  * DO NOT EDIT MANUALLY - changes will be overwritten
  *
  * To update: npm run build:variants
+ *
+ * These variants use CSS classes from styles/theme.css
+ * Each variant wraps the button in a div with the specified className
  */
 export default function getButtonVariants() {
   return ${variantsJSON};
@@ -357,48 +113,55 @@ function generateModelOptions(variants) {
  * Main execution
  */
 function main() {
-  console.log('🎨 Generating button variants from theme.css...\n');
+  // eslint-disable-next-line no-console
+  console.log('🎨 Generating button variants from theme.css acc-button classes...\n');
 
   // Read theme.css
   const themeCSS = fs.readFileSync(THEME_CSS_PATH, 'utf-8');
+  // eslint-disable-next-line no-console
   console.log('✅ Read theme.css');
 
-  // Parse tokens
-  const tokens = parseCSSTokens(themeCSS);
-  console.log(`✅ Parsed ${Object.keys(tokens).length} CSS tokens`);
-
-  // Group tokens
-  const tokenGroups = groupTokens(tokens);
-  console.log('✅ Grouped tokens by category');
-  console.log(`   - Primary: ${Object.keys(tokenGroups.primary).length}`);
-  console.log(`   - Secondary: ${Object.keys(tokenGroups.secondary).length}`);
-  console.log(`   - Grey: ${Object.keys(tokenGroups.grey).length}`);
-  console.log(`   - Header: ${Object.keys(tokenGroups.header).length}`);
+  // Parse button classes
+  const classes = parseButtonClasses(themeCSS);
+  // eslint-disable-next-line no-console
+  console.log(`✅ Found ${classes.length} acc-button classes`);
+  // eslint-disable-next-line no-console
+  console.log(`   Classes: ${classes.join(', ')}`);
 
   // Generate variants
-  const variants = generateButtonVariants(tokenGroups);
+  const variants = generateButtonVariants(classes);
+  // eslint-disable-next-line no-console
   console.log(`\n✅ Generated ${Object.keys(variants).length} button variants`);
 
   // Generate JavaScript files
   const jsContent = generateVariantsJS(variants);
   fs.writeFileSync(BANNER_VARIANTS_PATH, jsContent);
   fs.writeFileSync(CTA_VARIANTS_PATH, jsContent);
+  // eslint-disable-next-line no-console
   console.log('✅ Written button-variants.js files');
 
   // Generate model options
   const options = generateModelOptions(variants);
+  // eslint-disable-next-line no-console
   console.log(`\n✅ Generated ${options.length} model options`);
+  // eslint-disable-next-line no-console
   console.log('\n📋 Available variants:');
   options.forEach((opt) => {
+    // eslint-disable-next-line no-console
     console.log(`   - ${opt.name}`);
   });
 
+  // eslint-disable-next-line no-console
   console.log('\n✅ Done! Button variants generated successfully.');
+  // eslint-disable-next-line no-console
   console.log('\n⚠️  Remember to update models/_banner.json and models/_cta.json');
+  // eslint-disable-next-line no-console
   console.log('   with the new options if needed.');
 
   // Output JSON for easy copy-paste into models
+  // eslint-disable-next-line no-console
   console.log('\n📝 Copy this to your model files:');
+  // eslint-disable-next-line no-console
   console.log(JSON.stringify(options, null, 2));
 }
 

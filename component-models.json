@@ -255,60 +255,40 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Primary Orange",
-            "value": "[variant-primary-orange]"
-          },
-          {
-            "name": "Secondary Orange (Outline)",
-            "value": "[variant-secondary-orange]"
-          },
-          {
-            "name": "Primary Purple",
-            "value": "[variant-primary-purple]"
-          },
-          {
-            "name": "Secondary Purple (Outline)",
-            "value": "[variant-secondary-purple]"
-          },
-          {
-            "name": "Dark",
-            "value": "[variant-dark]"
-          },
-          {
-            "name": "Dark Outline",
-            "value": "[variant-dark-outline]"
+            "name": "Purple",
+            "value": "[variant-purple]"
           },
           {
             "name": "Black",
             "value": "[variant-black]"
           },
           {
-            "name": "White Solid",
-            "value": "[variant-white]"
-          },
-          {
             "name": "White Outline",
             "value": "[variant-white-outline]"
           },
           {
-            "name": "Header Style",
-            "value": "[variant-header]"
+            "name": "White",
+            "value": "[variant-white]"
           },
           {
-            "name": "Text Orange",
-            "value": "[variant-text-orange]"
+            "name": "Outline",
+            "value": "[variant-outline]"
           },
           {
-            "name": "Text White",
-            "value": "[variant-text-white]"
+            "name": "White Outline Medium",
+            "value": "[variant-white-outline-medium]"
           },
           {
-            "name": "Large Primary",
-            "value": "[variant-large]"
+            "name": "Orange Underline",
+            "value": "[variant-orange-underline]"
           },
           {
-            "name": "Small",
-            "value": "[variant-small]"
+            "name": "Nuevo",
+            "value": "[variant-nuevo]"
+          },
+          {
+            "name": "Gray",
+            "value": "[variant-gray]"
           }
         ]
       },
@@ -330,60 +310,40 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Secondary Orange (Outline)",
-            "value": "[variant-secondary-orange]"
+            "name": "White Outline",
+            "value": "[variant-white-outline]"
           },
           {
-            "name": "Primary Orange",
-            "value": "[variant-primary-orange]"
-          },
-          {
-            "name": "Primary Purple",
-            "value": "[variant-primary-purple]"
-          },
-          {
-            "name": "Secondary Purple (Outline)",
-            "value": "[variant-secondary-purple]"
-          },
-          {
-            "name": "Dark",
-            "value": "[variant-dark]"
-          },
-          {
-            "name": "Dark Outline",
-            "value": "[variant-dark-outline]"
+            "name": "Purple",
+            "value": "[variant-purple]"
           },
           {
             "name": "Black",
             "value": "[variant-black]"
           },
           {
-            "name": "White Solid",
+            "name": "White",
             "value": "[variant-white]"
           },
           {
-            "name": "White Outline",
-            "value": "[variant-white-outline]"
+            "name": "Outline",
+            "value": "[variant-outline]"
           },
           {
-            "name": "Header Style",
-            "value": "[variant-header]"
+            "name": "White Outline Medium",
+            "value": "[variant-white-outline-medium]"
           },
           {
-            "name": "Text Orange",
-            "value": "[variant-text-orange]"
+            "name": "Orange Underline",
+            "value": "[variant-orange-underline]"
           },
           {
-            "name": "Text White",
-            "value": "[variant-text-white]"
+            "name": "Nuevo",
+            "value": "[variant-nuevo]"
           },
           {
-            "name": "Large Primary",
-            "value": "[variant-large]"
-          },
-          {
-            "name": "Small",
-            "value": "[variant-small]"
+            "name": "Gray",
+            "value": "[variant-gray]"
           }
         ]
       },
@@ -564,60 +524,40 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Primary Orange",
-            "value": "[variant-primary-orange]"
-          },
-          {
-            "name": "Secondary Orange (Outline)",
-            "value": "[variant-secondary-orange]"
-          },
-          {
-            "name": "Primary Purple",
-            "value": "[variant-primary-purple]"
-          },
-          {
-            "name": "Secondary Purple (Outline)",
-            "value": "[variant-secondary-purple]"
-          },
-          {
-            "name": "Dark",
-            "value": "[variant-dark]"
-          },
-          {
-            "name": "Dark Outline",
-            "value": "[variant-dark-outline]"
+            "name": "Purple",
+            "value": "[variant-purple]"
           },
           {
             "name": "Black",
             "value": "[variant-black]"
           },
           {
-            "name": "White Solid",
-            "value": "[variant-white]"
-          },
-          {
             "name": "White Outline",
             "value": "[variant-white-outline]"
           },
           {
-            "name": "Header Style",
-            "value": "[variant-header]"
+            "name": "White",
+            "value": "[variant-white]"
           },
           {
-            "name": "Text Orange",
-            "value": "[variant-text-orange]"
+            "name": "Outline",
+            "value": "[variant-outline]"
           },
           {
-            "name": "Text White",
-            "value": "[variant-text-white]"
+            "name": "White Outline Medium",
+            "value": "[variant-white-outline-medium]"
           },
           {
-            "name": "Large Primary",
-            "value": "[variant-large]"
+            "name": "Orange Underline",
+            "value": "[variant-orange-underline]"
           },
           {
-            "name": "Small",
-            "value": "[variant-small]"
+            "name": "Nuevo",
+            "value": "[variant-nuevo]"
+          },
+          {
+            "name": "Gray",
+            "value": "[variant-gray]"
           }
         ]
       },
@@ -639,60 +579,40 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Secondary Orange (Outline)",
-            "value": "[variant-secondary-orange]"
+            "name": "White Outline",
+            "value": "[variant-white-outline]"
           },
           {
-            "name": "Primary Orange",
-            "value": "[variant-primary-orange]"
-          },
-          {
-            "name": "Primary Purple",
-            "value": "[variant-primary-purple]"
-          },
-          {
-            "name": "Secondary Purple (Outline)",
-            "value": "[variant-secondary-purple]"
-          },
-          {
-            "name": "Dark",
-            "value": "[variant-dark]"
-          },
-          {
-            "name": "Dark Outline",
-            "value": "[variant-dark-outline]"
+            "name": "Purple",
+            "value": "[variant-purple]"
           },
           {
             "name": "Black",
             "value": "[variant-black]"
           },
           {
-            "name": "White Solid",
+            "name": "White",
             "value": "[variant-white]"
           },
           {
-            "name": "White Outline",
-            "value": "[variant-white-outline]"
+            "name": "Outline",
+            "value": "[variant-outline]"
           },
           {
-            "name": "Header Style",
-            "value": "[variant-header]"
+            "name": "White Outline Medium",
+            "value": "[variant-white-outline-medium]"
           },
           {
-            "name": "Text Orange",
-            "value": "[variant-text-orange]"
+            "name": "Orange Underline",
+            "value": "[variant-orange-underline]"
           },
           {
-            "name": "Text White",
-            "value": "[variant-text-white]"
+            "name": "Nuevo",
+            "value": "[variant-nuevo]"
           },
           {
-            "name": "Large Primary",
-            "value": "[variant-large]"
-          },
-          {
-            "name": "Small",
-            "value": "[variant-small]"
+            "name": "Gray",
+            "value": "[variant-gray]"
           }
         ]
       },

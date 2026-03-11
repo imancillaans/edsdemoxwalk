@@ -77,7 +77,7 @@ export default function decorate(block) {
       moveInstrumentation(link, btn1);
 
       // Apply variant styling
-      let variantName = 'primary-green'; // default
+      let variantName = 'purple'; // default (first variant)
       if (cta1VariantRow) {
         const variantCell = cta1VariantRow.querySelector(':scope > div');
         const variantText = variantCell?.textContent.trim();
@@ -88,11 +88,12 @@ export default function decorate(block) {
         cta1VariantRow.remove();
       }
 
-      if (variants[variantName]) {
-        applyButtonVariant(btn1, variants[variantName]);
-      }
+      // Apply variant and get wrapper (or button if no variant)
+      const buttonElement = variants[variantName]
+        ? applyButtonVariant(btn1, variants[variantName])
+        : btn1;
 
-      buttonsWrapper.append(btn1);
+      buttonsWrapper.append(buttonElement);
     }
     cta1Row.remove();
   }
@@ -110,7 +111,7 @@ export default function decorate(block) {
       moveInstrumentation(link, btn2);
 
       // Apply variant styling
-      let variantName = 'secondary-white'; // default
+      let variantName = 'white-outline'; // default for secondary button
       if (cta2VariantRow) {
         const variantCell = cta2VariantRow.querySelector(':scope > div');
         const variantText = variantCell?.textContent.trim();
@@ -121,11 +122,12 @@ export default function decorate(block) {
         cta2VariantRow.remove();
       }
 
-      if (variants[variantName]) {
-        applyButtonVariant(btn2, variants[variantName]);
-      }
+      // Apply variant and get wrapper (or button if no variant)
+      const buttonElement = variants[variantName]
+        ? applyButtonVariant(btn2, variants[variantName])
+        : btn2;
 
-      buttonsWrapper.append(btn2);
+      buttonsWrapper.append(buttonElement);
     }
     cta2Row.remove();
   }

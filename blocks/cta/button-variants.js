@@ -5,221 +5,48 @@
  * DO NOT EDIT MANUALLY - changes will be overwritten
  *
  * To update: npm run build:variants
+ *
+ * These variants use CSS classes from styles/theme.css
+ * Each variant wraps the button in a div with the specified className
  */
 export default function getButtonVariants() {
   return {
-  "primary-orange": {
-    "componentVariantTitle": "Primary Orange",
+  "purple": {
+    "componentVariantTitle": "Purple",
     "componentVariantDefault": "true",
-    "backgroundColor": "--prm-primary_600",
-    "backgroundColorHover": "--prm-primary_700",
-    "textColor": "--grey-white",
-    "textColorHover": "--grey-white",
-    "borderColor": "--prm-primary_600",
-    "borderColorHover": "--prm-primary_700",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
-  },
-  "secondary-orange": {
-    "componentVariantTitle": "Secondary Orange (Outline)",
-    "backgroundColor": "transparent",
-    "backgroundColorHover": "rgba(242, 109, 0, 0.1)",
-    "textColor": "--prm-primary_600",
-    "textColorHover": "--prm-primary_700",
-    "borderColor": "--prm-primary_600",
-    "borderColorHover": "--prm-primary_700",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
-  },
-  "primary-purple": {
-    "componentVariantTitle": "Primary Purple",
-    "backgroundColor": "--snd-secondary_600",
-    "backgroundColorHover": "--snd-secondary_700",
-    "textColor": "--grey-white",
-    "textColorHover": "--grey-white",
-    "borderColor": "--snd-secondary_600",
-    "borderColorHover": "--snd-secondary_700",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
-  },
-  "secondary-purple": {
-    "componentVariantTitle": "Secondary Purple (Outline)",
-    "backgroundColor": "transparent",
-    "backgroundColorHover": "rgba(102, 28, 105, 0.1)",
-    "textColor": "--snd-secondary_600",
-    "textColorHover": "--snd-secondary_700",
-    "borderColor": "--snd-secondary_600",
-    "borderColorHover": "--snd-secondary_700",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
-  },
-  "dark": {
-    "componentVariantTitle": "Dark",
-    "backgroundColor": "--grey-grey_700",
-    "backgroundColorHover": "--grey-grey_800",
-    "textColor": "--grey-white",
-    "textColorHover": "--grey-white",
-    "borderColor": "--grey-grey_700",
-    "borderColorHover": "--grey-grey_800",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
-  },
-  "dark-outline": {
-    "componentVariantTitle": "Dark Outline",
-    "backgroundColor": "transparent",
-    "backgroundColorHover": "rgba(0, 0, 0, 0.05)",
-    "textColor": "--grey-grey_700",
-    "textColorHover": "--grey-grey_800",
-    "borderColor": "--grey-grey_700",
-    "borderColorHover": "--grey-grey_800",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
+    "className": "purple"
   },
   "black": {
     "componentVariantTitle": "Black",
-    "backgroundColor": "--grey-black",
-    "backgroundColorHover": "--grey-grey_800",
-    "textColor": "--grey-white",
-    "textColorHover": "--grey-white",
-    "borderColor": "--grey-black",
-    "borderColorHover": "--grey-grey_800",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
-  },
-  "white": {
-    "componentVariantTitle": "White Solid",
-    "backgroundColor": "--grey-white",
-    "backgroundColorHover": "--grey-grey_100",
-    "textColor": "--grey-grey_700",
-    "textColorHover": "--grey-grey_800",
-    "borderColor": "--grey-white",
-    "borderColorHover": "--grey-grey_100",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
+    "className": "black"
   },
   "white-outline": {
     "componentVariantTitle": "White Outline",
-    "backgroundColor": "transparent",
-    "backgroundColorHover": "rgba(255, 255, 255, 0.1)",
-    "textColor": "--grey-white",
-    "textColorHover": "--grey-white",
-    "borderColor": "--grey-white",
-    "borderColorHover": "--grey-white",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
+    "className": "white-outline"
   },
-  "header": {
-    "componentVariantTitle": "Header Style",
-    "backgroundColor": "--header-background",
-    "backgroundColorHover": "--snd-secondary_700",
-    "textColor": "--header-foreground",
-    "textColorHover": "--header-foreground",
-    "borderColor": "--header-background",
-    "borderColorHover": "--snd-secondary_700",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "2",
-    "typography": "text-button-md",
-    "fontWeight": "600"
+  "white": {
+    "componentVariantTitle": "White",
+    "className": "white"
   },
-  "text-orange": {
-    "componentVariantTitle": "Text Orange",
-    "backgroundColor": "transparent",
-    "backgroundColorHover": "transparent",
-    "textColor": "--prm-primary_600",
-    "textColorHover": "--prm-primary_700",
-    "borderColor": "transparent",
-    "borderColorHover": "transparent",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "0",
-    "typography": "text-button-md",
-    "fontWeight": "600",
-    "textDecoration": "underline"
+  "outline": {
+    "componentVariantTitle": "Outline",
+    "className": "outline"
   },
-  "text-white": {
-    "componentVariantTitle": "Text White",
-    "backgroundColor": "transparent",
-    "backgroundColorHover": "transparent",
-    "textColor": "--grey-white",
-    "textColorHover": "rgba(255, 255, 255, 0.8)",
-    "borderColor": "transparent",
-    "borderColorHover": "transparent",
-    "borderRadius": "50",
-    "paddingLeftRight": "32",
-    "paddingBottomTop": "14",
-    "borderWidth": "0",
-    "typography": "text-button-md",
-    "fontWeight": "600",
-    "textDecoration": "underline"
+  "white-outline-medium": {
+    "componentVariantTitle": "White Outline Medium",
+    "className": "white-outline-medium"
   },
-  "large": {
-    "componentVariantTitle": "Large Primary",
-    "backgroundColor": "--prm-primary_600",
-    "backgroundColorHover": "--prm-primary_700",
-    "textColor": "--grey-white",
-    "textColorHover": "--grey-white",
-    "borderColor": "--prm-primary_600",
-    "borderColorHover": "--prm-primary_700",
-    "borderRadius": "50",
-    "paddingLeftRight": "48",
-    "paddingBottomTop": "20",
-    "borderWidth": "2",
-    "typography": "text-button-lg",
-    "fontWeight": "700"
+  "orange-underline": {
+    "componentVariantTitle": "Orange Underline",
+    "className": "orange-underline"
   },
-  "small": {
-    "componentVariantTitle": "Small",
-    "backgroundColor": "--prm-primary_600",
-    "backgroundColorHover": "--prm-primary_700",
-    "textColor": "--grey-white",
-    "textColorHover": "--grey-white",
-    "borderColor": "--prm-primary_600",
-    "borderColorHover": "--prm-primary_700",
-    "borderRadius": "50",
-    "paddingLeftRight": "24",
-    "paddingBottomTop": "10",
-    "borderWidth": "2",
-    "typography": "text-button-sm",
-    "fontWeight": "600"
+  "nuevo": {
+    "componentVariantTitle": "Nuevo",
+    "className": "nuevo"
+  },
+  "gray": {
+    "componentVariantTitle": "Gray",
+    "className": "gray"
   }
 };
 }

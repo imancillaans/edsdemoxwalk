@@ -1,11 +1,11 @@
 /**
  * Theme utilities for variant-based styling
- * Adapted from ACME project for button variants in banner/CTA
+ * Handles button variants using CSS classes from theme.css
  */
 
 /**
  * Finds variant marker in block rows
- * Looks for patterns like [variant-primary-green]
+ * Looks for patterns like [variant-purple]
  * @param {NodeList} divContainers - Block row elements
  * @returns {Object|null} - {index, value} or null
  */
@@ -28,83 +28,32 @@ export function findVariant(divContainers) {
 }
 
 /**
- * Resolves a CSS variable or returns the value as-is
- * @param {string} value - Value that might be a CSS variable (--var-name) or literal
- * @returns {string} - CSS variable reference or literal value
- */
-export function resolveCSSValue(value) {
-  if (!value) return '';
-
-  // If it starts with --, it's a CSS variable reference
-  if (value.startsWith('--')) {
-    return `var(${value})`;
-  }
-
-  // Otherwise return as-is
-  return value;
-}
-
-/**
- * Applies variant styling to a button element
- * @param {HTMLElement} button - Button element to style
- * @param {Object} variantProperties - Variant configuration object
+ * Wraps a button element in a div with the variant class
+ * This allows theme.css classes like .purple .acc-button--link to work
+ *
+ * @param {HTMLElement} button - The button element
+ * @param {Object} variantProperties - Variant configuration with className property
+ * @returns {HTMLElement} - The wrapper div
  */
 export function applyButtonVariant(button, variantProperties) {
-  if (!button || !variantProperties) return;
-
-  // Apply typography class if specified
-  if (variantProperties.typography) {
-    button.classList.add(variantProperties.typography);
+  if (!button || !variantProperties || !variantProperties.className) {
+    return button;
   }
 
-  // Apply background color
-  if (variantProperties.backgroundColor) {
-    button.style.backgroundColor = resolveCSSValue(variantProperties.backgroundColor);
+  // Create wrapper div with the variant class
+  const wrapper = document.createElement('div');
+  wrapper.className = variantProperties.className;
+
+  // Replace button with wrapper in DOM
+  if (button.parentNode) {
+    button.parentNode.insertBefore(wrapper, button);
+    wrapper.appendChild(button);
   }
 
-  // Apply text color
-  if (variantProperties.textColor) {
-    button.style.color = resolveCSSValue(variantProperties.textColor);
-  }
+  // Add acc-button--link class to the button
+  button.classList.add('acc-button--link');
 
-  // Apply border
-  if (variantProperties.borderColor) {
-    const borderWidth = variantProperties.borderWidth || '2';
-    button.style.border = `${borderWidth}px solid ${resolveCSSValue(variantProperties.borderColor)}`;
-  }
-
-  // Apply border radius
-  if (variantProperties.borderRadius) {
-    button.style.borderRadius = `${variantProperties.borderRadius}px`;
-  }
-
-  // Apply padding
-  if (variantProperties.paddingLeftRight && variantProperties.paddingBottomTop) {
-    button.style.padding = `${variantProperties.paddingBottomTop}px ${variantProperties.paddingLeftRight}px`;
-  }
-
-  // Apply font weight
-  if (variantProperties.fontWeight) {
-    button.style.fontWeight = variantProperties.fontWeight;
-  }
-
-  // Apply text decoration
-  if (variantProperties.textDecoration) {
-    button.style.textDecoration = variantProperties.textDecoration;
-  }
-
-  // Apply hover styles via data attributes (CSS will use these)
-  if (variantProperties.backgroundColorHover) {
-    button.dataset.hoverBg = resolveCSSValue(variantProperties.backgroundColorHover);
-  }
-
-  if (variantProperties.textColorHover) {
-    button.dataset.hoverColor = resolveCSSValue(variantProperties.textColorHover);
-  }
-
-  if (variantProperties.borderColorHover) {
-    button.dataset.hoverBorder = resolveCSSValue(variantProperties.borderColorHover);
-  }
+  return wrapper;
 }
 
 /**
@@ -154,7 +103,6 @@ export function decorateVariants(main) {
 
 export default {
   findVariant,
-  resolveCSSValue,
   applyButtonVariant,
   decorateVariants,
 };
