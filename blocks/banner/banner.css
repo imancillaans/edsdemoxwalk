@@ -4,7 +4,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
-  padding: 4rem clamp(1rem, 5vw, 4rem);
   min-height: 500px;
   width: 100%;
   box-sizing: border-box;
