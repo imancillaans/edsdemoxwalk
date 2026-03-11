@@ -168,7 +168,7 @@
     ]
   },
   {
-    "id": "card-single",
+    "id": "single-card-model",
     "fields": [
       {
         "component": "reference",

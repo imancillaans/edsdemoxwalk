@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "BannerSS",
+      "title": "Banner",
       "id": "banner",
       "plugins": {
         "xwalk": {
