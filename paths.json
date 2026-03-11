@@ -1,6 +1,8 @@
 {
   "mappings": [
-    "/content/edsdemoxwalk/:/"
+    "/content/edsdemoxwalk/:/",
+    "/content/edsdemoxwalk/configuration:/.helix/config.json",
+    "/content/edsdemoxwalk/metadata:/metadata.json"
   ],
   "includes": [
     "/content/edsdemoxwalk/"
