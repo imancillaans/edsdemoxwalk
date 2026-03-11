@@ -19,5 +19,6 @@ module.exports = {
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
     'no-param-reassign': [2, { props: false }], // allow modifying properties of param
     'xwalk/max-cells': 'off', // disabled for Universal Editor (fields shown in panel, not table)
+    'xwalk/no-orphan-collapsible-fields': 'off', // allow numbered field patterns for team members, services, etc.
   },
 };

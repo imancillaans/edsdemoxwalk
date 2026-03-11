@@ -716,6 +716,103 @@ console.log('Target element:', btn);
 
 ---
 
+### Issue: GitHub Build Fails with "orphan collapsible field names" Error
+
+**Symptoms:**
+```
+Error: 690:11  error  Avoid using orphan collapsible field names  xwalk/no-orphan-collapsible-fields
+✖ 4 problems (4 errors, 0 warnings)
+Error: Process completed with exit code 1.
+```
+
+**Root Cause:**
+The `xwalk/no-orphan-collapsible-fields` ESLint rule detects field naming patterns that suggest grouped/collapsible fields but aren't properly structured as such. Common problematic patterns:
+
+- `member1Image`, `member1Name`, `member1Role` → Detected as {prefix}{Number}{Suffix}
+- `firstMemberImage`, `secondMemberName` → Detected as {word}Member{word}
+- `ctaLink`, `ctaText`, `ctaVariant` → Detected as {prefix}{Word} (without number)
+
+**Why this happens:**
+Universal Editor supports collapsible field groups for better UX. The linter detects patterns that LOOK like they should be grouped but aren't using the official collapsible fields structure.
+
+**Solution Options:**
+
+**Option 1: Use numbered fields with prefix (RECOMMENDED)**
+```json
+{
+  "name": "teamImage1",    // ✅ Works: prefix + word + number
+  "label": "Team Member 1 - Image"
+},
+{
+  "name": "teamName1",     // ✅ Same prefix, different word
+  "label": "Team Member 1 - Name"
+}
+```
+
+**Option 2: Use numbered suffix for button fields**
+```json
+{
+  "name": "cta1Link",      // ✅ Works: prefix + number + suffix
+  "label": "Primary Button Link"
+},
+{
+  "name": "cta1LinkText",  // ✅ Number comes before suffix
+  "label": "Primary Button Text"
+},
+{
+  "name": "cta1Variant",   // ✅ Consistent with banner/cta blocks
+  "label": "Primary Button Style"
+}
+```
+
+**Option 3: Disable rule globally (if many numbered fields)**
+If your project frequently uses numbered field patterns for team members, services, features, etc., disable the rule in `.eslintrc.cjs`:
+
+```javascript
+rules: {
+  'xwalk/no-orphan-collapsible-fields': 'off', // allow numbered field patterns
+}
+```
+
+**Diagnosis:**
+```bash
+# Check which lines are failing
+npx eslint component-models.json --ext .json
+
+# Check the specific fields causing errors
+sed -n '{line_number}p' component-models.json
+```
+
+**Fix Steps:**
+1. **Identify pattern:** Determine which field names trigger the error
+2. **Choose approach:**
+   - Rename fields to follow `{prefix}{Word}{Number}` pattern (teamImage1)
+   - OR use `{prefix}{Number}{Suffix}` pattern (cta1Link)
+   - OR disable the rule if pattern is intentional
+3. **Update model JSON** with new field names
+4. **Update JavaScript** to match new field names in destructuring
+5. **Rebuild:** `npm run build:json`
+6. **Verify:** `npm run lint`
+
+**Real Example from meet-the-team component:**
+```diff
+- "name": "member1Image"     ❌ Detected as orphan
++ "name": "teamImage1"       ✅ Works
+
+- "name": "ctaLink"          ❌ Detected as orphan
++ "name": "cta1Link"         ✅ Works (matches banner pattern)
+
+- "name": "firstMemberName"  ❌ Detected as orphan
++ "name": "teamName1"        ✅ Works
+```
+
+**Key Takeaway:**
+- Numbers should come AFTER the descriptive word: `teamImage1` not `member1Image`
+- Button fields need numbers: `cta1Link` not `ctaLink` (unless rule is disabled)
+- Be consistent with existing components (banner uses `cta1Link`, `cta2Link`)
+
+---
+
 ## CRITICAL CODE PATTERNS
 
 ### Pattern: Button Creation

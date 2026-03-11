@@ -14,29 +14,29 @@ export default function decorate(block) {
   const [
     sectionTitleRow,
     teamTitleRow,
-    member1ImageRow,
-    member1NameRow,
-    member1RoleRow,
-    member2ImageRow,
-    member2NameRow,
-    member2RoleRow,
-    member3ImageRow,
-    member3NameRow,
-    member3RoleRow,
-    member4ImageRow,
-    member4NameRow,
-    member4RoleRow,
-    member5ImageRow,
-    member5NameRow,
-    member5RoleRow,
-    member6ImageRow,
-    member6NameRow,
-    member6RoleRow,
+    teamImage1Row,
+    teamName1Row,
+    teamRole1Row,
+    teamImage2Row,
+    teamName2Row,
+    teamRole2Row,
+    teamImage3Row,
+    teamName3Row,
+    teamRole3Row,
+    teamImage4Row,
+    teamName4Row,
+    teamRole4Row,
+    teamImage5Row,
+    teamName5Row,
+    teamRole5Row,
+    teamImage6Row,
+    teamName6Row,
+    teamRole6Row,
     aboutTitleRow,
     aboutDescriptionRow,
-    ctaLinkRow,
-    ctaTextRow,
-    ctaVariantRow,
+    cta1LinkRow,
+    cta1LinkTextRow,
+    cta1VariantRow,
   ] = rows;
 
   // Create main container
@@ -83,12 +83,12 @@ export default function decorate(block) {
 
   // Process team members (6 members)
   const members = [
-    { imageRow: member1ImageRow, nameRow: member1NameRow, roleRow: member1RoleRow },
-    { imageRow: member2ImageRow, nameRow: member2NameRow, roleRow: member2RoleRow },
-    { imageRow: member3ImageRow, nameRow: member3NameRow, roleRow: member3RoleRow },
-    { imageRow: member4ImageRow, nameRow: member4NameRow, roleRow: member4RoleRow },
-    { imageRow: member5ImageRow, nameRow: member5NameRow, roleRow: member5RoleRow },
-    { imageRow: member6ImageRow, nameRow: member6NameRow, roleRow: member6RoleRow },
+    { imageRow: teamImage1Row, nameRow: teamName1Row, roleRow: teamRole1Row },
+    { imageRow: teamImage2Row, nameRow: teamName2Row, roleRow: teamRole2Row },
+    { imageRow: teamImage3Row, nameRow: teamName3Row, roleRow: teamRole3Row },
+    { imageRow: teamImage4Row, nameRow: teamName4Row, roleRow: teamRole4Row },
+    { imageRow: teamImage5Row, nameRow: teamName5Row, roleRow: teamRole5Row },
+    { imageRow: teamImage6Row, nameRow: teamName6Row, roleRow: teamRole6Row },
   ];
 
   members.forEach((member) => {
@@ -205,8 +205,8 @@ export default function decorate(block) {
   // Process CTA button
   const variants = getButtonVariants();
 
-  if (ctaLinkRow) {
-    const linkCell = ctaLinkRow.querySelector(':scope > div');
+  if (cta1LinkRow) {
+    const linkCell = cta1LinkRow.querySelector(':scope > div');
     const link = linkCell?.querySelector('a');
 
     if (link) {
@@ -218,14 +218,14 @@ export default function decorate(block) {
 
       // Parse variant
       let variantName = 'purple';
-      if (ctaVariantRow) {
-        const variantCell = ctaVariantRow.querySelector(':scope > div');
+      if (cta1VariantRow) {
+        const variantCell = cta1VariantRow.querySelector(':scope > div');
         const variantText = variantCell?.textContent.trim();
         const match = variantText?.match(/\[variant-([^\]]+)\]/);
         if (match) {
           [, variantName] = match;
         }
-        ctaVariantRow.remove();
+        cta1VariantRow.remove();
       }
 
       // Apply variant wrapper
@@ -235,8 +235,8 @@ export default function decorate(block) {
 
       aboutSection.append(buttonElement);
     }
-    ctaLinkRow.remove();
-    if (ctaTextRow) ctaTextRow.remove();
+    cta1LinkRow.remove();
+    if (cta1LinkTextRow) cta1LinkTextRow.remove();
   }
 
   if (aboutSection.children.length > 0) {

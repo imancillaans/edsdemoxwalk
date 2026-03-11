@@ -699,103 +699,103 @@
       },
       {
         "component": "aem-content",
-        "name": "member1Image",
+        "name": "teamImage1",
         "label": "Team Member 1 - Image"
       },
       {
         "component": "text",
-        "name": "member1Name",
+        "name": "teamName1",
         "label": "Team Member 1 - Name",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "member1Role",
+        "name": "teamRole1",
         "label": "Team Member 1 - Role",
         "valueType": "string"
       },
       {
         "component": "aem-content",
-        "name": "member2Image",
+        "name": "teamImage2",
         "label": "Team Member 2 - Image"
       },
       {
         "component": "text",
-        "name": "member2Name",
+        "name": "teamName2",
         "label": "Team Member 2 - Name",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "member2Role",
+        "name": "teamRole2",
         "label": "Team Member 2 - Role",
         "valueType": "string"
       },
       {
         "component": "aem-content",
-        "name": "member3Image",
+        "name": "teamImage3",
         "label": "Team Member 3 - Image"
       },
       {
         "component": "text",
-        "name": "member3Name",
+        "name": "teamName3",
         "label": "Team Member 3 - Name",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "member3Role",
+        "name": "teamRole3",
         "label": "Team Member 3 - Role",
         "valueType": "string"
       },
       {
         "component": "aem-content",
-        "name": "member4Image",
+        "name": "teamImage4",
         "label": "Team Member 4 - Image"
       },
       {
         "component": "text",
-        "name": "member4Name",
+        "name": "teamName4",
         "label": "Team Member 4 - Name",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "member4Role",
+        "name": "teamRole4",
         "label": "Team Member 4 - Role",
         "valueType": "string"
       },
       {
         "component": "aem-content",
-        "name": "member5Image",
+        "name": "teamImage5",
         "label": "Team Member 5 - Image"
       },
       {
         "component": "text",
-        "name": "member5Name",
+        "name": "teamName5",
         "label": "Team Member 5 - Name",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "member5Role",
+        "name": "teamRole5",
         "label": "Team Member 5 - Role",
         "valueType": "string"
       },
       {
         "component": "aem-content",
-        "name": "member6Image",
+        "name": "teamImage6",
         "label": "Team Member 6 - Image"
       },
       {
         "component": "text",
-        "name": "member6Name",
+        "name": "teamName6",
         "label": "Team Member 6 - Name",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "member6Role",
+        "name": "teamRole6",
         "label": "Team Member 6 - Role",
         "valueType": "string"
       },
@@ -813,18 +813,18 @@
       },
       {
         "component": "aem-content",
-        "name": "ctaLink",
+        "name": "cta1Link",
         "label": "CTA Button Link"
       },
       {
         "component": "text",
-        "name": "ctaText",
+        "name": "cta1LinkText",
         "label": "CTA Button Text",
         "valueType": "string"
       },
       {
         "component": "select",
-        "name": "ctaVariant",
+        "name": "cta1Variant",
         "label": "CTA Button Style",
         "valueType": "string",
         "options": [
