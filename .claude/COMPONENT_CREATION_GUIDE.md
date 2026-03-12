@@ -1,6 +1,87 @@
 # Component Creation Guide - For Claude Code
 
-> **AUDIENCE:** This guide is written for Claude Code (AI assistant) to follow when creating new AEM Edge Delivery Services components that use the theme.css button variant system.
+> **AUDIENCE:** This guide is written for Claude Code (AI assistant) to follow when creating new AEM Edge Delivery Services components that use the AEM UI Solution theme system.
+
+---
+
+## 🚀 QUICK START - Use Specialized Agents
+
+**NEW:** Instead of following this guide manually, use our specialized agents:
+
+### `/create-block` - Create New Blocks
+```
+Usage: /create-block
+Creates complete block with theme support (buttons, separators, typography)
+Follows all patterns and best practices automatically
+```
+
+### `/evaluate-block` - Evaluate Existing Blocks
+```
+Usage: /evaluate-block
+Comprehensive analysis and quality report
+Identifies issues and provides actionable recommendations
+```
+
+### `/fix-block` - Auto-Fix Common Issues
+```
+Usage: /fix-block
+Automatically fixes common problems
+Safe, tested fixes with validation
+```
+
+**These agents have access to this guide and will follow it precisely.**
+
+If you need to create/fix blocks manually, continue reading this guide.
+
+---
+
+## 🎨 NEW: Multi-Theme System (v2.0)
+
+This project now supports **multiple theme types** from AEM UI Solution:
+
+### Available Themes:
+
+1. **Button Variants** (11 variants)
+   - purple, black, white-outline, white, outline, white-outline-medium, home_button, orange-underline, nuevo, gray, gyto_main
+   - Usage: Wrapped in variant div with `.acc-button--link` class
+
+2. **Separator Variants** (4 variants)
+   - default, gray_line, small, test
+   - Usage: Wrapped in variant div with `.acc-separator__spacer` class
+
+3. **Typography Styles** (12 styles)
+   - text-headline-1, text-headline-2, text-headline-3, text-h4-large-text
+   - text-medium-text, text-paragraph, text-small-text, text-link
+   - text-button-text, text-button-text-small, text-pretitle, text-medium-text-bold
+   - Usage: Direct class application (no wrapper)
+
+### New Commands:
+
+```bash
+npm run build:themes      # Generate ALL theme variants (buttons, separators, typography)
+npm run build:variants    # Generate ONLY button variants (legacy, still works)
+```
+
+### Architecture Flow (Updated):
+
+```
+AEM UI Solution Platform
+         ↓
+    theme.css (auto-generated, READ ONLY)
+         ↓
+generate-theme-variants.js (NEW: extracts ALL themes)
+         ↓
+    ┌──────────────┬──────────────┬──────────────────┐
+    ↓              ↓              ↓                  ↓
+button-        separator-    typography-        (future themes)
+variants.js    variants.js   variants.js
+         ↓              ↓              ↓
+theme-utils.js (NEW: multi-theme appliers)
+    ↓              ↓              ↓
+applyButtonVariant    applySeparatorVariant    applyTypographyStyle
+                          ↓
+                  applyThemeVariant (generic)
+```
 
 ---
 

@@ -1,6 +1,11 @@
 /**
  * Theme utilities for variant-based styling
- * Handles button variants using CSS classes from theme.css
+ * Handles multiple theme types (buttons, separators, typography) using CSS classes from theme.css
+ *
+ * Theme types supported:
+ * - Buttons: Wrapped in variant div with .acc-button--link class
+ * - Separators: Wrapped in variant div with .acc-separator__spacer class
+ * - Typography: Direct class application (.text-* classes)
  */
 
 /**
@@ -80,6 +85,89 @@ export function applyButtonVariant(button, variantProperties) {
 }
 
 /**
+ * Wraps a separator element in a div with the variant class
+ * This allows theme.css classes like .gray_line .acc-separator__spacer to work
+ *
+ * @param {HTMLElement} separator - The separator element
+ * @param {Object} variantProperties - Variant configuration with className property
+ * @returns {HTMLElement} - The wrapper div
+ */
+export function applySeparatorVariant(separator, variantProperties) {
+  if (!separator || !variantProperties || !variantProperties.className) {
+    return separator;
+  }
+
+  // Create wrapper div with the variant class
+  const wrapper = document.createElement('div');
+  wrapper.className = variantProperties.className;
+
+  // Add acc-separator__spacer class to the separator
+  separator.classList.add('acc-separator__spacer');
+
+  // Add separator to wrapper
+  wrapper.appendChild(separator);
+
+  return wrapper;
+}
+
+/**
+ * Applies typography style directly to an element
+ * Typography styles don't use wrappers - class is applied directly
+ *
+ * @param {HTMLElement} element - The element to style
+ * @param {Object} variantProperties - Variant configuration with className property
+ * @returns {HTMLElement} - The same element with class applied
+ */
+export function applyTypographyStyle(element, variantProperties) {
+  if (!element || !variantProperties || !variantProperties.className) {
+    return element;
+  }
+
+  // Add typography class directly to element
+  element.classList.add(variantProperties.className);
+
+  return element;
+}
+
+/**
+ * Generic function to apply any theme variant
+ * Automatically detects whether to use wrapper or direct class application
+ *
+ * @param {HTMLElement} element - The element to apply theme to
+ * @param {Object} variantProperties - Variant configuration
+ * @param {string} variantProperties.className - CSS class name
+ * @param {boolean} variantProperties.usesWrapper - Whether to wrap element
+ * @param {string} variantProperties.baseClassName - Base class to add to element
+ *   (e.g., 'acc-button--link')
+ * @returns {HTMLElement} - Either wrapper div or the element itself
+ */
+export function applyThemeVariant(element, variantProperties) {
+  if (!element || !variantProperties || !variantProperties.className) {
+    return element;
+  }
+
+  if (variantProperties.usesWrapper) {
+    // Create wrapper div with variant class
+    const wrapper = document.createElement('div');
+    wrapper.className = variantProperties.className;
+
+    // Add base class to element if specified
+    if (variantProperties.baseClassName) {
+      element.classList.add(variantProperties.baseClassName);
+    }
+
+    // Add element to wrapper
+    wrapper.appendChild(element);
+
+    return wrapper;
+  }
+
+  // Direct class application (for typography)
+  element.classList.add(variantProperties.className);
+  return element;
+}
+
+/**
  * Applies variant classes to elements based on [[variant: ...]] markers.
  * This is for inline variant markers in content.
  *
@@ -127,5 +215,8 @@ export function decorateVariants(main) {
 export default {
   findVariant,
   applyButtonVariant,
+  applySeparatorVariant,
+  applyTypographyStyle,
+  applyThemeVariant,
   decorateVariants,
 };
