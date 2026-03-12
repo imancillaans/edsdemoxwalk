@@ -873,5 +873,41 @@ a:not([class]) {
   color: var(--header-foreground);
   background-color: var(--snd-secondary_400);
 }
+.briandemo .acc-button--link {
+  box-sizing: border-box;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--snd-secondary_200);
+  color: var(--snd-secondary_600);
+  border-style: solid;
+  border-color: transparent;
+  border: none;
+}
+.briandemo .acc-button--link .icon img {
+  height: auto;
+  display: flex;
+}
+.briandemo .acc-button--link .icon img {
+  width: 10px;
+}
+.briandemo .acc-button--link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-style: solid;
+  border-radius: inherit;
+  pointer-events: none;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+}
+.briandemo .acc-button--link:hover {
+  color: var(--snd-secondary_200);
+  background-color: var(--snd-secondary_400);
+}
 
 /* stylelint-enable */
