@@ -848,5 +848,30 @@ a:not([class]) {
   color: var(--grey-white);
   background-color: var(--grey-black);
 }
+.edsbutton .acc-button--link {
+  box-sizing: border-box;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--snd-secondary_200);
+  color: var(--header-background);
+  border-style: solid;
+  border-color: transparent;
+  border: none;
+}
+.edsbutton .acc-button--link .icon img {
+  height: auto;
+  display: flex;
+}
+.edsbutton .acc-button--link .icon img {
+  width: 10px;
+}
+.edsbutton .acc-button--link:hover {
+  color: var(--header-foreground);
+  background-color: var(--snd-secondary_400);
+}
 
 /* stylelint-enable */

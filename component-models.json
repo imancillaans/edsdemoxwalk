@@ -516,7 +516,7 @@
       {
         "component": "text",
         "name": "sectionTitle",
-        "label": "Section Title (e.g., 'OUR SERVICES')",
+        "label": "Section Title (e.g., \u0027OUR SERVICES\u0027)",
         "valueType": "string"
       },
       {
@@ -1281,13 +1281,13 @@
       {
         "component": "text",
         "name": "sectionTitle",
-        "label": "Section Title (e.g., 'ABOUT US')",
+        "label": "Section Title (e.g., \u0027ABOUT US\u0027)",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "title",
-        "label": "Main Title (e.g., 'HI! I'M BRIAN,')",
+        "label": "Main Title (e.g., \u0027HI! I\u0027M BRIAN,\u0027)",
         "valueType": "string"
       },
       {
@@ -1538,7 +1538,7 @@
       {
         "component": "text",
         "name": "sectionTitle",
-        "label": "Section Title (e.g., 'CONTACT US')",
+        "label": "Section Title (e.g., \u0027CONTACT US\u0027)",
         "valueType": "string"
       },
       {
