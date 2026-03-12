@@ -63,6 +63,10 @@ export default function getButtonVariants() {
   "edsbutton": {
     "componentVariantTitle": "Edsbutton",
     "className": "edsbutton"
+  },
+  "briandemo": {
+    "componentVariantTitle": "Briandemo",
+    "className": "briandemo"
   }
 };
 }

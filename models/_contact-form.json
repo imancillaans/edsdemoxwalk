@@ -76,6 +76,10 @@
         {
           "name": "Edsbutton",
           "value": "[variant-edsbutton]"
+        },
+        {
+          "name": "Briandemo",
+          "value": "[variant-briandemo]"
         }
       ]
     },
