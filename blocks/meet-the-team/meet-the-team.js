@@ -19,16 +19,15 @@ export default function decorate(block) {
   });
 
   // Destructure rows based on model field order
+  // Note: cta1LinkText and cta2LinkText are NOT separate rows - the text is in the link element
   const [
     sectionTitleRow,
     titleRow,
     imageRow,
     descriptionRow,
     cta1LinkRow,
-    cta1LinkTextRow,
     cta1VariantRow,
     cta2LinkRow,
-    cta2LinkTextRow,
     cta2VariantRow,
     backgroundImageRow,
     backgroundOverlayRow,
@@ -173,7 +172,6 @@ export default function decorate(block) {
       buttonsWrapper.append(buttonElement);
     }
     cta1LinkRow.remove();
-    if (cta1LinkTextRow) cta1LinkTextRow.remove();
   }
 
   // Process CTA 2 (Secondary Button)
@@ -218,7 +216,6 @@ export default function decorate(block) {
       buttonsWrapper.append(buttonElement);
     }
     cta2LinkRow.remove();
-    if (cta2LinkTextRow) cta2LinkTextRow.remove();
   }
 
   if (buttonsWrapper.children.length > 0) {
