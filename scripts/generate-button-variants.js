@@ -27,10 +27,12 @@ const BANNER_VARIANTS_PATH = path.join(__dirname, '../blocks/banner/button-varia
 const CTA_VARIANTS_PATH = path.join(__dirname, '../blocks/cta/button-variants.js');
 const MEET_THE_TEAM_VARIANTS_PATH = path.join(__dirname, '../blocks/meet-the-team/button-variants.js');
 const SERVICES_VARIANTS_PATH = path.join(__dirname, '../blocks/services/button-variants.js');
+const FORM_VARIANTS_PATH = path.join(__dirname, '../blocks/form/button-variants.js');
 const BANNER_MODEL_PATH = path.join(__dirname, '../models/_banner.json');
 const CTA_MODEL_PATH = path.join(__dirname, '../models/_cta.json');
 const MEET_THE_TEAM_MODEL_PATH = path.join(__dirname, '../models/_meet-the-team.json');
 const SERVICES_MODEL_PATH = path.join(__dirname, '../models/_services.json');
+const FORM_MODEL_PATH = path.join(__dirname, '../models/_form.json');
 
 /**
  * Parse button classes from theme.css
@@ -126,7 +128,7 @@ function updateModelFile(modelPath, options) {
 
   // Find variant fields and update their options
   model.fields.forEach((field) => {
-    if (field.name === 'cta1Variant' || field.name === 'ctaVariant') {
+    if (field.name === 'cta1Variant' || field.name === 'ctaVariant' || field.name === 'submitButtonVariant') {
       // Primary button or single button - use default order
       field.options = options;
     }
@@ -176,6 +178,7 @@ function main() {
   fs.writeFileSync(CTA_VARIANTS_PATH, jsContent);
   fs.writeFileSync(MEET_THE_TEAM_VARIANTS_PATH, jsContent);
   fs.writeFileSync(SERVICES_VARIANTS_PATH, jsContent);
+  fs.writeFileSync(FORM_VARIANTS_PATH, jsContent);
   // eslint-disable-next-line no-console
   console.log('✅ Written button-variants.js files');
 
@@ -197,8 +200,9 @@ function main() {
   updateModelFile(CTA_MODEL_PATH, options);
   updateModelFile(MEET_THE_TEAM_MODEL_PATH, options);
   updateModelFile(SERVICES_MODEL_PATH, options);
+  updateModelFile(FORM_MODEL_PATH, options);
   // eslint-disable-next-line no-console
-  console.log('✅ Updated models/_banner.json, models/_cta.json, models/_meet-the-team.json, and models/_services.json');
+  console.log('✅ Updated models/_banner.json, models/_cta.json, models/_meet-the-team.json, models/_services.json, and models/_form.json');
 
   // Run build:json to regenerate component-models.json
   // eslint-disable-next-line no-console
@@ -223,11 +227,19 @@ function main() {
   // eslint-disable-next-line no-console
   console.log('   - blocks/meet-the-team/button-variants.js');
   // eslint-disable-next-line no-console
+  console.log('   - blocks/services/button-variants.js');
+  // eslint-disable-next-line no-console
+  console.log('   - blocks/form/button-variants.js');
+  // eslint-disable-next-line no-console
   console.log('   - models/_banner.json');
   // eslint-disable-next-line no-console
   console.log('   - models/_cta.json');
   // eslint-disable-next-line no-console
   console.log('   - models/_meet-the-team.json');
+  // eslint-disable-next-line no-console
+  console.log('   - models/_services.json');
+  // eslint-disable-next-line no-console
+  console.log('   - models/_form.json');
   // eslint-disable-next-line no-console
   console.log('   - component-models.json');
 }

@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'styles/theme.css'
   workflow_dispatch:
 
 jobs:
@@ -43,7 +41,7 @@ jobs:
           git config --local user.email "helix@adobe.com"
           git config --local user.name "AEM Bot"
           git add blocks/*/button-variants.js models/_*.json component-models.json
-          git commit -m "chore: auto-update button variants from theme.css
+          git commit -m "chore: auto-update button variants and component models
 
           🤖 Generated with [Claude Code](https://claude.com/claude-code)
 
