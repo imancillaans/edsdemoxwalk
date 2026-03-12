@@ -36,6 +36,10 @@ export default function getButtonVariants() {
     "componentVariantTitle": "White Outline Medium",
     "className": "white-outline-medium"
   },
+  "home_button": {
+    "componentVariantTitle": "Home_button",
+    "className": "home_button"
+  },
   "orange-underline": {
     "componentVariantTitle": "Orange Underline",
     "className": "orange-underline"
@@ -47,6 +51,10 @@ export default function getButtonVariants() {
   "gray": {
     "componentVariantTitle": "Gray",
     "className": "gray"
+  },
+  "gyto_main": {
+    "componentVariantTitle": "Gyto_main",
+    "className": "gyto_main"
   }
 };
 }

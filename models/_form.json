@@ -92,6 +92,10 @@
           "value": "[variant-white-outline-medium]"
         },
         {
+          "name": "Home_button",
+          "value": "[variant-home_button]"
+        },
+        {
           "name": "Orange Underline",
           "value": "[variant-orange-underline]"
         },
@@ -102,6 +106,10 @@
         {
           "name": "Gray",
           "value": "[variant-gray]"
+        },
+        {
+          "name": "Gyto_main",
+          "value": "[variant-gyto_main]"
         }
       ]
     },

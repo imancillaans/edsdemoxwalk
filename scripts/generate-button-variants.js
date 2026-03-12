@@ -40,7 +40,7 @@ const FORM_MODEL_PATH = path.join(__dirname, '../models/_form.json');
  */
 function parseButtonClasses(cssContent) {
   const classes = [];
-  const classRegex = /^\.([a-z-]+) \.acc-button--link \{/gm;
+  const classRegex = /^\.([a-z_-]+) \.acc-button--link \{/gm;
 
   let match;
   // eslint-disable-next-line no-cond-assign
