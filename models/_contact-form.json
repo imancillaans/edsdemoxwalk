@@ -20,55 +20,6 @@
       "valueType": "string"
     },
     {
-      "component": "text",
-      "name": "nameLabel",
-      "label": "Name Field Label",
-      "valueType": "string",
-      "value": "Name"
-    },
-    {
-      "component": "text",
-      "name": "namePlaceholder",
-      "label": "Name Field Placeholder",
-      "valueType": "string",
-      "value": "Enter your name"
-    },
-    {
-      "component": "text",
-      "name": "emailLabel",
-      "label": "Email Field Label",
-      "valueType": "string",
-      "value": "Email"
-    },
-    {
-      "component": "text",
-      "name": "emailPlaceholder",
-      "label": "Email Field Placeholder",
-      "valueType": "string",
-      "value": "Enter your email"
-    },
-    {
-      "component": "text",
-      "name": "messageLabel",
-      "label": "Message Field Label",
-      "valueType": "string",
-      "value": "Message"
-    },
-    {
-      "component": "text",
-      "name": "messagePlaceholder",
-      "label": "Message Field Placeholder",
-      "valueType": "string",
-      "value": "Enter your message"
-    },
-    {
-      "component": "text",
-      "name": "submitButtonText",
-      "label": "Submit Button Text",
-      "valueType": "string",
-      "value": "Send Message"
-    },
-    {
       "component": "select",
       "name": "submitButtonVariant",
       "label": "Submit Button Style",
@@ -123,13 +74,6 @@
           "value": "[variant-new]"
         }
       ]
-    },
-    {
-      "component": "text",
-      "name": "successMessage",
-      "label": "Success Message",
-      "valueType": "string",
-      "value": "Thank you! Your message has been sent."
     },
     {
       "component": "reference",
