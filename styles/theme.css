@@ -823,5 +823,30 @@ a:not([class]) {
   color: var(--snd-secondary_700);
   background-color: var(--prm-primary_100);
 }
+.new .acc-button--link {
+  box-sizing: border-box;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--grey-white);
+  color: var(--grey-black);
+  border-style: solid;
+  border-color: transparent;
+  border: none;
+}
+.new .acc-button--link .icon img {
+  height: auto;
+  display: flex;
+}
+.new .acc-button--link .icon img {
+  width: 10px;
+}
+.new .acc-button--link:hover {
+  color: var(--grey-white);
+  background-color: var(--grey-black);
+}
 
 /* stylelint-enable */
