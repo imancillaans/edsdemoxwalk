@@ -130,6 +130,22 @@
         {
           "name": "Purple",
           "value": "purple"
+        },
+        {
+          "name": "Blue",
+          "value": "blue"
+        },
+        {
+          "name": "Gray",
+          "value": "gray"
+        },
+        {
+          "name": "Green",
+          "value": "green"
+        },
+        {
+          "name": "Orange",
+          "value": "orange"
         }
       ]
     }

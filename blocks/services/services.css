@@ -2,7 +2,8 @@
 
 .services {
   background-color: var(--background-color);
-  padding: 4rem 0;
+  padding: 5rem 0;
+  min-height: 500px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -307,10 +308,126 @@ main .section:has(.services) > div {
   color: #667eea;
 }
 
+.services.blue {
+  background: #3b82f6;
+}
+
+.services.blue .services-container {
+  color: white;
+}
+
+.services.blue .services-section-title,
+.services.blue .services-title,
+.services.blue .services-subtitle {
+  color: white;
+}
+
+.services.blue .service-card {
+  background: rgb(255 255 255 / 15%);
+  backdrop-filter: blur(10px);
+}
+
+.services.blue .service-name,
+.services.blue .service-description {
+  color: white;
+}
+
+.services.blue .service-icon {
+  background: white;
+}
+
+.services.blue .service-icon svg {
+  color: #3b82f6;
+}
+
+.services.gray {
+  background: #f3f4f6;
+}
+
+.services.gray .services-section-title {
+  color: #e74c3c;
+}
+
+.services.gray .services-title {
+  color: #1f2937;
+}
+
+.services.gray .services-subtitle {
+  color: #4b5563;
+}
+
+.services.gray .service-card {
+  background: white;
+}
+
+.services.green {
+  background: #10b981;
+}
+
+.services.green .services-container {
+  color: white;
+}
+
+.services.green .services-section-title,
+.services.green .services-title,
+.services.green .services-subtitle {
+  color: white;
+}
+
+.services.green .service-card {
+  background: rgb(255 255 255 / 15%);
+  backdrop-filter: blur(10px);
+}
+
+.services.green .service-name,
+.services.green .service-description {
+  color: white;
+}
+
+.services.green .service-icon {
+  background: white;
+}
+
+.services.green .service-icon svg {
+  color: #10b981;
+}
+
+.services.orange {
+  background: #f97316;
+}
+
+.services.orange .services-container {
+  color: white;
+}
+
+.services.orange .services-section-title,
+.services.orange .services-title,
+.services.orange .services-subtitle {
+  color: white;
+}
+
+.services.orange .service-card {
+  background: rgb(255 255 255 / 15%);
+  backdrop-filter: blur(10px);
+}
+
+.services.orange .service-name,
+.services.orange .service-description {
+  color: white;
+}
+
+.services.orange .service-icon {
+  background: white;
+}
+
+.services.orange .service-icon svg {
+  color: #f97316;
+}
+
 /* Responsive adjustments */
 @media (width >= 900px) {
   .services {
-    padding: 5rem 0;
+    padding: 6rem 0;
   }
 
   .services-container {

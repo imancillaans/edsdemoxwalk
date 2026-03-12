@@ -2,7 +2,8 @@
 
 .contact-form {
   background-color: var(--background-color);
-  padding: 4rem 0;
+  padding: 5rem 0;
+  min-height: 500px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -299,6 +300,116 @@ main .section:has(.contact-form) > div {
   color: rgb(255 255 255 / 60%);
 }
 
+.contact-form.blue {
+  background: #3b82f6;
+}
+
+.contact-form.blue .contact-form-container {
+  color: white;
+}
+
+.contact-form.blue .contact-form-section-title,
+.contact-form.blue .contact-form-title,
+.contact-form.blue .contact-form-subtitle {
+  color: white;
+}
+
+.contact-form.blue .contact-form-group label {
+  color: white;
+}
+
+.contact-form.blue .contact-form-group input,
+.contact-form.blue .contact-form-group textarea {
+  background: rgb(255 255 255 / 15%);
+  border-color: rgb(255 255 255 / 30%);
+  color: white;
+}
+
+.contact-form.blue .contact-form-group input::placeholder,
+.contact-form.blue .contact-form-group textarea::placeholder {
+  color: rgb(255 255 255 / 60%);
+}
+
+.contact-form.gray {
+  background: #f3f4f6;
+}
+
+.contact-form.gray .contact-form-section-title {
+  color: #e74c3c;
+}
+
+.contact-form.gray .contact-form-title {
+  color: #1f2937;
+}
+
+.contact-form.gray .contact-form-subtitle {
+  color: #4b5563;
+}
+
+.contact-form.gray .contact-form-group label {
+  color: #1f2937;
+}
+
+.contact-form.green {
+  background: #10b981;
+}
+
+.contact-form.green .contact-form-container {
+  color: white;
+}
+
+.contact-form.green .contact-form-section-title,
+.contact-form.green .contact-form-title,
+.contact-form.green .contact-form-subtitle {
+  color: white;
+}
+
+.contact-form.green .contact-form-group label {
+  color: white;
+}
+
+.contact-form.green .contact-form-group input,
+.contact-form.green .contact-form-group textarea {
+  background: rgb(255 255 255 / 15%);
+  border-color: rgb(255 255 255 / 30%);
+  color: white;
+}
+
+.contact-form.green .contact-form-group input::placeholder,
+.contact-form.green .contact-form-group textarea::placeholder {
+  color: rgb(255 255 255 / 60%);
+}
+
+.contact-form.orange {
+  background: #f97316;
+}
+
+.contact-form.orange .contact-form-container {
+  color: white;
+}
+
+.contact-form.orange .contact-form-section-title,
+.contact-form.orange .contact-form-title,
+.contact-form.orange .contact-form-subtitle {
+  color: white;
+}
+
+.contact-form.orange .contact-form-group label {
+  color: white;
+}
+
+.contact-form.orange .contact-form-group input,
+.contact-form.orange .contact-form-group textarea {
+  background: rgb(255 255 255 / 15%);
+  border-color: rgb(255 255 255 / 30%);
+  color: white;
+}
+
+.contact-form.orange .contact-form-group input::placeholder,
+.contact-form.orange .contact-form-group textarea::placeholder {
+  color: rgb(255 255 255 / 60%);
+}
+
 /* Focus states for variants (must come after all variant base rules) */
 .contact-form.dark .contact-form-group input:focus,
 .contact-form.dark .contact-form-group textarea:focus {
@@ -312,10 +423,28 @@ main .section:has(.contact-form) > div {
   background: rgb(255 255 255 / 20%);
 }
 
+.contact-form.blue .contact-form-group input:focus,
+.contact-form.blue .contact-form-group textarea:focus {
+  border-color: white;
+  background: rgb(255 255 255 / 20%);
+}
+
+.contact-form.green .contact-form-group input:focus,
+.contact-form.green .contact-form-group textarea:focus {
+  border-color: white;
+  background: rgb(255 255 255 / 20%);
+}
+
+.contact-form.orange .contact-form-group input:focus,
+.contact-form.orange .contact-form-group textarea:focus {
+  border-color: white;
+  background: rgb(255 255 255 / 20%);
+}
+
 /* Responsive adjustments */
 @media (width >= 900px) {
   .contact-form {
-    padding: 5rem 0;
+    padding: 6rem 0;
   }
 
   .contact-form-container {

@@ -4,7 +4,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
-  padding: 4rem clamp(1rem, 5vw, 4rem);
+  padding: 5rem clamp(1rem, 5vw, 4rem);
   min-height: 500px;
   width: 100%;
   box-sizing: border-box;
@@ -164,6 +164,70 @@ main .section:has(.banner) > div {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
+.banner.blue {
+  background: #3b82f6;
+}
+
+.banner.blue .banner-content {
+  color: white;
+}
+
+.banner.blue .banner-title {
+  color: white;
+}
+
+.banner.blue .banner-subtitle {
+  color: rgb(255 255 255 / 90%);
+}
+
+.banner.gray {
+  background: #6b7280;
+}
+
+.banner.gray .banner-content {
+  color: white;
+}
+
+.banner.gray .banner-title {
+  color: white;
+}
+
+.banner.gray .banner-subtitle {
+  color: rgb(255 255 255 / 90%);
+}
+
+.banner.green {
+  background: #10b981;
+}
+
+.banner.green .banner-content {
+  color: white;
+}
+
+.banner.green .banner-title {
+  color: white;
+}
+
+.banner.green .banner-subtitle {
+  color: rgb(255 255 255 / 90%);
+}
+
+.banner.orange {
+  background: #f97316;
+}
+
+.banner.orange .banner-content {
+  color: white;
+}
+
+.banner.orange .banner-title {
+  color: white;
+}
+
+.banner.orange .banner-subtitle {
+  color: rgb(255 255 255 / 90%);
+}
+
 /* Layout Variants */
 
 /* Default layout - content left, image right */
@@ -193,6 +257,12 @@ main .section:has(.banner) > div {
 
 .banner.layout-center .banner-buttons {
   justify-content: center;
+}
+
+@media (width >= 900px) {
+  .banner {
+    padding: 6rem clamp(1rem, 5vw, 4rem);
+  }
 }
 
 @media (width <= 900px) {

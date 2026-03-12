@@ -2,8 +2,8 @@
 
 .meet-the-team {
   background-color: var(--background-color);
-  padding: 4rem 0;
-  min-height: 400px;
+  padding: 5rem 0;
+  min-height: 500px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -203,7 +203,7 @@ main .section:has(.meet-the-team) > div {
 /* Responsive adjustments */
 @media (width >= 900px) {
   .meet-the-team {
-    padding: 5rem clamp(2rem, 5vw, 4rem);
+    padding: 6rem 0;
   }
 
   .meet-the-team-container {
@@ -246,5 +246,63 @@ main .section:has(.meet-the-team) > div {
 .meet-the-team.purple .meet-the-team-section-title,
 .meet-the-team.purple .meet-the-team-title,
 .meet-the-team.purple .meet-the-team-description {
+  color: white;
+}
+
+.meet-the-team.blue {
+  background: #3b82f6;
+}
+
+.meet-the-team.blue .meet-the-team-container {
+  color: white;
+}
+
+.meet-the-team.blue .meet-the-team-section-title,
+.meet-the-team.blue .meet-the-team-title,
+.meet-the-team.blue .meet-the-team-description {
+  color: white;
+}
+
+.meet-the-team.gray {
+  background: #f3f4f6;
+}
+
+.meet-the-team.gray .meet-the-team-section-title {
+  color: #e74c3c;
+}
+
+.meet-the-team.gray .meet-the-team-title {
+  color: #1f2937;
+}
+
+.meet-the-team.gray .meet-the-team-description {
+  color: #4b5563;
+}
+
+.meet-the-team.green {
+  background: #10b981;
+}
+
+.meet-the-team.green .meet-the-team-container {
+  color: white;
+}
+
+.meet-the-team.green .meet-the-team-section-title,
+.meet-the-team.green .meet-the-team-title,
+.meet-the-team.green .meet-the-team-description {
+  color: white;
+}
+
+.meet-the-team.orange {
+  background: #f97316;
+}
+
+.meet-the-team.orange .meet-the-team-container {
+  color: white;
+}
+
+.meet-the-team.orange .meet-the-team-section-title,
+.meet-the-team.orange .meet-the-team-title,
+.meet-the-team.orange .meet-the-team-description {
   color: white;
 }
