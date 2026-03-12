@@ -56,7 +56,7 @@ export default function decorate(block) {
 
       bannerContent.append(subtitle);
     }
-    subtitleRow.remove(); 
+    subtitleRow.remove();
   }
 
   // Process buttons

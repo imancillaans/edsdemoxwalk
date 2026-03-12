@@ -1,6 +1,6 @@
 /* Form Block Styles */
 
-.form {
+.contact-form {
   background-color: var(--background-color);
   padding: 4rem 0;
   width: 100%;
@@ -8,24 +8,24 @@
 }
 
 /* Remove default section constraints for form */
-main .section:has(.form) {
+main .section:has(.contact-form) {
   padding: 0;
   margin: 0;
 }
 
-main .section:has(.form) > div {
+main .section:has(.contact-form) > div {
   max-width: none;
   margin: 0;
   padding: 0 !important;
 }
 
 /* Background Image Support */
-.form.has-background-image {
+.contact-form.has-background-image {
   position: relative;
   background-color: transparent;
 }
 
-.form.has-background-image::before {
+.contact-form.has-background-image::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -34,34 +34,34 @@ main .section:has(.form) > div {
 }
 
 /* Overlay Intensity Variants */
-.form.overlay-none::before {
+.contact-form.overlay-none::before {
   background: transparent;
 }
 
-.form.overlay-light::before {
+.contact-form.overlay-light::before {
   background: rgb(0 0 0 / 20%);
 }
 
-.form.overlay-medium::before {
+.contact-form.overlay-medium::before {
   background: rgb(0 0 0 / 50%);
 }
 
-.form.overlay-dark::before {
+.contact-form.overlay-dark::before {
   background: rgb(0 0 0 / 70%);
 }
 
-.form.overlay-very-dark::before {
+.contact-form.overlay-very-dark::before {
   background: rgb(0 0 0 / 85%);
 }
 
 /* Ensure content is above the overlay */
-.form.has-background-image > * {
+.contact-form.has-background-image > * {
   position: relative;
   z-index: 1;
 }
 
 /* Container */
-.form-container {
+.contact-form-container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -72,19 +72,19 @@ main .section:has(.form) > div {
 }
 
 @media (width >= 600px) {
-  .form-container {
+  .contact-form-container {
     padding: 0 3rem;
   }
 }
 
 @media (width >= 900px) {
-  .form-container {
+  .contact-form-container {
     padding: 0 4rem;
   }
 }
 
 /* Section Title (e.g., "CONTACT US") */
-.form-section-title {
+.contact-form-section-title {
   font-size: 0.875rem;
   font-family: var(--heading-font-family);
   font-weight: 600;
@@ -95,7 +95,7 @@ main .section:has(.form) > div {
 }
 
 /* Main Title */
-.form-title {
+.contact-form-title {
   font-size: 2rem;
   font-family: var(--heading-font-family);
   font-weight: 700;
@@ -105,19 +105,19 @@ main .section:has(.form) > div {
 }
 
 @media (width >= 600px) {
-  .form-title {
+  .contact-form-title {
     font-size: 2.5rem;
   }
 }
 
 @media (width >= 900px) {
-  .form-title {
+  .contact-form-title {
     font-size: 3rem;
   }
 }
 
 /* Subtitle */
-.form-subtitle {
+.contact-form-subtitle {
   font-size: 1rem;
   color: var(--text-color);
   line-height: 1.8;
@@ -125,25 +125,25 @@ main .section:has(.form) > div {
 }
 
 @media (width >= 600px) {
-  .form-subtitle {
+  .contact-form-subtitle {
     font-size: 1.125rem;
   }
 }
 
-.form-subtitle p {
+.contact-form-subtitle p {
   margin: 0.75rem 0;
 }
 
-.form-subtitle p:first-child {
+.contact-form-subtitle p:first-child {
   margin-top: 0;
 }
 
-.form-subtitle p:last-child {
+.contact-form-subtitle p:last-child {
   margin-bottom: 0;
 }
 
-/* Contact Form */
-.contact-form {
+/* Contact Form Element */
+.contact-form-element {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -152,21 +152,21 @@ main .section:has(.form) > div {
 }
 
 /* Form Group */
-.form-group {
+.contact-form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.form-group label {
+.contact-form-group label {
   font-size: 0.9375rem;
   font-weight: 600;
   color: var(--text-color);
   font-family: var(--heading-font-family);
 }
 
-.form-group input,
-.form-group textarea {
+.contact-form-group input,
+.contact-form-group textarea {
   padding: 0.875rem 1rem;
   font-size: 1rem;
   font-family: var(--body-font-family);
@@ -177,26 +177,26 @@ main .section:has(.form) > div {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.form-group textarea {
+.contact-form-group textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.contact-form-group input:focus,
+.contact-form-group textarea:focus {
   outline: none;
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgb(102 126 234 / 10%);
 }
 
 /* Button Wrapper */
-.form-button-wrapper {
+.contact-form-button-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
 
-.form-button-wrapper .button {
+.contact-form-button-wrapper .button {
   display: inline-block;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -204,13 +204,13 @@ main .section:has(.form) > div {
   border: none;
 }
 
-.form-button-wrapper .button:hover {
+.contact-form-button-wrapper .button:hover {
   opacity: 0.9;
   transform: translateY(-2px);
 }
 
 /* Success Message */
-.form-success-message {
+.contact-form-success-message {
   padding: 1.5rem 2rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -235,94 +235,94 @@ main .section:has(.form) > div {
 }
 
 /* Background Color Variants */
-.form.light {
+.contact-form.light {
   background: #f8fafc;
 }
 
-.form.dark {
+.contact-form.dark {
   background: #0f172a;
 }
 
-.form.dark .form-container {
+.contact-form.dark .contact-form-container {
   color: white;
 }
 
-.form.dark .form-section-title,
-.form.dark .form-title,
-.form.dark .form-subtitle {
+.contact-form.dark .contact-form-section-title,
+.contact-form.dark .contact-form-title,
+.contact-form.dark .contact-form-subtitle {
   color: white;
 }
 
-.form.dark .form-group label {
+.contact-form.dark .contact-form-group label {
   color: white;
 }
 
-.form.dark .form-group input,
-.form.dark .form-group textarea {
+.contact-form.dark .contact-form-group input,
+.contact-form.dark .contact-form-group textarea {
   background: rgb(255 255 255 / 10%);
   border-color: rgb(255 255 255 / 20%);
   color: white;
 }
 
-.form.dark .form-group input::placeholder,
-.form.dark .form-group textarea::placeholder {
+.contact-form.dark .contact-form-group input::placeholder,
+.contact-form.dark .contact-form-group textarea::placeholder {
   color: rgb(255 255 255 / 50%);
 }
 
-.form.purple {
+.contact-form.purple {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.form.purple .form-container {
+.contact-form.purple .contact-form-container {
   color: white;
 }
 
-.form.purple .form-section-title,
-.form.purple .form-title,
-.form.purple .form-subtitle {
+.contact-form.purple .contact-form-section-title,
+.contact-form.purple .contact-form-title,
+.contact-form.purple .contact-form-subtitle {
   color: white;
 }
 
-.form.purple .form-group label {
+.contact-form.purple .contact-form-group label {
   color: white;
 }
 
-.form.purple .form-group input,
-.form.purple .form-group textarea {
+.contact-form.purple .contact-form-group input,
+.contact-form.purple .contact-form-group textarea {
   background: rgb(255 255 255 / 15%);
   border-color: rgb(255 255 255 / 30%);
   color: white;
 }
 
-.form.purple .form-group input::placeholder,
-.form.purple .form-group textarea::placeholder {
+.contact-form.purple .contact-form-group input::placeholder,
+.contact-form.purple .contact-form-group textarea::placeholder {
   color: rgb(255 255 255 / 60%);
 }
 
 /* Focus states for variants (must come after all variant base rules) */
-.form.dark .form-group input:focus,
-.form.dark .form-group textarea:focus {
+.contact-form.dark .contact-form-group input:focus,
+.contact-form.dark .contact-form-group textarea:focus {
   border-color: #667eea;
   background: rgb(255 255 255 / 15%);
 }
 
-.form.purple .form-group input:focus,
-.form.purple .form-group textarea:focus {
+.contact-form.purple .contact-form-group input:focus,
+.contact-form.purple .contact-form-group textarea:focus {
   border-color: white;
   background: rgb(255 255 255 / 20%);
 }
 
 /* Responsive adjustments */
 @media (width >= 900px) {
-  .form {
+  .contact-form {
     padding: 5rem 0;
   }
 
-  .form-container {
+  .contact-form-container {
     gap: 3rem;
   }
 
-  .form-section-title {
+  .contact-form-section-title {
     font-size: 1rem;
     letter-spacing: 4px;
   }

@@ -24,7 +24,7 @@ export default function decorate(block) {
 
   // Create main container
   const container = document.createElement('div');
-  container.className = 'form-container';
+  container.className = 'contact-form-container';
 
   // Process section title
   if (sectionTitleRow) {
@@ -33,7 +33,7 @@ export default function decorate(block) {
 
     if (titleText) {
       const sectionTitle = document.createElement('div');
-      sectionTitle.className = 'form-section-title';
+      sectionTitle.className = 'contact-form-section-title';
       moveInstrumentation(titleCell, sectionTitle);
       sectionTitle.textContent = titleText;
       container.append(sectionTitle);
@@ -48,7 +48,7 @@ export default function decorate(block) {
 
     if (titleText) {
       const title = document.createElement('h2');
-      title.className = 'form-title';
+      title.className = 'contact-form-title';
       moveInstrumentation(titleCell, title);
       title.textContent = titleText;
       container.append(title);
@@ -62,7 +62,7 @@ export default function decorate(block) {
 
     if (subtitleCell && subtitleCell.textContent.trim()) {
       const subtitle = document.createElement('div');
-      subtitle.className = 'form-subtitle';
+      subtitle.className = 'contact-form-subtitle';
       moveInstrumentation(subtitleCell, subtitle);
 
       while (subtitleCell.firstChild) {
@@ -76,19 +76,19 @@ export default function decorate(block) {
 
   // Create the actual form with hardcoded labels/placeholders
   const formElement = document.createElement('form');
-  formElement.className = 'contact-form';
+  formElement.className = 'contact-form-element';
 
   // Name field
   const nameGroup = document.createElement('div');
-  nameGroup.className = 'form-group';
+  nameGroup.className = 'contact-form-group';
 
   const nameFieldLabel = document.createElement('label');
   nameFieldLabel.textContent = 'Name';
-  nameFieldLabel.setAttribute('for', 'form-name');
+  nameFieldLabel.setAttribute('for', 'contact-form-name');
 
   const nameInput = document.createElement('input');
   nameInput.type = 'text';
-  nameInput.id = 'form-name';
+  nameInput.id = 'contact-form-name';
   nameInput.name = 'name';
   nameInput.placeholder = 'Enter your name';
   nameInput.required = true;
@@ -97,15 +97,15 @@ export default function decorate(block) {
 
   // Email field
   const emailGroup = document.createElement('div');
-  emailGroup.className = 'form-group';
+  emailGroup.className = 'contact-form-group';
 
   const emailFieldLabel = document.createElement('label');
   emailFieldLabel.textContent = 'Email';
-  emailFieldLabel.setAttribute('for', 'form-email');
+  emailFieldLabel.setAttribute('for', 'contact-form-email');
 
   const emailInput = document.createElement('input');
   emailInput.type = 'email';
-  emailInput.id = 'form-email';
+  emailInput.id = 'contact-form-email';
   emailInput.name = 'email';
   emailInput.placeholder = 'Enter your email';
   emailInput.required = true;
@@ -114,14 +114,14 @@ export default function decorate(block) {
 
   // Message field
   const messageGroup = document.createElement('div');
-  messageGroup.className = 'form-group';
+  messageGroup.className = 'contact-form-group';
 
   const messageFieldLabel = document.createElement('label');
   messageFieldLabel.textContent = 'Message';
-  messageFieldLabel.setAttribute('for', 'form-message');
+  messageFieldLabel.setAttribute('for', 'contact-form-message');
 
   const messageTextarea = document.createElement('textarea');
-  messageTextarea.id = 'form-message';
+  messageTextarea.id = 'contact-form-message';
   messageTextarea.name = 'message';
   messageTextarea.placeholder = 'Enter your message';
   messageTextarea.rows = 5;
@@ -157,14 +157,14 @@ export default function decorate(block) {
     : submitButton;
 
   const buttonWrapper = document.createElement('div');
-  buttonWrapper.className = 'form-button-wrapper';
+  buttonWrapper.className = 'contact-form-button-wrapper';
   buttonWrapper.append(buttonElement);
 
   formElement.append(buttonWrapper);
 
   // Create success message element (hidden by default)
   const successMessageElement = document.createElement('div');
-  successMessageElement.className = 'form-success-message';
+  successMessageElement.className = 'contact-form-success-message';
   successMessageElement.textContent = 'Thank you! Your message has been sent.';
   successMessageElement.style.display = 'none';
 
