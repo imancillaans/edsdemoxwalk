@@ -55,6 +55,10 @@ export default function getButtonVariants() {
   "gyto_main": {
     "componentVariantTitle": "Gyto_main",
     "className": "gyto_main"
+  },
+  "new": {
+    "componentVariantTitle": "New",
+    "className": "new"
   }
 };
 }

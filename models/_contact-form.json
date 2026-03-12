@@ -117,6 +117,10 @@
         {
           "name": "Gyto_main",
           "value": "[variant-gyto_main]"
+        },
+        {
+          "name": "New",
+          "value": "[variant-new]"
         }
       ]
     },
