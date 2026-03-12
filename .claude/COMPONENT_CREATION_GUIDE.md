@@ -123,13 +123,7 @@ export default function getButtonVariants() {
     {
       "component": "aem-content",
       "name": "ctaLink",
-      "label": "Button Link"
-    },
-    {
-      "component": "text",
-      "name": "ctaText",
-      "label": "Button Text",
-      "valueType": "string"
+      "label": "Button Link (text included in link)"
     },
     {
       "component": "select",
@@ -141,6 +135,8 @@ export default function getButtonVariants() {
   ]
 }
 ```
+
+**Note:** No `ctaText` field! The link text is edited directly in the `aem-content` link field.
 
 **Template for component with 2 buttons:**
 
@@ -157,13 +153,7 @@ export default function getButtonVariants() {
     {
       "component": "aem-content",
       "name": "cta1Link",
-      "label": "Primary Button Link"
-    },
-    {
-      "component": "text",
-      "name": "cta1Text",
-      "label": "Primary Button Text",
-      "valueType": "string"
+      "label": "Primary Button Link (text included)"
     },
     {
       "component": "select",
@@ -175,13 +165,7 @@ export default function getButtonVariants() {
     {
       "component": "aem-content",
       "name": "cta2Link",
-      "label": "Secondary Button Link"
-    },
-    {
-      "component": "text",
-      "name": "cta2Text",
-      "label": "Secondary Button Text",
-      "valueType": "string"
+      "label": "Secondary Button Link (text included)"
     },
     {
       "component": "select",
@@ -194,17 +178,26 @@ export default function getButtonVariants() {
 }
 ```
 
+**Note:** No `cta1Text` or `cta2Text` fields! Link text is part of the `aem-content` link element.
+
 **CRITICAL NAMING CONVENTIONS:**
 
 | Field Purpose | Field Name Pattern | Example |
 |---------------|-------------------|---------|
 | Button link | `cta{N}Link` or `ctaLink` | `cta1Link`, `ctaLink` |
-| Button text | `cta{N}Text` or `ctaText` | `cta1Text`, `ctaText` |
 | Button variant | `cta{N}Variant` or `ctaVariant` | `cta1Variant`, `ctaVariant` |
+
+**IMPORTANT: Button Text Fields**
+- **DO NOT** create separate `cta{N}LinkText` or `cta{N}Text` fields in the model
+- Universal Editor collapses `aem-content` (link) fields with their text into a single row
+- The link text is already part of the `<a>` element
+- Creating separate text fields will cause row destructuring misalignment
 
 **Why these names matter:**
 - The generation script `generate-button-variants.js` looks for fields ending in `Variant`
 - Must follow this pattern or auto-generation won't work
+
+**Common Bug:** If you include `cta1LinkText` in the model, the row destructuring will be off by 2 positions, causing variants to read the wrong cell values!
 
 ---
 
@@ -308,11 +301,11 @@ export default function decorate(block) {
   const rows = [...block.children];
 
   // Destructure rows based on model field order
+  // Note: NO ctaTextRow - text is in the link element!
   const [
     titleRow,
     descriptionRow,
     ctaLinkRow,
-    ctaTextRow,
     ctaVariantRow,
   ] = rows;
 
@@ -388,7 +381,6 @@ export default function decorate(block) {
       content.append(buttonElement);
     }
     ctaLinkRow.remove();
-    if (ctaTextRow) ctaTextRow.remove();
   }
 
   // Append content to block
@@ -406,13 +398,12 @@ import { applyButtonVariant } from '../../scripts/theme-utils.js';
 export default function decorate(block) {
   const rows = [...block.children];
 
+  // Note: NO cta1TextRow or cta2TextRow - text is in link elements!
   const [
     titleRow,
     cta1LinkRow,
-    cta1TextRow,
     cta1VariantRow,
     cta2LinkRow,
-    cta2TextRow,
     cta2VariantRow,
   ] = rows;
 
@@ -453,7 +444,6 @@ export default function decorate(block) {
       buttonsWrapper.append(buttonElement);
     }
     cta1LinkRow.remove();
-    if (cta1TextRow) cta1TextRow.remove();
   }
 
   // Process CTA 2 (Secondary Button)
@@ -482,7 +472,6 @@ export default function decorate(block) {
       buttonsWrapper.append(buttonElement);
     }
     cta2LinkRow.remove();
-    if (cta2TextRow) cta2TextRow.remove();
   }
 
   if (buttonsWrapper.children.length > 0) {
@@ -841,6 +830,34 @@ If your component should also be available in other containers (columns, fragmen
 # Check all filter types
 cat models/_*.json | grep -A 10 '"filters"'
 ```
+
+---
+
+## SPECIAL CASE: Dynamic Form Components
+
+**Challenge:** Components that create complex DOM structures dynamically (like forms) may only show configuration text in Universal Editor, not the actual rendered component.
+
+**Why this happens:**
+- Universal Editor shows the initial HTML table structure
+- JavaScript decoration runs AFTER the editor renders
+- Configuration values (labels, placeholders) appear as plain text
+- The actual form elements aren't visible until the page is published
+
+**Solutions:**
+
+### Option 1: Simplified Form with Fixed Fields
+Remove configuration fields and hardcode labels/placeholders in JavaScript. This reduces flexibility but ensures the form renders immediately.
+
+### Option 2: Static HTML Preview
+Create actual form HTML in the table structure that gets enhanced by JavaScript. This shows a preview in Universal Editor but requires more complex setup.
+
+### Option 3: Accept Editor Limitation
+Document that the component only renders correctly on published pages, not in Universal Editor. This is acceptable for complex components like forms, calculators, or interactive widgets.
+
+**Recommendation:** For forms and other highly dynamic components, use Option 3 and document it clearly in the component's README or JSDoc comments.
+
+**Example from form block:**
+The contact form creates all `<input>`, `<textarea>`, and `<label>` elements dynamically. In Universal Editor, users see only the configuration values. On published pages, the full interactive form renders correctly.
 
 ---
 
