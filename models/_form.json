@@ -110,6 +110,10 @@
         {
           "name": "Gyto_main",
           "value": "[variant-gyto_main]"
+        },
+        {
+          "name": "Gyto_secondary",
+          "value": "[variant-gyto_secondary]"
         }
       ]
     },
