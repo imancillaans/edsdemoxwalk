@@ -58,7 +58,7 @@ export default function decorate(block) {
     }
     subtitleRow.remove();
   }
- 
+
   // Process buttons
   const buttonsWrapper = document.createElement('div');
   buttonsWrapper.className = 'banner-buttons';
