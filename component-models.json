@@ -378,6 +378,26 @@
         "multi": false
       },
       {
+        "component": "select",
+        "name": "layout",
+        "label": "Content Layout",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Left (Default)",
+            "value": "left"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          },
+          {
+            "name": "Center (No Side Image)",
+            "value": "center"
+          }
+        ]
+      },
+      {
         "component": "reference",
         "name": "backgroundImage",
         "label": "Background Image (optional - overrides background color)",

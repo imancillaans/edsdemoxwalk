@@ -942,6 +942,107 @@ The contact form creates all `<input>`, `<textarea>`, and `<label>` elements dyn
 
 ---
 
+### ⚠️ CRITICAL LIMITATION: Text Fields Create Duplicate Blocks
+
+**DISCOVERED ISSUE:** Adding multiple `"text"` component fields to a block model causes Universal Editor to create duplicate block instances.
+
+**What Happened:**
+When we attempted to make contact form fields editable by adding 8 text fields to the model:
+- `nameLabel`, `namePlaceholder`
+- `emailLabel`, `emailPlaceholder`
+- `messageLabel`, `messagePlaceholder`
+- `submitButtonText`, `successMessage`
+
+**Result:** Universal Editor created 8 duplicate contact form blocks instead of 1.
+
+**Console Evidence:**
+```
+>>> applyButtonVariant called
+>>> applyButtonVariant called
+>>> applyButtonVariant called
+>>> applyButtonVariant called
+>>> applyButtonVariant called
+>>> applyButtonVariant called
+>>> applyButtonVariant called
+>>> applyButtonVariant called
+```
+
+**Root Cause:**
+Universal Editor interprets EACH `"text"` field in a component model as a separate content block, triggering a new instance of the entire component for each text field.
+
+**Field Types Behavior:**
+- ✅ `"select"` - Safe, used for configuration dropdowns
+- ✅ `"reference"` - Safe, used for images/media
+- ✅ `"richtext"` - Safe when used for main content areas
+- ⚠️ `"text"` (LIMITED USE) - Each field creates a separate block instance
+  - Only use 1-2 text fields for main titles/headings
+  - Never use multiple text fields for labels, placeholders, or secondary text
+
+**Solution Pattern:**
+
+```javascript
+// ❌ WRONG: This model would create 8 duplicate blocks
+{
+  "fields": [
+    { "component": "text", "name": "nameLabel" },
+    { "component": "text", "name": "namePlaceholder" },
+    { "component": "text", "name": "emailLabel" },
+    { "component": "text", "name": "emailPlaceholder" },
+    { "component": "text", "name": "messageLabel" },
+    { "component": "text", "name": "messagePlaceholder" },
+    { "component": "text", "name": "submitButtonText" },
+    { "component": "text", "name": "successMessage" }
+  ]
+}
+
+// ✅ CORRECT: Hardcode secondary text in JavaScript
+{
+  "fields": [
+    { "component": "text", "name": "sectionTitle" },
+    { "component": "text", "name": "title" },
+    { "component": "richtext", "name": "subtitle" },
+    { "component": "select", "name": "submitButtonVariant" },
+    { "component": "reference", "name": "backgroundImage" },
+    { "component": "select", "name": "backgroundOverlay" }
+  ]
+}
+
+// In JavaScript, hardcode the form field labels/placeholders:
+const nameFieldLabel = document.createElement('label');
+nameFieldLabel.textContent = 'Name'; // Hardcoded
+
+const nameInput = document.createElement('input');
+nameInput.placeholder = 'Enter your name'; // Hardcoded
+```
+
+**What CAN Be Editable:**
+- Main component title (1-2 text fields maximum)
+- Rich content areas (use richtext)
+- Configuration dropdowns (use select)
+- Background images (use reference)
+- Style variants (use select)
+
+**What MUST Be Hardcoded:**
+- Form field labels
+- Input placeholders
+- Button text (except main CTA)
+- Success/error messages
+- Tooltip text
+- Help text
+
+**Documentation Requirement:**
+Always add a JSDoc comment explaining what's hardcoded:
+
+```javascript
+/**
+ * NOTE: This component uses hardcoded form labels and placeholders for better
+ * Universal Editor experience. Only title, subtitle, button style, and background
+ * settings are configurable.
+ */
+```
+
+---
+
 ## COMMON ISSUES AND FIXES
 
 ### Issue: Component doesn't appear in Universal Editor panel

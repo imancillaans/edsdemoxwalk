@@ -164,6 +164,37 @@ main .section:has(.banner) > div {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
+/* Layout Variants */
+
+/* Default layout - content left, image right */
+.banner.layout-left {
+  /* No additional styles needed, base styles handle this */
+}
+
+/* Content right, image left - reverse the order */
+.banner.layout-right .banner-content {
+  order: 2;
+}
+
+.banner.layout-right .banner-image {
+  order: 1;
+}
+
+.banner.layout-center {
+  /* Content centered, no side image */
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.banner.layout-center .banner-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+.banner.layout-center .banner-buttons {
+  justify-content: center;
+}
+
 @media (width <= 900px) {
   .banner {
     grid-template-columns: 1fr;

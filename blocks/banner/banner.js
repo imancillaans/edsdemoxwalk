@@ -18,6 +18,7 @@ export default function decorate(block) {
     cta2Row,
     cta2VariantRow,
     imageRow,
+    layoutRow,
     backgroundImageRow,
     backgroundOverlayRow,
   ] = rows;
@@ -161,6 +162,20 @@ export default function decorate(block) {
     imageRow.remove();
   }
 
+  // Process layout
+  let layoutValue = 'left'; // default
+  if (layoutRow) {
+    const layoutCell = layoutRow.querySelector(':scope > div');
+    const layout = layoutCell?.textContent.trim();
+    if (layout && ['left', 'right', 'center'].includes(layout)) {
+      layoutValue = layout;
+    }
+    layoutRow.remove();
+  }
+
+  // Apply layout class
+  block.classList.add(`layout-${layoutValue}`);
+
   // Process background image (optional)
   if (backgroundImageRow) {
     const bgImageCell = backgroundImageRow.querySelector(':scope > div');
@@ -191,7 +206,15 @@ export default function decorate(block) {
     backgroundOverlayRow.remove();
   }
 
-  // Append both sections to block
-  block.append(bannerContent);
-  block.append(bannerImage);
+  // Append sections to block based on layout
+  if (layoutValue === 'center') {
+    // Center layout: only show content (centered)
+    block.append(bannerContent);
+  } else {
+    // Left or Right layout: show both content and image
+    block.append(bannerContent);
+    if (bannerImage.children.length > 0) {
+      block.append(bannerImage);
+    }
+  }
 }
