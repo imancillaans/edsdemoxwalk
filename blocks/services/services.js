@@ -203,7 +203,6 @@ export default function decorate(block) {
         if (match) {
           [, variantName] = match;
         }
-        moveInstrumentation(variantCell, buttonsWrapper);
         cta1VariantRow.remove();
       }
 
@@ -239,7 +238,6 @@ export default function decorate(block) {
         if (match) {
           [, variantName] = match;
         }
-        moveInstrumentation(variantCell, buttonsWrapper);
         cta2VariantRow.remove();
       }
 

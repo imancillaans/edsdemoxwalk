@@ -163,9 +163,6 @@ export default function decorate(block) {
   const variants = getButtonVariants();
   let variantName = 'purple'; // default
 
-  const buttonWrapper = document.createElement('div');
-  buttonWrapper.className = 'form-button-wrapper';
-
   if (submitButtonVariantRow) {
     const variantCell = submitButtonVariantRow.querySelector(':scope > div');
     const variantText = variantCell?.textContent.trim();
@@ -173,7 +170,6 @@ export default function decorate(block) {
     if (match) {
       [, variantName] = match;
     }
-    moveInstrumentation(variantCell, buttonWrapper);
     submitButtonVariantRow.remove();
   }
 
@@ -187,6 +183,8 @@ export default function decorate(block) {
     ? applyButtonVariant(submitButton, variants[variantName])
     : submitButton;
 
+  const buttonWrapper = document.createElement('div');
+  buttonWrapper.className = 'form-button-wrapper';
   buttonWrapper.append(buttonElement);
 
   formElement.append(buttonWrapper);

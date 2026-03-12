@@ -107,6 +107,8 @@ export default function decorate(block) {
   const buttonsWrapper = document.createElement('div');
   buttonsWrapper.className = 'meet-the-team-buttons';
   const variants = getButtonVariants();
+  // eslint-disable-next-line no-console
+  console.log('[MEET-THE-TEAM] Available variants:', Object.keys(variants));
 
   // Process CTA 1 (Primary Button)
   if (cta1LinkRow) {
@@ -119,17 +121,22 @@ export default function decorate(block) {
       btn1.className = 'button';
       btn1.textContent = link.textContent.trim();
       moveInstrumentation(link, btn1);
+      // eslint-disable-next-line no-console
+      console.log('[MEET-THE-TEAM] CTA1 Button created:', btn1);
 
       // Apply variant styling
       let variantName = 'purple'; // default
       if (cta1VariantRow) {
         const variantCell = cta1VariantRow.querySelector(':scope > div');
         const variantText = variantCell?.textContent.trim();
+        // eslint-disable-next-line no-console
+        console.log('[MEET-THE-TEAM] CTA1 Variant text from cell:', variantText);
         const match = variantText?.match(/\[variant-([^\]]+)\]/);
         if (match) {
           [, variantName] = match;
         }
-        moveInstrumentation(variantCell, buttonsWrapper);
+        // eslint-disable-next-line no-console
+        console.log('[MEET-THE-TEAM] CTA1 Variant name:', variantName);
         cta1VariantRow.remove();
       }
 
@@ -137,6 +144,10 @@ export default function decorate(block) {
       const buttonElement = variants[variantName]
         ? applyButtonVariant(btn1, variants[variantName])
         : btn1;
+      // eslint-disable-next-line no-console
+      console.log('[MEET-THE-TEAM] CTA1 Final button element:', buttonElement);
+      // eslint-disable-next-line no-console
+      console.log('[MEET-THE-TEAM] CTA1 Final button HTML:', buttonElement.outerHTML);
 
       buttonsWrapper.append(buttonElement);
     }
@@ -155,17 +166,22 @@ export default function decorate(block) {
       btn2.className = 'button';
       btn2.textContent = link.textContent.trim();
       moveInstrumentation(link, btn2);
+      // eslint-disable-next-line no-console
+      console.log('[MEET-THE-TEAM] CTA2 Button created:', btn2);
 
       // Apply variant styling
       let variantName = 'outline'; // default for secondary button
       if (cta2VariantRow) {
         const variantCell = cta2VariantRow.querySelector(':scope > div');
         const variantText = variantCell?.textContent.trim();
+        // eslint-disable-next-line no-console
+        console.log('[MEET-THE-TEAM] CTA2 Variant text from cell:', variantText);
         const match = variantText?.match(/\[variant-([^\]]+)\]/);
         if (match) {
           [, variantName] = match;
         }
-        moveInstrumentation(variantCell, buttonsWrapper);
+        // eslint-disable-next-line no-console
+        console.log('[MEET-THE-TEAM] CTA2 Variant name:', variantName);
         cta2VariantRow.remove();
       }
 
@@ -173,6 +189,10 @@ export default function decorate(block) {
       const buttonElement = variants[variantName]
         ? applyButtonVariant(btn2, variants[variantName])
         : btn2;
+      // eslint-disable-next-line no-console
+      console.log('[MEET-THE-TEAM] CTA2 Final button element:', buttonElement);
+      // eslint-disable-next-line no-console
+      console.log('[MEET-THE-TEAM] CTA2 Final button HTML:', buttonElement.outerHTML);
 
       buttonsWrapper.append(buttonElement);
     }
@@ -182,6 +202,10 @@ export default function decorate(block) {
 
   if (buttonsWrapper.children.length > 0) {
     container.append(buttonsWrapper);
+    // eslint-disable-next-line no-console
+    console.log('[MEET-THE-TEAM] Buttons wrapper appended with', buttonsWrapper.children.length, 'buttons');
+    // eslint-disable-next-line no-console
+    console.log('[MEET-THE-TEAM] Buttons wrapper HTML:', buttonsWrapper.innerHTML);
   }
 
   // Process background image (optional)

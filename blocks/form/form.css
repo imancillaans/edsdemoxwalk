@@ -201,8 +201,14 @@ main .section:has(.form) > div {
 .form-button-wrapper .button {
   display: inline-block;
   text-decoration: none;
+  transition: all 0.3s ease;
   cursor: pointer;
   border: none;
+}
+
+.form-button-wrapper .button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
 /* Success Message */
