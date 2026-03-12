@@ -72,6 +72,10 @@
         {
           "name": "New",
           "value": "[variant-new]"
+        },
+        {
+          "name": "Edsbutton",
+          "value": "[variant-edsbutton]"
         }
       ]
     },

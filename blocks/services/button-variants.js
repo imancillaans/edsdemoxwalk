@@ -59,6 +59,10 @@ export default function getButtonVariants() {
   "new": {
     "componentVariantTitle": "New",
     "className": "new"
+  },
+  "edsbutton": {
+    "componentVariantTitle": "Edsbutton",
+    "className": "edsbutton"
   }
 };
 }

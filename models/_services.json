@@ -359,6 +359,10 @@
         {
           "name": "New",
           "value": "[variant-new]"
+        },
+        {
+          "name": "Edsbutton",
+          "value": "[variant-edsbutton]"
         }
       ]
     },
@@ -426,6 +430,10 @@
         {
           "name": "New",
           "value": "[variant-new]"
+        },
+        {
+          "name": "Edsbutton",
+          "value": "[variant-edsbutton]"
         }
       ]
     },

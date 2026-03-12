@@ -301,6 +301,10 @@
           {
             "name": "New",
             "value": "[variant-new]"
+          },
+          {
+            "name": "Edsbutton",
+            "value": "[variant-edsbutton]"
           }
         ]
       },
@@ -368,6 +372,10 @@
           {
             "name": "New",
             "value": "[variant-new]"
+          },
+          {
+            "name": "Edsbutton",
+            "value": "[variant-edsbutton]"
           }
         ]
       },
@@ -516,7 +524,7 @@
       {
         "component": "text",
         "name": "sectionTitle",
-        "label": "Section Title (e.g., \u0027OUR SERVICES\u0027)",
+        "label": "Section Title (e.g., 'OUR SERVICES')",
         "valueType": "string"
       },
       {
@@ -871,6 +879,10 @@
           {
             "name": "New",
             "value": "[variant-new]"
+          },
+          {
+            "name": "Edsbutton",
+            "value": "[variant-edsbutton]"
           }
         ]
       },
@@ -938,6 +950,10 @@
           {
             "name": "New",
             "value": "[variant-new]"
+          },
+          {
+            "name": "Edsbutton",
+            "value": "[variant-edsbutton]"
           }
         ]
       },
@@ -1139,6 +1155,10 @@
           {
             "name": "New",
             "value": "[variant-new]"
+          },
+          {
+            "name": "Edsbutton",
+            "value": "[variant-edsbutton]"
           }
         ]
       },
@@ -1206,6 +1226,10 @@
           {
             "name": "New",
             "value": "[variant-new]"
+          },
+          {
+            "name": "Edsbutton",
+            "value": "[variant-edsbutton]"
           }
         ]
       },
@@ -1281,13 +1305,13 @@
       {
         "component": "text",
         "name": "sectionTitle",
-        "label": "Section Title (e.g., \u0027ABOUT US\u0027)",
+        "label": "Section Title (e.g., 'ABOUT US')",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "title",
-        "label": "Main Title (e.g., \u0027HI! I\u0027M BRIAN,\u0027)",
+        "label": "Main Title (e.g., 'HI! I'M BRIAN,')",
         "valueType": "string"
       },
       {
@@ -1366,6 +1390,10 @@
           {
             "name": "New",
             "value": "[variant-new]"
+          },
+          {
+            "name": "Edsbutton",
+            "value": "[variant-edsbutton]"
           }
         ]
       },
@@ -1433,6 +1461,10 @@
           {
             "name": "New",
             "value": "[variant-new]"
+          },
+          {
+            "name": "Edsbutton",
+            "value": "[variant-edsbutton]"
           }
         ]
       },
@@ -1538,7 +1570,7 @@
       {
         "component": "text",
         "name": "sectionTitle",
-        "label": "Section Title (e.g., \u0027CONTACT US\u0027)",
+        "label": "Section Title (e.g., 'CONTACT US')",
         "valueType": "string"
       },
       {
@@ -1606,6 +1638,10 @@
           {
             "name": "New",
             "value": "[variant-new]"
+          },
+          {
+            "name": "Edsbutton",
+            "value": "[variant-edsbutton]"
           }
         ]
       },
