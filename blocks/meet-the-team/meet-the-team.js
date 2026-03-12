@@ -10,6 +10,14 @@ import { applyButtonVariant } from '../../scripts/theme-utils.js';
 export default function decorate(block) {
   const rows = [...block.children];
 
+  // eslint-disable-next-line no-console
+  console.log('[MEET-THE-TEAM] Total rows:', rows.length);
+  rows.forEach((row, index) => {
+    const firstCell = row.querySelector(':scope > div');
+    // eslint-disable-next-line no-console
+    console.log(`[MEET-THE-TEAM] Row ${index}:`, firstCell?.textContent.trim().substring(0, 50));
+  });
+
   // Destructure rows based on model field order
   const [
     sectionTitleRow,
@@ -127,6 +135,19 @@ export default function decorate(block) {
       // Apply variant styling
       let variantName = 'purple'; // default
       if (cta1VariantRow) {
+        // eslint-disable-next-line no-console
+        console.log('[MEET-THE-TEAM] CTA1 Variant Row HTML:', cta1VariantRow.innerHTML);
+        // eslint-disable-next-line no-console
+        console.log('[MEET-THE-TEAM] CTA1 Variant Row children count:', cta1VariantRow.children.length);
+
+        const allCells = cta1VariantRow.querySelectorAll(':scope > div');
+        // eslint-disable-next-line no-console
+        console.log('[MEET-THE-TEAM] CTA1 Variant Row cells found:', allCells.length);
+        allCells.forEach((cell, index) => {
+          // eslint-disable-next-line no-console
+          console.log(`[MEET-THE-TEAM] Cell ${index}:`, cell.textContent.trim());
+        });
+
         const variantCell = cta1VariantRow.querySelector(':scope > div');
         const variantText = variantCell?.textContent.trim();
         // eslint-disable-next-line no-console
