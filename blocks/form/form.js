@@ -5,24 +5,19 @@ import { applyButtonVariant } from '../../scripts/theme-utils.js';
 /**
  * Decorates the form block
  * @param {Element} block The form block element
+ *
+ * NOTE: This component uses hardcoded form labels and placeholders for better
+ * Universal Editor experience. Only title, subtitle, and button style are configurable.
  */
 export default function decorate(block) {
   const rows = [...block.children];
 
-  // Destructure rows based on model field order
+  // Destructure rows based on simplified model
   const [
     sectionTitleRow,
     titleRow,
     subtitleRow,
-    nameFieldLabelRow,
-    nameFieldPlaceholderRow,
-    emailFieldLabelRow,
-    emailFieldPlaceholderRow,
-    messageFieldLabelRow,
-    messageFieldPlaceholderRow,
-    submitButtonTextRow,
     submitButtonVariantRow,
-    successMessageRow,
     backgroundImageRow,
     backgroundOverlayRow,
   ] = rows;
@@ -79,29 +74,7 @@ export default function decorate(block) {
     subtitleRow.remove();
   }
 
-  // Get field values
-  const nameLabel = nameFieldLabelRow?.querySelector(':scope > div')?.textContent.trim() || 'Name';
-  const namePlaceholder = nameFieldPlaceholderRow?.querySelector(':scope > div')?.textContent.trim() || 'Enter your name';
-  const emailLabel = emailFieldLabelRow?.querySelector(':scope > div')?.textContent.trim() || 'Email';
-  const emailPlaceholder = emailFieldPlaceholderRow?.querySelector(':scope > div')?.textContent.trim() || 'Enter your email';
-  const messageLabel = messageFieldLabelRow?.querySelector(':scope > div')?.textContent.trim() || 'Message';
-  const messagePlaceholder = messageFieldPlaceholderRow?.querySelector(':scope > div')?.textContent.trim() || 'Enter your message';
-  const submitText = submitButtonTextRow?.querySelector(':scope > div')?.textContent.trim() || 'Send Message';
-  const successMessage = successMessageRow?.querySelector(':scope > div')?.textContent.trim() || 'Message sent successfully!';
-
-  // Remove field configuration rows
-  [
-    nameFieldLabelRow,
-    nameFieldPlaceholderRow,
-    emailFieldLabelRow,
-    emailFieldPlaceholderRow,
-    messageFieldLabelRow,
-    messageFieldPlaceholderRow,
-    submitButtonTextRow,
-    successMessageRow,
-  ].forEach((row) => row?.remove());
-
-  // Create the actual form
+  // Create the actual form with hardcoded labels/placeholders
   const formElement = document.createElement('form');
   formElement.className = 'contact-form';
 
@@ -110,14 +83,14 @@ export default function decorate(block) {
   nameGroup.className = 'form-group';
 
   const nameFieldLabel = document.createElement('label');
-  nameFieldLabel.textContent = nameLabel;
+  nameFieldLabel.textContent = 'Name';
   nameFieldLabel.setAttribute('for', 'form-name');
 
   const nameInput = document.createElement('input');
   nameInput.type = 'text';
   nameInput.id = 'form-name';
   nameInput.name = 'name';
-  nameInput.placeholder = namePlaceholder;
+  nameInput.placeholder = 'Enter your name';
   nameInput.required = true;
 
   nameGroup.append(nameFieldLabel, nameInput);
@@ -127,14 +100,14 @@ export default function decorate(block) {
   emailGroup.className = 'form-group';
 
   const emailFieldLabel = document.createElement('label');
-  emailFieldLabel.textContent = emailLabel;
+  emailFieldLabel.textContent = 'Email';
   emailFieldLabel.setAttribute('for', 'form-email');
 
   const emailInput = document.createElement('input');
   emailInput.type = 'email';
   emailInput.id = 'form-email';
   emailInput.name = 'email';
-  emailInput.placeholder = emailPlaceholder;
+  emailInput.placeholder = 'Enter your email';
   emailInput.required = true;
 
   emailGroup.append(emailFieldLabel, emailInput);
@@ -144,13 +117,13 @@ export default function decorate(block) {
   messageGroup.className = 'form-group';
 
   const messageFieldLabel = document.createElement('label');
-  messageFieldLabel.textContent = messageLabel;
+  messageFieldLabel.textContent = 'Message';
   messageFieldLabel.setAttribute('for', 'form-message');
 
   const messageTextarea = document.createElement('textarea');
   messageTextarea.id = 'form-message';
   messageTextarea.name = 'message';
-  messageTextarea.placeholder = messagePlaceholder;
+  messageTextarea.placeholder = 'Enter your message';
   messageTextarea.rows = 5;
   messageTextarea.required = true;
 
@@ -176,7 +149,7 @@ export default function decorate(block) {
   const submitButton = document.createElement('button');
   submitButton.type = 'submit';
   submitButton.className = 'button';
-  submitButton.textContent = submitText;
+  submitButton.textContent = 'Send Message';
 
   // Apply variant and get wrapper (or button if no variant)
   const buttonElement = variants[variantName]
@@ -192,7 +165,7 @@ export default function decorate(block) {
   // Create success message element (hidden by default)
   const successMessageElement = document.createElement('div');
   successMessageElement.className = 'form-success-message';
-  successMessageElement.textContent = successMessage;
+  successMessageElement.textContent = 'Thank you! Your message has been sent.';
   successMessageElement.style.display = 'none';
 
   // Handle form submission

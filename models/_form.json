@@ -16,49 +16,7 @@
     {
       "component": "richtext",
       "name": "subtitle",
-      "label": "Subtitle / Description",
-      "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "nameFieldLabel",
-      "label": "Name Field - Label",
-      "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "nameFieldPlaceholder",
-      "label": "Name Field - Placeholder",
-      "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "emailFieldLabel",
-      "label": "Email Field - Label",
-      "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "emailFieldPlaceholder",
-      "label": "Email Field - Placeholder",
-      "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "messageFieldLabel",
-      "label": "Message Field - Label",
-      "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "messageFieldPlaceholder",
-      "label": "Message Field - Placeholder",
-      "valueType": "string"
-    },
-    {
-      "component": "text",
-      "name": "submitButtonText",
-      "label": "Submit Button Text",
+      "label": "Subtitle / Description (optional)",
       "valueType": "string"
     },
     {
@@ -112,12 +70,6 @@
           "value": "[variant-gyto_main]"
         }
       ]
-    },
-    {
-      "component": "text",
-      "name": "successMessage",
-      "label": "Success Message (shown after submit)",
-      "valueType": "string"
     },
     {
       "component": "reference",
