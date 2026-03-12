@@ -21,6 +21,7 @@ export default function decorate(block) {
     layoutRow,
     backgroundImageRow,
     backgroundOverlayRow,
+    textSizeRow,
   ] = rows;
 
   // Create banner content wrapper (left side)
@@ -175,6 +176,16 @@ export default function decorate(block) {
 
   // Apply layout class
   block.classList.add(`layout-${layoutValue}`);
+
+  // Process text size
+  if (textSizeRow) {
+    const textSizeCell = textSizeRow.querySelector(':scope > div');
+    const textSize = textSizeCell?.textContent.trim();
+    if (textSize && ['text-small', 'text-large'].includes(textSize)) {
+      block.classList.add(textSize);
+    }
+    textSizeRow.remove();
+  }
 
   // Process background image (optional)
   if (backgroundImageRow) {

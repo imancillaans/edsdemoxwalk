@@ -36,12 +36,15 @@ export default function decorate(block) {
     subtitleRow,
     service1NameRow,
     service1IconRow,
+    service1IconColorRow,
     service1DescriptionRow,
     service2NameRow,
     service2IconRow,
+    service2IconColorRow,
     service2DescriptionRow,
     service3NameRow,
     service3IconRow,
+    service3IconColorRow,
     service3DescriptionRow,
     cta1LinkRow,
     cta1VariantRow,
@@ -49,6 +52,8 @@ export default function decorate(block) {
     cta2VariantRow,
     backgroundImageRow,
     backgroundOverlayRow,
+    classesRow,
+    textSizeRow,
   ] = rows;
 
   // Create main container
@@ -109,13 +114,30 @@ export default function decorate(block) {
 
   // Process 3 services
   const services = [
-    { nameRow: service1NameRow, iconRow: service1IconRow, descriptionRow: service1DescriptionRow },
-    { nameRow: service2NameRow, iconRow: service2IconRow, descriptionRow: service2DescriptionRow },
-    { nameRow: service3NameRow, iconRow: service3IconRow, descriptionRow: service3DescriptionRow },
+    {
+      nameRow: service1NameRow,
+      iconRow: service1IconRow,
+      iconColorRow: service1IconColorRow,
+      descriptionRow: service1DescriptionRow,
+    },
+    {
+      nameRow: service2NameRow,
+      iconRow: service2IconRow,
+      iconColorRow: service2IconColorRow,
+      descriptionRow: service2DescriptionRow,
+    },
+    {
+      nameRow: service3NameRow,
+      iconRow: service3IconRow,
+      iconColorRow: service3IconColorRow,
+      descriptionRow: service3DescriptionRow,
+    },
   ];
 
   services.forEach((service) => {
-    const { nameRow, iconRow, descriptionRow } = service;
+    const {
+      nameRow, iconRow, iconColorRow, descriptionRow,
+    } = service;
 
     // Check if service has at least a name
     if (nameRow) {
@@ -136,6 +158,17 @@ export default function decorate(block) {
             const iconWrapper = document.createElement('div');
             iconWrapper.className = 'service-icon';
             iconWrapper.innerHTML = getIconSVG(iconValue);
+
+            // Apply icon color if specified
+            if (iconColorRow) {
+              const iconColorCell = iconColorRow.querySelector(':scope > div');
+              const iconColor = iconColorCell?.textContent.trim();
+              if (iconColor && iconColor !== '') {
+                iconWrapper.classList.add(iconColor);
+              }
+              iconColorRow.remove();
+            }
+
             serviceCard.append(iconWrapper);
           }
           iconRow.remove();
@@ -281,6 +314,21 @@ export default function decorate(block) {
       block.classList.add(`overlay-${overlayValue}`);
     }
     backgroundOverlayRow.remove();
+  }
+
+  // Process background color classes (handled automatically by framework)
+  if (classesRow) {
+    classesRow.remove();
+  }
+
+  // Process text size
+  if (textSizeRow) {
+    const textSizeCell = textSizeRow.querySelector(':scope > div');
+    const textSize = textSizeCell?.textContent.trim();
+    if (textSize && ['text-small', 'text-large'].includes(textSize)) {
+      block.classList.add(textSize);
+    }
+    textSizeRow.remove();
   }
 
   // Append container to block

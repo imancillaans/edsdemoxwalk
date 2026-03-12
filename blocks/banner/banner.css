@@ -228,6 +228,41 @@ main .section:has(.banner) > div {
   color: rgb(255 255 255 / 90%);
 }
 
+/* Text Size Variants */
+.banner.text-small .banner-title {
+  font-size: 2.25rem;
+}
+
+.banner.text-small .banner-subtitle {
+  font-size: 0.875rem;
+}
+
+.banner.text-large .banner-title {
+  font-size: 3.75rem;
+}
+
+.banner.text-large .banner-subtitle {
+  font-size: 1.125rem;
+}
+
+@media (width <= 900px) {
+  .banner.text-small .banner-title {
+    font-size: 1.75rem;
+  }
+
+  .banner.text-small .banner-subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .banner.text-large .banner-title {
+    font-size: 2.75rem;
+  }
+
+  .banner.text-large .banner-subtitle {
+    font-size: 1rem;
+  }
+}
+
 /* Layout Variants */
 
 /* Default layout - content left, image right */

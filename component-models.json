@@ -470,6 +470,26 @@
             "value": "orange"
           }
         ]
+      },
+      {
+        "component": "select",
+        "name": "textSize",
+        "label": "Text Size",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Small",
+            "value": "text-small"
+          },
+          {
+            "name": "Medium (Default)",
+            "value": ""
+          },
+          {
+            "name": "Large",
+            "value": "text-large"
+          }
+        ]
       }
     ]
   },
@@ -558,6 +578,46 @@
         ]
       },
       {
+        "component": "select",
+        "name": "service1IconColor",
+        "label": "Service 1 - Icon Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Purple (Default)",
+            "value": ""
+          },
+          {
+            "name": "Blue",
+            "value": "icon-blue"
+          },
+          {
+            "name": "Green",
+            "value": "icon-green"
+          },
+          {
+            "name": "Orange",
+            "value": "icon-orange"
+          },
+          {
+            "name": "Red",
+            "value": "icon-red"
+          },
+          {
+            "name": "Teal",
+            "value": "icon-teal"
+          },
+          {
+            "name": "Pink",
+            "value": "icon-pink"
+          },
+          {
+            "name": "Yellow",
+            "value": "icon-yellow"
+          }
+        ]
+      },
+      {
         "component": "richtext",
         "name": "service1Description",
         "label": "Service 1 - Description",
@@ -610,6 +670,46 @@
         ]
       },
       {
+        "component": "select",
+        "name": "service2IconColor",
+        "label": "Service 2 - Icon Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Purple (Default)",
+            "value": ""
+          },
+          {
+            "name": "Blue",
+            "value": "icon-blue"
+          },
+          {
+            "name": "Green",
+            "value": "icon-green"
+          },
+          {
+            "name": "Orange",
+            "value": "icon-orange"
+          },
+          {
+            "name": "Red",
+            "value": "icon-red"
+          },
+          {
+            "name": "Teal",
+            "value": "icon-teal"
+          },
+          {
+            "name": "Pink",
+            "value": "icon-pink"
+          },
+          {
+            "name": "Yellow",
+            "value": "icon-yellow"
+          }
+        ]
+      },
+      {
         "component": "richtext",
         "name": "service2Description",
         "label": "Service 2 - Description",
@@ -658,6 +758,46 @@
           {
             "name": "Users (Team/People)",
             "value": "users"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "service3IconColor",
+        "label": "Service 3 - Icon Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Purple (Default)",
+            "value": ""
+          },
+          {
+            "name": "Blue",
+            "value": "icon-blue"
+          },
+          {
+            "name": "Green",
+            "value": "icon-green"
+          },
+          {
+            "name": "Orange",
+            "value": "icon-orange"
+          },
+          {
+            "name": "Red",
+            "value": "icon-red"
+          },
+          {
+            "name": "Teal",
+            "value": "icon-teal"
+          },
+          {
+            "name": "Pink",
+            "value": "icon-pink"
+          },
+          {
+            "name": "Yellow",
+            "value": "icon-yellow"
           }
         ]
       },
@@ -872,6 +1012,26 @@
           {
             "name": "Orange",
             "value": "orange"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "textSize",
+        "label": "Text Size",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Small",
+            "value": "text-small"
+          },
+          {
+            "name": "Medium (Default)",
+            "value": ""
+          },
+          {
+            "name": "Large",
+            "value": "text-large"
           }
         ]
       }
@@ -1349,6 +1509,26 @@
             "value": "orange"
           }
         ]
+      },
+      {
+        "component": "select",
+        "name": "textSize",
+        "label": "Text Size",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Small",
+            "value": "text-small"
+          },
+          {
+            "name": "Medium (Default)",
+            "value": ""
+          },
+          {
+            "name": "Large",
+            "value": "text-large"
+          }
+        ]
       }
     ]
   },
@@ -1500,6 +1680,26 @@
           {
             "name": "Orange",
             "value": "orange"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "textSize",
+        "label": "Text Size",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Small",
+            "value": "text-small"
+          },
+          {
+            "name": "Medium (Default)",
+            "value": ""
+          },
+          {
+            "name": "Large",
+            "value": "text-large"
           }
         ]
       }

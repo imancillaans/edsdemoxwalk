@@ -424,6 +424,86 @@ main .section:has(.services) > div {
   color: #f97316;
 }
 
+/* Icon Color Variants */
+.service-card .service-icon.icon-blue {
+  background: #3b82f6;
+}
+
+.service-card .service-icon.icon-green {
+  background: #10b981;
+}
+
+.service-card .service-icon.icon-orange {
+  background: #f97316;
+}
+
+.service-card .service-icon.icon-red {
+  background: #ef4444;
+}
+
+.service-card .service-icon.icon-teal {
+  background: #14b8a6;
+}
+
+.service-card .service-icon.icon-pink {
+  background: #ec4899;
+}
+
+.service-card .service-icon.icon-yellow {
+  background: #f59e0b;
+}
+
+/* Text Size Variants */
+.services.text-small .services-title {
+  font-size: 1.75rem;
+}
+
+.services.text-small .services-subtitle {
+  font-size: 0.875rem;
+}
+
+.services.text-small .service-name {
+  font-size: 1.125rem;
+}
+
+.services.text-small .service-description {
+  font-size: 0.875rem;
+}
+
+.services.text-large .services-title {
+  font-size: 3.5rem;
+}
+
+.services.text-large .services-subtitle {
+  font-size: 1.25rem;
+}
+
+.services.text-large .service-name {
+  font-size: 1.75rem;
+}
+
+.services.text-large .service-description {
+  font-size: 1.0625rem;
+}
+
+@media (width <= 900px) {
+  .services.text-small .services-title {
+    font-size: 1.5rem;
+  }
+
+  .services.text-small .service-name {
+    font-size: 1rem;
+  }
+
+  .services.text-large .services-title {
+    font-size: 2.75rem;
+  }
+
+  .services.text-large .service-name {
+    font-size: 1.5rem;
+  }
+}
+
 /* Responsive adjustments */
 @media (width >= 900px) {
   .services {

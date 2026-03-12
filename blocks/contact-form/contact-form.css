@@ -410,6 +410,51 @@ main .section:has(.contact-form) > div {
   color: rgb(255 255 255 / 60%);
 }
 
+/* Text Size Variants */
+.contact-form.text-small .contact-form-title {
+  font-size: 1.75rem;
+}
+
+.contact-form.text-small .contact-form-subtitle {
+  font-size: 0.875rem;
+}
+
+.contact-form.text-small .contact-form-group label {
+  font-size: 0.875rem;
+}
+
+.contact-form.text-small .contact-form-group input,
+.contact-form.text-small .contact-form-group textarea {
+  font-size: 0.9375rem;
+}
+
+.contact-form.text-large .contact-form-title {
+  font-size: 3.5rem;
+}
+
+.contact-form.text-large .contact-form-subtitle {
+  font-size: 1.25rem;
+}
+
+.contact-form.text-large .contact-form-group label {
+  font-size: 1.0625rem;
+}
+
+.contact-form.text-large .contact-form-group input,
+.contact-form.text-large .contact-form-group textarea {
+  font-size: 1.0625rem;
+}
+
+@media (width <= 900px) {
+  .contact-form.text-small .contact-form-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-form.text-large .contact-form-title {
+    font-size: 2.75rem;
+  }
+}
+
 /* Focus states for variants (must come after all variant base rules) */
 .contact-form.dark .contact-form-group input:focus,
 .contact-form.dark .contact-form-group textarea:focus {

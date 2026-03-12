@@ -21,6 +21,8 @@ export default function decorate(block) {
     submitButtonVariantRow,
     backgroundImageRow,
     backgroundOverlayRow,
+    classesRow,
+    textSizeRow,
   ] = rows;
 
   // Create main container
@@ -215,6 +217,21 @@ export default function decorate(block) {
       block.classList.add(`overlay-${overlayValue}`);
     }
     backgroundOverlayRow.remove();
+  }
+
+  // Process background color classes (handled automatically by framework)
+  if (classesRow) {
+    classesRow.remove();
+  }
+
+  // Process text size
+  if (textSizeRow) {
+    const textSizeCell = textSizeRow.querySelector(':scope > div');
+    const textSize = textSizeCell?.textContent.trim();
+    if (textSize && ['text-small', 'text-large'].includes(textSize)) {
+      block.classList.add(textSize);
+    }
+    textSizeRow.remove();
   }
 
   // Append container to block

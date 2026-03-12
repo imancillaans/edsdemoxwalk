@@ -148,6 +148,26 @@
           "value": "orange"
         }
       ]
+    },
+    {
+      "component": "select",
+      "name": "textSize",
+      "label": "Text Size",
+      "valueType": "string",
+      "options": [
+        {
+          "name": "Small",
+          "value": "text-small"
+        },
+        {
+          "name": "Medium (Default)",
+          "value": ""
+        },
+        {
+          "name": "Large",
+          "value": "text-large"
+        }
+      ]
     }
   ]
 }

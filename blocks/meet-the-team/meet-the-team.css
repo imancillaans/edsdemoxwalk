@@ -306,3 +306,38 @@ main .section:has(.meet-the-team) > div {
 .meet-the-team.orange .meet-the-team-description {
   color: white;
 }
+
+/* Text Size Variants */
+.meet-the-team.text-small .meet-the-team-title {
+  font-size: 1.75rem;
+}
+
+.meet-the-team.text-small .meet-the-team-description {
+  font-size: 0.875rem;
+}
+
+.meet-the-team.text-large .meet-the-team-title {
+  font-size: 3.5rem;
+}
+
+.meet-the-team.text-large .meet-the-team-description {
+  font-size: 1.25rem;
+}
+
+@media (width <= 900px) {
+  .meet-the-team.text-small .meet-the-team-title {
+    font-size: 1.5rem;
+  }
+
+  .meet-the-team.text-small .meet-the-team-description {
+    font-size: 0.8125rem;
+  }
+
+  .meet-the-team.text-large .meet-the-team-title {
+    font-size: 2.75rem;
+  }
+
+  .meet-the-team.text-large .meet-the-team-description {
+    font-size: 1.125rem;
+  }
+}
